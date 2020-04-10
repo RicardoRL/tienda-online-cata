@@ -21,34 +21,35 @@
                         <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
                         <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
                         <hr>
-                        <form action="customer-orders.html" method="post">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input id="nombre" type="text" class="form-control">
+                                <input id="nombre" type="text" class="form-control" name="nombre">
                             </div>
                             <div class="form-group">
                                 <label for="apepat">Apellido paterno</label>
-                                <input id="apepat" type="text" class="form-control">
+                                <input id="apepat" type="text" class="form-control" name="apepat">
                             </div>
                             <div class="form-group">
                                 <label for="apemat">Apellido materno</label>
-                                <input id="apemat" type="text" class="form-control">
+                                <input id="apemat" type="text" class="form-control" name="apemat">
                             </div>
                             <div class="form-group">
                                 <label for="fecnac">Fecha de nacimiento</label>
-                                <input id="fecnac" type="date" class="form-control">
+                                <input id="fecnac" type="date" class="form-control" name="fecnac">
                             </div>
                             <div class="form-group">
                                 <label for="correo">Correo electrónico</label>
-                                <input id="correo" type="text" class="form-control">
+                                <input id="correo" type="text" class="form-control" name="correo">
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña</label>
-                                <input id="password" type="password" class="form-control">
+                                <input id="password" type="password" class="form-control" name="password">
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono</label>
-                                <input id="telefono" type="text" class="form-control">
+                                <input id="telefono" type="text" class="form-control" name="telefono">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Registrar</button>

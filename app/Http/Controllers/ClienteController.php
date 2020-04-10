@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        //dd($this);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        return view('layouts.main-layout');
     }
 
     /**
@@ -24,7 +29,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts_cliente.clienteAcceso');
     }
 
     /**

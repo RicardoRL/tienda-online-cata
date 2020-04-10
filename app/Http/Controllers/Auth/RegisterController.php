@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -30,6 +32,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = '/inicio';
 
     /**
      * Create a new controller instance.
@@ -39,7 +42,28 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        //$this->middleware('guest:cliente');
     }
+
+    /*public function showClienteRegisterForm()
+    {
+        return view('layouts_cliente.clienteAcceso');
+    }
+
+    protected function createCliente(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $cliente = Cliente::create([
+            'nombre' => $request['nombre'],
+            'apepat' => $request['apepat'],
+            'apemat' => $request['apemat'],
+            'fecnac' => $request['fecnac'],
+            'correo' => $request['correo'],
+            'password' => Hash::make($request['password']),
+            'telefono' => $request['telefono'],
+        ]);
+        return redirect()->route('cliente.index');
+    }*/
 
     /**
      * Get a validator for an incoming registration request.
@@ -49,10 +73,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd('validator');
+        //dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nombre' => ['required', 'string', 'max:50'],
+            'apepat' => ['required', 'string', 'max:50'],
+            'apemat' => ['required', 'string', 'max:50'],
+            'fecnac' => ['required', 'date'],
+            'correo' => ['required', 'string', 'email', 'max:100', 'unique:clientes'],
+            'password' => ['required', 'string', 'min:8'],
+            'telefono' => ['required', 'string', 'min:10'],
         ]);
     }
 
@@ -64,10 +94,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //dd('registerController create');
+        //dd($data);
+        /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+        ]);*/
+        return Cliente::create([
+            'nombre' => $data['nombre'],
+            'apepat' => $data['apepat'],
+            'apemat' => $data['apemat'],
+            'fecnac' => $data['fecnac'],
+            'correo' => $data['correo'],
+            'password' => Hash::make($data['password']),
+            'telefono' => $data['telefono'],
         ]);
     }
 }

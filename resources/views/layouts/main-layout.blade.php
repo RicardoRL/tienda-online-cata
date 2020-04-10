@@ -47,12 +47,27 @@
           <div class="row">
             <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
             <div class="col-lg-6 text-center text-lg-right">
+            @guest
+              <?php //echo 'auth'; ?>
               <ul class="menu list-inline mb-0">
-                <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                <li class="list-inline-item"><a href="{{route('cliente.create')}}">Register</a></li>
+                <li class="list-inline-item"><a href="{{route('login')}}" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
                 <li class="list-inline-item"><a href="contact.html">Contact</a></li>
-                <li class="list-inline-item"><a href="#">Recently viewed</a></li>
+                <li class="list-inline-item"><a href="#">AUTEN</a></li>
               </ul>
+            @else
+              <?php //dd(Auth::user()); ?>
+              <ul class="menu list-inline mb-0">
+                <li class="list-inline-item"><a>Bienvenido {{Auth::user()->nombre}}</a></li>
+                <li class="list-inline-item"><a href="contact.html">Contact</a></li>
+                <li class="list-inline-item"><a href="{{route('logout')}}"
+                                              onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">Logout</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </ul>
+            @endguest
             </div>
           </div>
         </div>
@@ -64,19 +79,20 @@
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
               </div>
               <div class="modal-body">
-                <form action="customer-orders.html" method="post">
+                <form action="{{route('login')}}" method="POST">
+                  @csrf
                   <div class="form-group">
-                    <input id="email-modal" type="text" placeholder="Correo electrónico" class="form-control">
+                    <input id="email-modal" type="text" placeholder="Correo electrónico" class="form-control" name="correo">
                   </div>
                   <div class="form-group">
-                    <input id="password-modal" type="password" placeholder="Contraseña" class="form-control">
+                    <input id="password-modal" type="password" placeholder="Contraseña" class="form-control" name="password">
                   </div>
                   <p class="text-center">
                     <button class="btn btn-primary"><i class="fa fa-sign-in"></i>Ingresar</button>
                   </p>
                 </form>
                 <p class="text-center text-muted">Not registered yet?</p>
-                <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+                <p class="text-center text-muted"><a href="{{route('register')}}"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
               </div>
             </div>
           </div>
@@ -93,8 +109,8 @@
           </div>
           <div id="navigation" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Men<b class="caret"></b></a>
+              <li class="nav-item"><a href="#" class="nav-link active">Inicio</a></li>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas mexicanas<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu">
                   <li>
                     <div class="row">
@@ -145,7 +161,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Ladies<b class="caret"></b></a>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas importadas<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu">
                   <li>
                     <div class="row">
@@ -192,7 +208,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Template<b class="caret"></b></a>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Estilos<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu">
                   <li>
                     <div class="row">
