@@ -3027,3 +3027,9 @@ code {
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
 }
+
+.force-scroll {
+
+  overflow-y: scroll;
+  height: 350px;
+}

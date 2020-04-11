@@ -1,3 +1,18 @@
+<?php
+$cervecerias = mostrarCerveceriasMenu();
+if(isset($cervecerias))
+{
+  $grupo1 = $cervecerias[0];
+  $grupo2 = $cervecerias[1];
+  $grupo3 = $cervecerias[2];
+  $grupo4 = $cervecerias[3];
+  
+  $c1 = count($grupo1);
+  $c2 = count($grupo2);
+  $c3 = count($grupo3);
+  $c4 = count($grupo4);
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,19 +65,18 @@
             @guest
               <?php //echo 'auth'; ?>
               <ul class="menu list-inline mb-0">
-                <li class="list-inline-item"><a href="{{route('login')}}" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
-                <li class="list-inline-item"><a href="contact.html">Contact</a></li>
-                <li class="list-inline-item"><a href="#">AUTEN</a></li>
+                <li class="list-inline-item"><a href="{{route('login')}}" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>
+                <li class="list-inline-item"><a href="{{route('register')}}">Registrar</a></li>
+                <li class="list-inline-item"><a href="contact.html">Contacto</a></li>
               </ul>
             @else
               <?php //dd(Auth::user()); ?>
               <ul class="menu list-inline mb-0">
                 <li class="list-inline-item"><a>Bienvenido {{Auth::user()->nombre}}</a></li>
-                <li class="list-inline-item"><a href="contact.html">Contact</a></li>
+                <li class="list-inline-item"><a href="contact.html">Contacto</a></li>
                 <li class="list-inline-item"><a href="{{route('logout')}}"
                                               onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">Logout</a></li>
+                                              document.getElementById('logout-form').submit();">Salir</a></li>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                 </form>
@@ -111,50 +125,39 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item"><a href="#" class="nav-link active">Inicio</a></li>
               <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas mexicanas<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
+                <ul class="dropdown-menu megamenu force-scroll">
                   <li>
                     <div class="row">
                       <div class="col-md-6 col-lg-3">
-                        <h5>Clothing</h5>
+                        <h5>A - G</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">T-shirts</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Accessories</a></li>
+                        @for($i = 0; $i < $c1; $i++)
+                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo1[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>Shoes</h5>
+                        <h5>H - N</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                        @for($i = 0; $i < $c2; $i++)
+                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo2[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>Accessories</h5>
+                        <h5>O - T</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                        @for($i = 0; $i < $c3; $i++)
+                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo3[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>Featured</h5>
+                        <h5>U - Z</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                        </ul>
-                        <h5>Looks and trends</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                        @for($i = 0; $i < $c4; $i++)
+                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo4[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                     </div>
@@ -166,40 +169,19 @@
                   <li>
                     <div class="row">
                       <div class="col-md-6 col-lg-3">
-                        <h5>Clothing</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">T-shirts</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Accessories</a></li>
-                        </ul>
+                        <div class="banner"><a href="#"><img src="img/banner.jpg" alt="" class="img img-fluid"></a></div>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>Shoes</h5>
+                        <h5>cervecerias</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">carlsberg</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">pilsner urquell</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">schneider weisse</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">stiegl</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">urpiner</a></li>
                         </ul>
                       </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>Accessories</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
-                        </ul>
-                        <h5>Looks and trends</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
-                        </ul>
-                      </div>
+                      <div class="col-md-6 col-lg-3"></div>
                       <div class="col-md-6 col-lg-3">
                         <div class="banner"><a href="#"><img src="img/banner.jpg" alt="" class="img img-fluid"></a></div>
                         <div class="banner"><a href="#"><img src="img/banner2.jpg" alt="" class="img img-fluid"></a></div>
