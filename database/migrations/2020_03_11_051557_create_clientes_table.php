@@ -21,7 +21,7 @@ class CreateClientesTable extends Migration
             $table->date('fecnac');
             $table->string('correo', 100)->unique();
             $table->string('password');
-            $table->string('telefono', 10);
+            $table->string('telefono', 25);
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
         });
