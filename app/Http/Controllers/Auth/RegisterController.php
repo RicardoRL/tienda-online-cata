@@ -45,26 +45,6 @@ class RegisterController extends Controller
         //$this->middleware('guest:cliente');
     }
 
-    /*public function showClienteRegisterForm()
-    {
-        return view('layouts_cliente.clienteAcceso');
-    }
-
-    protected function createCliente(Request $request)
-    {
-        $this->validator($request->all())->validate();
-        $cliente = Cliente::create([
-            'nombre' => $request['nombre'],
-            'apepat' => $request['apepat'],
-            'apemat' => $request['apemat'],
-            'fecnac' => $request['fecnac'],
-            'correo' => $request['correo'],
-            'password' => Hash::make($request['password']),
-            'telefono' => $request['telefono'],
-        ]);
-        return redirect()->route('cliente.index');
-    }*/
-
     /**
      * Get a validator for an incoming registration request.
      *

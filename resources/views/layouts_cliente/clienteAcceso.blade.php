@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.header')
 
 @section('content')
 <div id="all">

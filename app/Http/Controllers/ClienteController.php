@@ -19,7 +19,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('layouts.main-layout');
+        return view('layouts.content');
     }
 
     /**
@@ -86,5 +86,10 @@ class ClienteController extends Controller
     public function destroy(Cliente $cliente)
     {
         //
+    }
+
+    public function cuenta()
+    {
+        return view('layouts_cliente.clienteCuenta');
     }
 }

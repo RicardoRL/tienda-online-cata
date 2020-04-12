@@ -63,17 +63,15 @@ if(isset($cervecerias))
             <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
             <div class="col-lg-6 text-center text-lg-right">
             @guest
-              <?php //echo 'auth'; ?>
               <ul class="menu list-inline mb-0">
                 <li class="list-inline-item"><a href="{{route('login')}}" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>
                 <li class="list-inline-item"><a href="{{route('register')}}">Registrar</a></li>
                 <li class="list-inline-item"><a href="contact.html">Contacto</a></li>
               </ul>
             @else
-              <?php //dd(Auth::user()); ?>
               <ul class="menu list-inline mb-0">
                 <li class="list-inline-item"><a>Bienvenido {{Auth::user()->nombre}}</a></li>
-                <li class="list-inline-item"><a href="contact.html">Contacto</a></li>
+                <li class="list-inline-item"><a href="{{route('cliente.cuenta')}}">Mi Cuenta</a></li>
                 <li class="list-inline-item"><a href="{{route('logout')}}"
                                               onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">Salir</a></li>
@@ -265,12 +263,9 @@ if(isset($cervecerias))
     <main>
       @yield('content')
     </main>
-    
-    
     <!--
     *** COPYRIGHT ***
     _________________________________________________________
     -->
-    <!-- JavaScript files-->
   </body>
 </html>

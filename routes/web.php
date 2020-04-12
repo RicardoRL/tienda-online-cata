@@ -22,7 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/inicio', function() {
-    return view('layouts.main-layout' );
+    return view('layouts.content' );
 })->name('inicio');
 
+Route::get('cliente/cuenta', 'ClienteController@cuenta')->name('cliente.cuenta');
 Route::resource('cliente', 'ClienteController');
