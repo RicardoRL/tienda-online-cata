@@ -71,7 +71,7 @@ if(isset($cervecerias))
             @else
               <ul class="menu list-inline mb-0">
                 <li class="list-inline-item"><a>Bienvenido {{Auth::user()->nombre}}</a></li>
-                <li class="list-inline-item"><a href="{{route('cliente.cuenta')}}">Mi Cuenta</a></li>
+                <li class="list-inline-item"><a href="{{route('cliente.show', [Auth::user()->id])}}">Mi Cuenta</a></li>
                 <li class="list-inline-item"><a href="{{route('logout')}}"
                                               onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">Salir</a></li>

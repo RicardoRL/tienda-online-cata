@@ -25,5 +25,9 @@ Route::get('/inicio', function() {
     return view('layouts.content' );
 })->name('inicio');
 
-Route::get('cliente/cuenta', 'ClienteController@cuenta')->name('cliente.cuenta');
+Route::get('passwd/{cliente}', 'ClienteController@passwd')->name('cliente.passwd');
 Route::resource('cliente', 'ClienteController');
+
+Route::resource('domicilio', 'DomicilioController');
+
+Route::resource('tarjeta', 'TarjetaController');

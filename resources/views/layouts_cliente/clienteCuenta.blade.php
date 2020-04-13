@@ -74,19 +74,19 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input id="nombre" type="text" class="form-control" name="nombre">
+                        <input id="nombre" type="text" class="form-control" name="nombre" value="{{Auth::user()->nombre}}">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="apepat">Apellido Paterno</label>
-                        <input id="apepat" type="text" class="form-control" name="apepat">
+                        <input id="apepat" type="text" class="form-control" name="apepat" value="{{Auth::user()->apepat}}">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="apemat">Apellido Materno</label>
-                        <input id="apemat" type="text" class="form-control" name="apemat">
+                        <input id="apemat" type="text" class="form-control" name="apemat" value="{{Auth::user()->apemat}}">
                       </div>
                     </div>
                   </div>
@@ -95,13 +95,13 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="fecnac">Fecha de nacimiento</label>
-                        <input id="fecnac" type="date" class="form-control" name="fecnac">
+                        <input id="fecnac" type="date" class="form-control" name="fecnac" value="{{Auth::user()->fecnac}}">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input id="telefono" type="text" class="form-control" name="telefono">
+                        <input id="telefono" type="text" class="form-control" name="telefono" value="{{Auth::user()->telefono}}">
                       </div>
                     </div>
                   </div>
@@ -111,26 +111,36 @@
                   </div>
                 </form>
                 <h3 class="mt-5">Domicilio</h3>
-                <form>
+                <form action="{{route('domicilio.store')}}" method="POST">
+                  @csrf
                   <div class="row">
                     <div class="col-md-6 col-lg-3">
                       <div class="form-group">
-                        <label for="firstname">Código postal</label>
-                        <input id="firstname" type="text" class="form-control">
+                        <label for="codpos">Código postal</label>
+                        <input id="codpos" type="text" class="form-control"  name="codigo_postal">
+                        @error('codpos')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="codpos">Estado</label>
-                        <input id="codpos" type="text" class="form-control" name="codigo_postal">
+                        <label for="estado">Estado</label>
+                        <input id="estado" type="text" class="form-control" name="estado">
+                        @error('estado')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="ciudad">Ciudad</label>
                         <input id="ciudad" type="text" class="form-control" name="ciudad">
+                        @error('ciudad')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -139,6 +149,9 @@
                       <div class="form-group">
                         <label for="colonia">Colonia</label>
                         <input id="colonia" type="text" class="form-control" name="colonia">
+                        @error('colonia')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -147,18 +160,27 @@
                       <div class="form-group">
                         <label for="calle_principal">Calle principal</label>
                         <input id="calle_principal" type="text" class="form-control" name="calle_principal">
+                        @error('calle_principal')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                       <div class="form-group">
                         <label for="num_ext">Número exterior</label>
                         <input id="num_ext" type="text" class="form-control" name="num_ext">
+                        @error('num_ext')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                       <div class="form-group">
                         <label for="num_int">Número interior</label>
                         <input id="num_int" type="text" class="form-control" name="num_int">
+                        @error('num_int')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -174,12 +196,18 @@
                       <div class="form-group">
                         <label for="calle1">Calle 1</label>
                         <input id="calle1" type="text" class="form-control" name="calle1">
+                        @error('calle1')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="calle2">Calle 2</label>
                         <input id="calle2" type="text" class="form-control" name="calle2">
+                        @error('calle2')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -189,7 +217,10 @@
                         <label for="comment">Indicaciones adicionales para entregar tus compras en esta dirección
                           <span class="required"></span>
                         </label>
-                        <textarea id="comment" rows="4" class="form-control" name="referencia"></textarea>
+                        <textarea id="referencia" rows="4" class="form-control" name="referencia"></textarea>
+                        @error('referencia')
+                          <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
