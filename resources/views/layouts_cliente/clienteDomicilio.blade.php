@@ -53,8 +53,14 @@
                         </a>
                     </div>
                     <div class="content py-3">
+                        @if(isset($domicilio->id))
+                        <form action="{{route('domicilio.update', $domicilio->id)}}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                        @else
                         <form action="{{route('domicilio.store')}}" method="POST">
                             @csrf
+                        @endif
                             <div class="row">
                                 <div class="col-md-6 col-lg-3">
                                     <div class="form-group">

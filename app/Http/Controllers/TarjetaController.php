@@ -103,7 +103,7 @@ class TarjetaController extends Controller
      * @param  \App\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tarjeta $tarjeta)
+    public function edit(Tarjeta $tarjetum)
     {
         //
     }
@@ -115,9 +115,29 @@ class TarjetaController extends Controller
      * @param  \App\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tarjeta $tarjeta)
+    public function update(Request $request, Tarjeta $tarjetum)
     {
-        //
+        $request->validate([
+            'tipo' => 'required|string|max:20',
+            'num_tarjeta' => 'required|string|digits:16',
+            'banco' => 'required|string|max:50',
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'fecha_exp' => 'required|string|size:5',
+            'codigo' => 'required|string|digits:3'
+        ]);
+
+        $tarjetum->tipo = $request->tipo;
+        $tarjetum->num_tarjeta = $request->num_tarjeta;
+        $tarjetum->banco = $request->banco;
+        $tarjetum->nombre = $request->nombre;
+        $tarjetum->apellido = $request->apellido;
+        $tarjetum->fecha_exp = $request->fecha_exp;
+        $tarjetum->codigo = $request->codigo;
+
+        $tarjetum->save();
+
+        return redirect()->route('tarjeta.show', $tarjetum->cliente_id);
     }
 
     /**
@@ -126,7 +146,7 @@ class TarjetaController extends Controller
      * @param  \App\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tarjeta $tarjeta)
+    public function destroy(Tarjeta $tarjetum)
     {
         //
     }

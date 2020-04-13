@@ -53,7 +53,7 @@ class ClienteController extends Controller
     {
         //dd($cliente);
         $cliente_id = $cliente->id;
-        return view('layouts_cliente.clienteInfo', ["cliente" => $cliente]/*["cliente_id" => $cliente_id]*/);
+        return view('layouts_cliente.clienteInfo', ["cliente" => $cliente]);
     }
 
     /**
@@ -76,7 +76,34 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        /*
+        return Validator::make($data, [
+            'nombre' => ['required', 'string', 'max:50'],
+            'apepat' => ['required', 'string', 'max:50'],
+            'apemat' => ['required', 'string', 'max:50'],
+            'fecnac' => ['required', 'date'],
+            'correo' => ['required', 'string', 'email', 'max:100', 'unique:clientes'],
+            'password' => ['required', 'string', 'min:8'],
+            'telefono' => ['required', 'string', 'min:10'],
+        ]);
+        */
+        $request->validate([
+            'nombre' => 'required|string|max:50',
+            'apepat' => 'required|string|max:50',
+            'apemat' => 'required|string|max:50',
+            'fecnac' => 'required|date',
+            'telefono' => 'required|string|min:10'
+        ]);
+
+        $cliente->nombre = $request->nombre;
+        $cliente->apepat = $request->apepat;
+        $cliente->apemat = $request->apemat;
+        $cliente->fecnac = $request->fecnac;
+        $cliente->telefono = $request->telefono;
+
+        $cliente->save();
+
+        return redirect()->route('cliente.show', [$cliente]);
     }
 
     /**

@@ -37,7 +37,7 @@
             </div>
             <div id="checkout" class="col-lg-9">
                 <div class="box">
-                    <h1 class="text-center">Mi Cuenta</h1><br>
+                    <h1 class="text-center">Mi Cuenta {{$tarjeta->cliente_id}}</h1><br>
                     <div class="nav flex-column flex-md-row nav-pills text-center">
                         <a href="{{route('cliente.show', [Auth::user()->id])}}" class="nav-link flex-sm-fill text-sm-center">
                             <i class="fa fa-map-marker"></i>Mis datos
@@ -53,8 +53,14 @@
                         </a>
                     </div>
                     <div class="content py-3">
+                        @if(isset($tarjeta->id))
+                        <form action="{{route('tarjeta.update', $tarjeta->id)}}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                        @else
                         <form action="{{route('tarjeta.store')}}" method="POST">
                             @csrf
+                        @endif
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

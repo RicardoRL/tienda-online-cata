@@ -127,7 +127,34 @@ class DomicilioController extends Controller
      */
     public function update(Request $request, Domicilio $domicilio)
     {
-        //
+        $request->validate([
+            'codigo_postal' => 'required|string|max:10',
+            'estado' => 'required|string|max:30',
+            'ciudad' => 'required|string|max:100',
+            'colonia' => 'required|string|max:100',
+            'calle_principal' => 'required|string|max:100',
+            'num_ext' => 'nullable|numeric',
+            'num_int' => 'nullable|numeric',
+            'calle1' => 'required|string|max:100',
+            'calle2' => 'required|string|max:100',
+            'referencia' => 'nullable|string'
+        ]);
+
+        $domicilio->codigo_postal = $request->codigo_postal;
+        $domicilio->estado = $request->estado;
+        $domicilio->ciudad = $request->ciudad;
+        $domicilio->colonia = $request->colonia;
+        $domicilio->calle_principal = $request->calle_principal;
+        $domicilio->num_ext = $request->num_ext;
+        $domicilio->num_int = $request->num_int;
+        $domicilio->calle1 = $request->calle1;
+        $domicilio->calle2 = $request->calle2;
+        $domicilio->referencia = $request->referencia;
+        
+        //dd($domicilio);
+        $domicilio->save();
+
+        return redirect()->route('domicilio.show', [$domicilio->cliente_id]);
     }
 
     /**
