@@ -114,14 +114,31 @@ if(isset($cervecerias))
         
       </div>
       <nav class="navbar navbar-expand-lg">
-        <div class="container"><a href="index.html" class="navbar-brand home"><img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container">
+          @guest
+            <a href="{{route('inicio')}}" class="navbar-brand home">
+              <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
+              <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
+              <span class="sr-only">Obaju - go to homepage</span>
+            </a>
+          @else
+            <a href="{{route('cliente.index')}}" class="navbar-brand home">
+              <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
+              <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
+              <span class="sr-only">Obaju - go to homepage</span>
+            </a>
+          @endguest
           <div class="navbar-buttons">
             <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
             <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
           </div>
           <div id="navigation" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a href="#" class="nav-link active">Inicio</a></li>
+              @guest
+                <li class="nav-item"><a href="{{route('inicio')}}" class="nav-link active">Inicio</a></li>
+              @else
+                <li class="nav-item"><a href="{{route('cliente.index')}}" class="nav-link active">Inicio</a></li>
+              @endguest
               <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas mexicanas<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu force-scroll">
                   <li>
