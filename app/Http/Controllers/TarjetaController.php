@@ -21,7 +21,7 @@ class TarjetaController extends Controller
      */
     public function index()
     {
-        return view('layouts_cliente.clienteTarjeta');
+        //return view('layouts_cliente.clienteTarjeta');
     }
 
     /**
@@ -42,7 +42,30 @@ class TarjetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tipo' => 'required|string|max:20',
+            'num_tarjeta' => 'required|string|digits:16',
+            'banco' => 'required|string|max:50',
+            'nombre' => 'required|string|max:50',
+            'apellido' => 'required|string|max:50',
+            'fecha_exp' => 'required|string|size:5',
+            'codigo' => 'required|string|digits:3'
+        ]);
+
+        $tarjeta = new Tarjeta();
+
+        $tarjeta->cliente_id = \Auth::user()->id;
+        $tarjeta->tipo = $request->tipo;
+        $tarjeta->num_tarjeta = $request->num_tarjeta;
+        $tarjeta->banco = $request->banco;
+        $tarjeta->nombre = $request->nombre;
+        $tarjeta->apellido = $request->apellido;
+        $tarjeta->fecha_exp = $request->fecha_exp;
+        $tarjeta->codigo = $request->codigo;
+        
+        $tarjeta->save();
+
+        return redirect()->route('tarjeta.show', $tarjeta->cliente_id);
     }
 
     /**
@@ -51,9 +74,27 @@ class TarjetaController extends Controller
      * @param  \App\Tarjeta  $tarjeta
      * @return \Illuminate\Http\Response
      */
-    public function show(Tarjeta $tarjeta)
+    public function show(int $cliente_id)
     {
-        //
+        $tarjeta_array = DB::table('tarjetas')->where('cliente_id', $cliente_id)->get();
+        $tarjeta = new Tarjeta();
+
+        if(!empty($tarjeta_array->all()))
+        {
+            $tarjeta_array = DB::table('tarjetas')->where('cliente_id', $cliente_id)->get()->toArray()[0];
+
+            $tarjeta->id = $tarjeta_array->id;
+            $tarjeta->cliente_id = $tarjeta_array->cliente_id;
+            $tarjeta->tipo = $tarjeta_array->tipo;
+            $tarjeta->num_tarjeta = $tarjeta_array->num_tarjeta;
+            $tarjeta->banco = $tarjeta_array->banco;
+            $tarjeta->nombre = $tarjeta_array->nombre;
+            $tarjeta->apellido = $tarjeta_array->apellido;
+            $tarjeta->fecha_exp = $tarjeta_array->fecha_exp;
+            $tarjeta->codigo = $tarjeta_array->codigo;
+        }
+
+        return view('layouts_cliente.clienteTarjeta', compact('tarjeta'));
     }
 
     /**

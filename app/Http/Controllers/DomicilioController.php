@@ -89,7 +89,6 @@ class DomicilioController extends Controller
         if(!empty($domicilio_array->all()))
         {
             $domicilio_array = DB::table('domicilios')->where('cliente_id', $cliente_id)->get()->toArray()[0];
-            $domicilio = new Domicilio();
 
             $domicilio->id = $domicilio_array->id;
             $domicilio->cliente_id = $domicilio_array->cliente_id;

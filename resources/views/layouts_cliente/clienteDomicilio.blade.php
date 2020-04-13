@@ -48,7 +48,7 @@
                         <a href="#" class="nav-link flex-sm-fill text-sm-center active">
                             <i class="fa fa-money"></i>Mi domicilio
                         </a>
-                        <a href="{{route('tarjeta.index')}}" class="nav-link flex-sm-fill text-sm-center">
+                        <a href="{{route('tarjeta.show', [Auth::user()->id])}}" class="nav-link flex-sm-fill text-sm-center">
                             <i class="fa fa-eye"></i>Mi tarjeta
                         </a>
                     </div>

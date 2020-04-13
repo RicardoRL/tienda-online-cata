@@ -37,7 +37,7 @@
             </div>
             <div id="checkout" class="col-lg-9">
                 <div class="box">
-                    <h1 class="text-center">Mi Cuenta {{Auth::user()->id}}</h1><br>
+                    <h1 class="text-center">Mi Cuenta</h1><br>
                     <div class="nav flex-column flex-md-row nav-pills text-center">
                         <a href="{{route('cliente.show', [Auth::user()->id])}}" class="nav-link flex-sm-fill text-sm-center">
                             <i class="fa fa-map-marker"></i>Mis datos
@@ -48,7 +48,7 @@
                         <a href="{{route('domicilio.show', [Auth::user()->id])}}" class="nav-link flex-sm-fill text-sm-center">
                             <i class="fa fa-money"></i>Mi domicilio
                         </a>
-                        <a href="{{route('tarjeta.index')}}" class="nav-link flex-sm-fill text-sm-center">
+                        <a href="{{route('tarjeta.show', [Auth::user()->id])}}" class="nav-link flex-sm-fill text-sm-center">
                             <i class="fa fa-eye"></i>Mi tarjeta
                         </a>
                     </div>
