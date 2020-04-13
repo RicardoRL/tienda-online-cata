@@ -26,30 +26,51 @@
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <input id="nombre" type="text" class="form-control" name="nombre">
+                                @error('nombre')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="apepat">Apellido paterno</label>
                                 <input id="apepat" type="text" class="form-control" name="apepat">
+                                @error('apepat')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="apemat">Apellido materno</label>
                                 <input id="apemat" type="text" class="form-control" name="apemat">
+                                @error('apemat')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="fecnac">Fecha de nacimiento</label>
                                 <input id="fecnac" type="date" class="form-control" name="fecnac">
+                                @error('fecnac')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="correo">Correo electrónico</label>
                                 <input id="correo" type="text" class="form-control" name="correo">
+                                @error('correo')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña</label>
                                 <input id="password" type="password" class="form-control" name="password">
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono</label>
                                 <input id="telefono" type="text" class="form-control" name="telefono">
+                                @error('telefono')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Registrar</button>

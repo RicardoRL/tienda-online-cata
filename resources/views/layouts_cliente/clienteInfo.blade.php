@@ -59,18 +59,27 @@
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input id="nombre" type="text" class="form-control" name="nombre" value="{{Auth::user()->nombre}}">
+                                    @error('nombre')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="apepat">Apellido Paterno</label>
                                     <input id="apepat" type="text" class="form-control" name="apepat" value="{{Auth::user()->apepat}}">
+                                    @error('apepat')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="apemat">Apellido Materno</label>
                                     <input id="apemat" type="text" class="form-control" name="apemat" value="{{Auth::user()->apemat}}">
+                                    @error('apemat')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -79,12 +88,18 @@
                                 <div class="form-group">
                                     <label for="fecnac">Fecha de nacimiento</label>
                                     <input id="fecnac" type="date" class="form-control" name="fecnac" value="{{Auth::user()->fecnac}}">
+                                    @error('fecnac')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="telefono">Teléfono</label>
                                     <input id="telefono" type="text" class="form-control" name="telefono" value="{{Auth::user()->telefono}}">
+                                    @error('telefono')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

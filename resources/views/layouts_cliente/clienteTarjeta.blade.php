@@ -59,12 +59,18 @@
                                     <div class="form-group">
                                         <label for="num_tarjeta">Número de tarjeta</label>
                                         <input id="num_tarjeta" type="text" class="form-control" name="num_tarjeta">
+                                        @error('num_tarjeta')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="banco">Banco</label>
                                         <input id="banco" type="text" class="form-control" name="banco">
+                                        @error('banco')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -73,12 +79,18 @@
                                     <div class="form-group">
                                         <label for="nombre">Nombre</label>
                                         <input id="nombre" type="text" class="form-control" name="nombre">
+                                        @error('nombre')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="apellido">Apellido</label>
                                         <input id="apellido" type="text" class="form-control" name="apellido">
+                                        @error('apellido')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -87,12 +99,18 @@
                                     <div class="form-group">
                                         <label for="fecha_exp">Fecha de expiración</label>
                                         <input id="fecha_exp" type="text" class="form-control" name="fecha_exp">
+                                        @error('fecha_exp')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-3">
                                     <div class="form-group">
                                         <label for="codigo">Código de seguridad</label>
                                         <input id="codigo" type="text" class="form-control" name="codigo">
+                                        @error('codigo')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

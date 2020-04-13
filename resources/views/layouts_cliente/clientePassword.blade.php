@@ -59,6 +59,9 @@
                                     <div class="form-group">
                                         <label for="password_old">Contraseña actual</label>
                                         <input id="password_old" type="password" class="form-control" name="old-password">
+                                        @error('password_old')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -67,12 +70,18 @@
                                     <div class="form-group">
                                         <label for="password_1">Contraseña nueva</label>
                                         <input id="password_1" type="password" class="form-control" name="password">
+                                        @error('password_1')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="password_2">Escribe de nuevo tu contraseña</label>
                                         <input id="password_2" type="password" class="form-control" name="password-repeated">
+                                        @error('password_2')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

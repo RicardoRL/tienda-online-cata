@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tarjeta extends Model
 {
-    //
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente');
+    }
 }

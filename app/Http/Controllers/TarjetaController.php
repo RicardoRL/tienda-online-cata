@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Tarjeta;
+use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TarjetaController extends Controller
 {
