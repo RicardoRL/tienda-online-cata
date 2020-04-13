@@ -9,7 +9,7 @@
               <!-- breadcrumb-->
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                  <li class="breadcrumb-item"><a href="{{route('cliente.index')}}">Inicio</a></li>
                   <li aria-current="page" class="breadcrumb-item active">Mi Cuenta</li>
                 </ol>
               </nav>
@@ -25,10 +25,9 @@
                 </div>
                 <div class="card-body">
                   <ul class="nav nav-pills flex-column">
-                    <a href="customer-orders.html" class="nav-link active"><i class="fa fa-list"></i> Mis pedidos</a>
-                    <a href="customer-wishlist.html" class="nav-link"><i class="fa fa-heart"></i> Mi lista de deseos</a>
-                    <a href="customer-account.html" class="nav-link"><i class="fa fa-user"></i> Mi cuenta</a>
-                    <a href="index.html" class="nav-link"><i class="fa fa-sign-out"></i> Salir</a>
+                    <a href="#" class="nav-link active"><i class="fa fa-user"></i> Mi cuenta</a>
+                    <a href="#" class="nav-link"><i class="fa fa-list"></i> Mis pedidos</a>
+                    <a href="{{route('logout')}}" class="nav-link"><i class="fa fa-sign-out"></i> Salir</a>
                   </ul>
                 </div>
               </div>
