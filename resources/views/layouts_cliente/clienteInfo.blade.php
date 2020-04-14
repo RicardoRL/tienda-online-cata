@@ -27,7 +27,9 @@
                   <ul class="nav nav-pills flex-column">
                     <a href="#" class="nav-link active"><i class="fa fa-user"></i> Mi cuenta</a>
                     <a href="#" class="nav-link"><i class="fa fa-list"></i> Mis pedidos</a>
-                    <a href="{{route('logout')}}" class="nav-link"><i class="fa fa-sign-out"></i> Salir</a>
+                    <a href="{{route('logout')}}" class="nav-link"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Salir</a>
                   </ul>
                 </div>
               </div>
