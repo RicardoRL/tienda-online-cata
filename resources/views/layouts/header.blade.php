@@ -94,17 +94,27 @@ if(isset($cervecerias))
                 <form action="{{route('login')}}" method="POST">
                   @csrf
                   <div class="form-group">
-                    <input id="email-modal" type="text" placeholder="Correo electrónico" class="form-control" name="correo">
+                    <input id="email-modal" type="text" placeholder="Correo electrónico" class="form-control" name="correo" required>
+                    @error('email-modal')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input id="password-modal" type="password" placeholder="Contraseña" class="form-control" name="password">
+                    <input id="password-modal" type="password" placeholder="Contraseña" class="form-control" name="password" required>
+                    @error('password-modal')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <p class="text-center">
                     <button class="btn btn-primary"><i class="fa fa-sign-in"></i>Ingresar</button>
                   </p>
                 </form>
-                <p class="text-center text-muted">Not registered yet?</p>
-                <p class="text-center text-muted"><a href="{{route('register')}}"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+                <p class="text-center text-muted">¿Aún no has creado tu cuenta?</p>
+                <p class="text-center text-muted">
+                  <a href="{{route('register')}}">
+                    <strong>¡Regístrate ahora!</strong>
+                  </a> Es rápido y fácil y podrás tener acceso a descuentos especiales y mucho más.
+                </p>
               </div>
             </div>
           </div>
@@ -258,8 +268,19 @@ if(isset($cervecerias))
             </ul>
             <div class="navbar-buttons d-flex justify-content-end">
               <!-- /.nav-collapse-->
-              <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
-              <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
+              <div id="search-not-mobile" class="navbar-collapse collapse"></div>
+              <a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block">
+                <span class="sr-only">Toggle search</span>
+                <i class="fa fa-search"></i>
+              </a>
+              @auth
+                <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
+                  <a href="{{route('cliente.compra')}}" class="btn btn-primary navbar-btn">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>3 items in cart</span>
+                  </a>
+                </div>
+              @endauth
             </div>
           </div>
         </div>

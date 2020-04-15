@@ -123,4 +123,9 @@ class ClienteController extends Controller
         //$cliente_id = $cliente->id;
         return view('layouts_cliente.clientePassword');
     }
+
+    public function compra()
+    {
+        return view('layouts_cliente.clienteCompra');
+    }
 }

@@ -23,24 +23,24 @@
       <div class="container">
         <div class="row mb-4">
           <div class="col-md-4">
-            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+            <div class="box d-flex flex-column justify-content-center mb-0 h-100">
               <div class="icon"><i class="fa fa-heart"></i></div>
-              <h3><a href="#">We love our customers</a></h3>
-              <p class="mb-0">We are known to provide best possible service ever</p>
+              <h3><a href="#">Elige lo que quieras</a></h3>
+              <p class="mb-0">Selecciona tus cervezas artesanales y agrégalas al carrito de compras.</p>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+            <div class="box d-flex flex-column justify-content-center mb-0 h-100">
               <div class="icon"><i class="fa fa-tags"></i></div>
-              <h3><a href="#">Best prices</a></h3>
-              <p class="mb-0">You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
+              <h3><a href="#">Los mejores precios</a></h3>
+              <p class="mb-0">Contamos con una amplia variedad de cervezas artesanales mexicanas e importadas a un excelente precio.</p>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+            <div class="box d-flex flex-column justify-content-center mb-0 h-100">
               <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-              <h3><a href="#">100% satisfaction guaranteed</a></h3>
-              <p class="mb-0">Free returns on everything for 3 months.</p>
+              <h3><a href="#">No esperes mucho</a></h3>
+              <p class="mb-0">En máximo 7 días hábiles recibirás el pedido en la puerta de tu casa</p>
             </div>
           </div>
         </div>

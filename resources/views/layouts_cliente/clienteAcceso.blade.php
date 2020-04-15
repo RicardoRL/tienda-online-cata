@@ -25,49 +25,49 @@
                             @csrf
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input id="nombre" type="text" class="form-control" name="nombre">
+                                <input id="nombre" type="text" class="form-control" name="nombre" required>
                                 @error('nombre')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="apepat">Apellido paterno</label>
-                                <input id="apepat" type="text" class="form-control" name="apepat">
+                                <input id="apepat" type="text" class="form-control" name="apepat" required>
                                 @error('apepat')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="apemat">Apellido materno</label>
-                                <input id="apemat" type="text" class="form-control" name="apemat">
+                                <input id="apemat" type="text" class="form-control" name="apemat" required>
                                 @error('apemat')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="fecnac">Fecha de nacimiento</label>
-                                <input id="fecnac" type="date" class="form-control" name="fecnac">
+                                <input id="fecnac" type="date" class="form-control" name="fecnac" required>
                                 @error('fecnac')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="correo">Correo electrónico</label>
-                                <input id="correo" type="text" class="form-control" name="correo">
+                                <input id="correo" type="text" class="form-control" name="correo" required>
                                 @error('correo')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="password">Contraseña</label>
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control" name="password" required>
                                 @error('password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono</label>
-                                <input id="telefono" type="text" class="form-control" name="telefono">
+                                <input id="telefono" type="text" class="form-control" name="telefono" required>
                                 @error('telefono')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

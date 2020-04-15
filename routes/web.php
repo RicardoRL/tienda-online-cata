@@ -26,6 +26,7 @@ Route::get('/inicio', function() {
 })->name('inicio');
 
 Route::get('passwd/{cliente}', 'ClienteController@passwd')->name('cliente.passwd');
+Route::get('cliente/compra', 'ClienteController@compra')->name('cliente.compra');
 Route::resource('cliente', 'ClienteController');
 
 Route::resource('domicilio', 'DomicilioController');
