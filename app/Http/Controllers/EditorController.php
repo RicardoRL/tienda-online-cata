@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class EditorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
     /**
      * Display a listing of the resource.
      *
