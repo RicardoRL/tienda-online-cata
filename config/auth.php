@@ -46,6 +46,11 @@ return [
             'provider' => 'clientes',
             'hash' => false,
         ],
+        
+        'editor' => [
+            'driver' => 'session',
+            'provider' => 'editors',
+        ],
 
         'cliente' => [
             'driver' => 'session',
@@ -79,6 +84,11 @@ return [
         'clientes' => [
             'driver' => 'eloquent',
             'model' => App\Cliente::class,
+        ],
+
+        'editors' => [
+            'driver' => 'eloquent',
+            'model' => App\Editor::class,
         ],
 
         // 'users' => [
