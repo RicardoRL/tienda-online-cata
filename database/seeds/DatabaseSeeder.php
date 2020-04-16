@@ -15,12 +15,14 @@ class DatabaseSeeder extends Seeder
         $this->truncatetables ([
             'cervecerias',
             'users',
-            'Clientes'
+            'Clientes',
+            'cervezas'
         ]);
 
         $this->call(CerveceriasSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(ClientesSeeder::class);
+        $this->call(CervezasSeeder::class);
     }
 
     protected function truncatetables(array $tables) // Tablas de areglo que queremos vaciar
