@@ -21,7 +21,7 @@ class CreateCervezasTable extends Migration
             $table->string('aspecto');
             $table->text('sabor_aroma');
             $table->string('alcohol', 10);
-            $table->string('temp_consumo', 10);
+            $table->text('temp_consumo');
             $table->text('maridaje');
             $table->string('presentacion');
             $table->decimal('precio', 11, 2);
