@@ -145,9 +145,9 @@ if(isset($cervecerias))
           <div id="navigation" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
               @guest
-                <li class="nav-item"><a href="{{route('inicio')}}" class="nav-link active">Inicio</a></li>
+                <li class="nav-item"><a href="{{route('inicio')}}" class="nav-link">Inicio</a></li>
               @else
-                <li class="nav-item"><a href="{{route('cliente.index')}}" class="nav-link active">Inicio</a></li>
+                <li class="nav-item"><a href="{{route('cliente.index')}}" class="nav-link">Inicio</a></li>
               @endguest
               <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas mexicanas<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu force-scroll">

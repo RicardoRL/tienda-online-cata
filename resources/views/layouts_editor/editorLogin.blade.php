@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Ingresar</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Ingresar</button>
                                 </div>
                             </form>
                         </div>

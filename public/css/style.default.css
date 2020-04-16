@@ -160,7 +160,8 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 700;
-  padding: 30px 15px !important;
+  padding: 30px 10px !important;
+  font-size: 0.750rem;
   color: #555;
 }
 
