@@ -54,6 +54,7 @@
     *** HOT PRODUCT SLIDESHOW ***
     _________________________________________________________
     -->
+    @include('layouts.products')
     @include('layouts.blog')
     <footer>
       @include('layouts.footer')

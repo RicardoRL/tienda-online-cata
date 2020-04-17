@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Cerveza;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,23 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 //Ruta de inicio
+Route::get('/', function(){
+    return redirect()->route('inicio');
+});
+
 Route::get('/inicio', function() {
-    return view('layouts.content' );
+
+    $cervezas = Cerveza::inRandomOrder()->take(10)->get();
+    $cervezas = $cervezas->all();
+    /*foreach($cervezas as $c){
+        echo $c->nombre.'<br>';
+    }
+    dd($cervezas);*/
+
+    return view('layouts.content')->with('cervezas', $cervezas);
 })->name('inicio');
 
 //Rutas para el cliente
