@@ -15,13 +15,12 @@ class DatabaseSeeder extends Seeder
         $this->truncatetables ([
             'cervecerias',
             'users',
-            'Clientes',
             'cervezas'
         ]);
 
         $this->call(CerveceriasSeeder::class);
         $this->call(UsersSeeder::class);
-        $this->call(ClientesSeeder::class);
+        //$this->call(ClientesSeeder::class);
         $this->call(CervezasSeeder::class);
     }
 

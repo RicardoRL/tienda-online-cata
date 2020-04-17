@@ -1,16 +1,27 @@
 <?php
 $cervecerias = mostrarCerveceriasMenu();
-if(isset($cervecerias))
+$estilos = mostrarEstilosMenu();
+if(isset($cervecerias) && isset($estilos))
 {
   $grupo1 = $cervecerias[0];
   $grupo2 = $cervecerias[1];
   $grupo3 = $cervecerias[2];
   $grupo4 = $cervecerias[3];
+
+  $estilos1 = $estilos[0];
+  $estilos2 = $estilos[1];
+  $estilos3 = $estilos[2];
+  $estilos4 = $estilos[3];
   
   $c1 = count($grupo1);
   $c2 = count($grupo2);
   $c3 = count($grupo3);
   $c4 = count($grupo4);
+
+  $d1 = count($estilos1);
+  $d2 = count($estilos2);
+  $d3 = count($estilos3);
+  $d4 = count($estilos4);
 }
 ?>
 <!DOCTYPE html>
@@ -216,49 +227,35 @@ if(isset($cervecerias))
                 </ul>
               </li>
               <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Estilos<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
+                <ul class="dropdown-menu megamenu force-scroll">
                   <li>
                     <div class="row">
                       <div class="col-md-6 col-lg-3">
-                        <h5>Shop</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="index.html" class="nav-link">Homepage</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Category - sidebar left</a></li>
-                          <li class="nav-item"><a href="category-right.html" class="nav-link">Category - sidebar right</a></li>
-                          <li class="nav-item"><a href="category-full.html" class="nav-link">Category - full width</a></li>
-                          <li class="nav-item"><a href="detail.html" class="nav-link">Product detail</a></li>
+                        @for($i = 0; $i < $d1; $i++)
+                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos1[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>User</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="register.html" class="nav-link">Register / login</a></li>
-                          <li class="nav-item"><a href="customer-orders.html" class="nav-link">Orders history</a></li>
-                          <li class="nav-item"><a href="customer-order.html" class="nav-link">Order history detail</a></li>
-                          <li class="nav-item"><a href="customer-wishlist.html" class="nav-link">Wishlist</a></li>
-                          <li class="nav-item"><a href="customer-account.html" class="nav-link">Customer account / change password</a></li>
+                        @for($i = 0; $i < $d2; $i++)
+                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos2[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>Order process</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="basket.html" class="nav-link">Shopping cart</a></li>
-                          <li class="nav-item"><a href="checkout1.html" class="nav-link">Checkout - step 1</a></li>
-                          <li class="nav-item"><a href="checkout2.html" class="nav-link">Checkout - step 2</a></li>
-                          <li class="nav-item"><a href="checkout3.html" class="nav-link">Checkout - step 3</a></li>
-                          <li class="nav-item"><a href="checkout4.html" class="nav-link">Checkout - step 4</a></li>
+                        @for($i = 0; $i < $d3; $i++)
+                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos3[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
-                        <h5>Pages and blog</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="blog.html" class="nav-link">Blog listing</a></li>
-                          <li class="nav-item"><a href="post.html" class="nav-link">Blog Post</a></li>
-                          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
-                          <li class="nav-item"><a href="text.html" class="nav-link">Text page</a></li>
-                          <li class="nav-item"><a href="text-right.html" class="nav-link">Text page - right sidebar</a></li>
-                          <li class="nav-item"><a href="404.html" class="nav-link">404 page</a></li>
-                          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                        @for($i = 0; $i < $d4; $i++)
+                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos4[$i]}}</a></li>
+                        @endfor
                         </ul>
                       </div>
                     </div>
