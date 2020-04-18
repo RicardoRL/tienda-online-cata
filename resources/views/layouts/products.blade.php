@@ -19,8 +19,8 @@ _________________________________________________________
         <div class="product">
           <div class="flip-container">
             <div class="flipper">
-              <div class="front"><a href="detail.html"><img src="./img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a></div>
-              <div class="back"><a href="detail.html"><img src="./img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a></div>
+              <div class="front"><a href="detail.html"><img src="/img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a></div>
+              <div class="back"><a href="detail.html"><img src="/img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a></div>
             </div>
           </div>
           <a href="detail.html" class="invisible"><img src="./img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a>
@@ -57,6 +57,13 @@ _________________________________________________________
       </div>
       @endforeach
       <!-- /.product-slider-->
+    </div>
+    <div class="row justify-content-center">
+      <p class="loadMore">
+        <a href="{{route('tienda.index')}}" class="btn btn-primary btn-lg">
+          Mostrar todo
+        </a>
+      </p>
     </div>
     <!-- /.container-->
   </div>

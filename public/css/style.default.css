@@ -3028,10 +3028,3 @@ code {
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
 }
-
-/*MY CSS*/
-.force-scroll {
-
-  overflow-y: scroll;
-  height: 350px;
-}

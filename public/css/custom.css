@@ -16,3 +16,17 @@
 .main-header{
   text-align: center;
 }
+
+.card-body-custom {
+  padding: 1.25rem;
+}
+
+.force-scroll {
+  overflow-y: scroll;
+  height: 350px;
+}
+
+.force-scroll-estilos {
+  overflow-y: scroll;
+  height: 500px;
+}

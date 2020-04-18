@@ -14,13 +14,7 @@ use App\Cerveza;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 //Ruta de inicio
 Route::get('/', function(){
@@ -31,10 +25,6 @@ Route::get('/inicio', function() {
 
     $cervezas = Cerveza::inRandomOrder()->take(10)->get();
     $cervezas = $cervezas->all();
-    /*foreach($cervezas as $c){
-        echo $c->nombre.'<br>';
-    }
-    dd($cervezas);*/
 
     return view('layouts.content')->with('cervezas', $cervezas);
 })->name('inicio');
@@ -55,5 +45,5 @@ Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
 Route::resource('editor', 'EditorController');
 
-/*Route::get('editor/login', 'EditorController@showLoginForm');
-Route::post('editor/login', 'EditorController@login');*/
+//Rutas para la tienda
+Route::resource('tienda', 'ShopController');

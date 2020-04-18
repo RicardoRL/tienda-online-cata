@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Cerveza;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -10,7 +11,6 @@ class ClienteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        //dd($this);
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +19,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('layouts.content');
+        $cervezas = Cerveza::inRandomOrder()->take(10)->get();
+        $cervezas = $cervezas->all();
+        return view('layouts.content')->with('cervezas', $cervezas);
     }
 
     /**
