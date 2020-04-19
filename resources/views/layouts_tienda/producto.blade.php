@@ -14,12 +14,12 @@
                             @else
                                 <li class="breadcrumb-item"><a href="{{route('cliente.index')}}">Inicio</a></li>
                             @endguest
-                            <li aria-current="page" class="breadcrumb-item active">Tienda</li>
+                            <li aria-current="page" class="breadcrumb-item active">Cerveza</li>
                         </ol>
                     </nav>
                 </div>
                 @include('layouts_tienda.estilos_marcas')
-                @include('layouts_tienda.productos_completo')
+                @include('layouts_tienda.detalles')
             </div>
         </div>
         <footer>

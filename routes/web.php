@@ -25,6 +25,7 @@ Route::get('/inicio', function() {
 
     $cervezas = Cerveza::inRandomOrder()->take(10)->get();
     $cervezas = $cervezas->all();
+    dd($cervezas);
 
     return view('layouts.content')->with('cervezas', $cervezas);
 })->name('inicio');
@@ -46,4 +47,5 @@ Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.lo
 Route::resource('editor', 'EditorController');
 
 //Rutas para la tienda
+Route::get('tienda/paginacion/{paginas}', 'ShopController@paginacion')->name('tienda.paginacion');
 Route::resource('tienda', 'ShopController');
