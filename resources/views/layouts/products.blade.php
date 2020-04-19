@@ -19,8 +19,8 @@ _________________________________________________________
         <div class="product">
           <div class="flip-container">
             <div class="flipper">
-              <div class="front"><a href="detail.html"><img src="$cerveza->imagen" alt="" class="img-fluid"></a></div>
-              <div class="back"><a href="detail.html"><img src="$cerveza->imagen" alt="" class="img-fluid"></a></div>
+              <div class="front"><a href="detail.html"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a></div>
+              <div class="back"><a href="detail.html"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a></div>
             </div>
           </div>
           <a href="detail.html" class="invisible"><img src="./img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a>

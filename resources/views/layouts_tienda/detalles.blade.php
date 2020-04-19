@@ -2,7 +2,7 @@
     <div id="productMain" class="row">
         <div class="col-md-6">
             <div class="item">
-                <img src="/img/detailbig1.jpg" alt="" class="img-fluid">
+                <img src="{{$cerveza->imagen}}" alt="" class="img-fluid">
             </div>
         </div>
         <div class="col-md-6">

@@ -25,7 +25,6 @@ Route::get('/inicio', function() {
 
     $cervezas = Cerveza::inRandomOrder()->take(10)->get();
     $cervezas = $cervezas->all();
-    dd($cervezas);
 
     return view('layouts.content')->with('cervezas', $cervezas);
 })->name('inicio');

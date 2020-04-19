@@ -27,6 +27,7 @@ class CervezasSeeder extends Seeder
                 'presentacion' => $datos[7],
                 'precio' => $datos[8],
                 'cantidad' => $datos[9],
+                'imagen' => $datos[10],
             ]);
         }
         fclose($prueba);

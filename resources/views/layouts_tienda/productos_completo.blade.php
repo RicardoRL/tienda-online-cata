@@ -32,18 +32,18 @@
                         <div class="flipper">
                             <div class="front">
                                 <a href="#">
-                                    <img src="img/product1.jpg" alt="" class="img-fluid">
+                                    <img src="{{$producto->imagen}}" alt="" class="img-fluid">
                                 </a>
                             </div>
                             <div class="back">
                                 <a href="#">
-                                    <img src="img/product1_2.jpg" alt="" class="img-fluid">
+                                    <img src="{{$producto->imagen}}" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
                     </div>
                     <a href="#" class="invisible">
-                        <img src="img/product1.jpg" alt="" class="img-fluid">
+                        <img src="{{$producto->imagen}}" alt="" class="img-fluid">
                     </a>
                     <div class="text">
                         <h3><a href="detail.html">{{$producto->nombre}}</a></h3>
