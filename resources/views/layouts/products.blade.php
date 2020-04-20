@@ -19,13 +19,13 @@ _________________________________________________________
         <div class="product">
           <div class="flip-container">
             <div class="flipper">
-              <div class="front"><a href="detail.html"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a></div>
-              <div class="back"><a href="detail.html"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a></div>
+              <div class="front"><a href="{{route('tienda.show', $cerveza->id)}}"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a></div>
+              <div class="back"><a href="{{route('tienda.show', $cerveza->id)}}"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a></div>
             </div>
           </div>
-          <a href="detail.html" class="invisible"><img src="./img/imagenes_cervezas/mexicanas/acapulco_golden/acapulco-golden.jpg" alt="" class="img-fluid"></a>
+          <a href="{{route('tienda.show', $cerveza->id)}}" class="invisible"><img src="{{$cerveza->imagen}}" alt="" class="img-fluid"></a>
           <div class="text">
-            <h3><a href="detail.html">{{$cerveza->nombre}}</a></h3>
+            <h3><a href="{{route('tienda.show', $cerveza->id)}}">{{$cerveza->nombre}}</a></h3>
             <p class="price"> 
               <del></del>${{$cerveza->precio}}
             </p>
