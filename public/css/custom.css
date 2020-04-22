@@ -30,3 +30,8 @@
   overflow-y: scroll;
   height: 500px;
 }
+
+.fit-image{
+  width: 50px;
+  object-fit: cover;
+}

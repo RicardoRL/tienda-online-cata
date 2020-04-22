@@ -272,9 +272,9 @@ if(isset($cervecerias) && isset($estilos))
               </a>
               @auth
                 <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
-                  <a href="{{route('cliente.compra')}}" class="btn btn-primary navbar-btn">
+                  <a href="{{route('cart.index')}}" class="btn btn-primary navbar-btn">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>3 items in cart</span>
+                    <span>{{Cart::getContent()->count()}}</span>
                   </a>
                 </div>
               @endauth

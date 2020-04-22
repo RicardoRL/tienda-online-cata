@@ -31,12 +31,12 @@
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front">
-                                <a href="#">
+                                <a href="{{route('tienda.show', $producto->id)}}">
                                     <img src="{{$producto->imagen}}" alt="" class="img-fluid">
                                 </a>
                             </div>
                             <div class="back">
-                                <a href="#">
+                                <a href="{{route('tienda.show', $producto->id)}}">
                                     <img src="{{$producto->imagen}}" alt="" class="img-fluid">
                                 </a>
                             </div>
@@ -46,15 +46,23 @@
                         <img src="{{$producto->imagen}}" alt="" class="img-fluid">
                     </a>
                     <div class="text">
-                        <h3><a href="detail.html">{{$producto->nombre}}</a></h3>
+                        <h3><a href="{{route('tienda.show', $producto->id)}}">{{$producto->nombre}}</a></h3>
                         <p class="price"> 
                             <del></del>${{$producto->precio}}
                         </p>
                         <p class="buttons">
                             <a href="{{route('tienda.show', $producto->id)}}" class="btn btn-outline-secondary">Ver detalles</a>
-                            <a href="basket.html" class="btn btn-primary">
-                                <i class="fa fa-shopping-cart"></i>Agregar al carro
-                            </a>
+                            <form action="{{route('cart.store')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$producto->id}}">
+                                <input type="hidden" name="name" value="{{$producto->nombre}}">
+                                <input type="hidden" name="price" value="{{$producto->precio}}">
+                                <p class="text-center buttons">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-shopping-cart"></i> Agregar al carro
+                                    </button>
+                                </p>
+                            </form>
                         </p>
                     </div>
                 </div>

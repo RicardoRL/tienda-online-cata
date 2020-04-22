@@ -21,7 +21,8 @@ class ClienteController extends Controller
     {
         $cervezas = Cerveza::inRandomOrder()->take(10)->get();
         $cervezas = $cervezas->all();
-        return view('layouts.content')->with('cervezas', $cervezas);
+
+        return view('layouts.content', compact('cervezas'));
     }
 
     /**
@@ -126,8 +127,8 @@ class ClienteController extends Controller
         return view('layouts_cliente.clientePassword');
     }
 
-    public function compra()
+    /*public function compra()
     {
         return view('layouts_cliente.clienteCompra');
-    }
+    }*/
 }

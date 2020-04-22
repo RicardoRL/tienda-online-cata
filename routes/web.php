@@ -48,3 +48,16 @@ Route::resource('editor', 'EditorController');
 //Rutas para la tienda
 Route::get('tienda/paginacion/{paginas}', 'ShopController@paginacion')->name('tienda.paginacion');
 Route::resource('tienda', 'ShopController');
+
+//Ruta para contacto
+Route::get('/contacto', function() {
+
+    return view('layouts_cliente.contacto');
+});
+
+//Ruta para el carrito de compras
+Route::resource('cart', 'CartController');
+
+Route::get('vaciar', function(){
+    Cart::clear();
+});
