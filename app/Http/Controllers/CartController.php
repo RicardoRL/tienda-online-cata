@@ -19,6 +19,27 @@ class CartController extends Controller
      */
     public function index()
     {
+        //dd(Cart::getContent()->all());
+        $impuesto = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'IVA',
+            'type' => 'tax',
+            'target' => 'total',
+            'value' => '16%'
+        ));
+
+        $envio = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'envio',
+            'type' => 'shipping',
+            'target' => 'total',
+            'value' => '+150',
+            'attributes' => array(
+                'format' => '$150.00'
+            )
+        ));
+
+        Cart::condition($impuesto);
+        Cart::condition($envio);
+
         return view('layouts_cliente.clienteCompra');
     }
 
@@ -42,12 +63,21 @@ class CartController extends Controller
     {
         //dd($request);
         //Cart::add($request->id, $request->name, $request->price, 1, array())->associate('Cerveza');
+        $duplicados = Cart::search(function($cartItem, $id) use ($request){
+            return $cartItem->id === $request->id;
+        });
+
+        if($duplicados->isNotEmpty())
+        {
+            return redirect()->route('cart.index')->with('success_message', "Ya has agregado este producto antes");
+        }
+
         $cerveza = new Cerveza();
         Cart::add(array(
             'id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
-            'quantity' => 4,
+            'quantity' => 1,
             'attributes' => array(),
             'associatedModel' => $cerveza
         ));
@@ -97,6 +127,8 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+
+        return back()->with('success_message', 'El producto ha sido removido');
     }
 }

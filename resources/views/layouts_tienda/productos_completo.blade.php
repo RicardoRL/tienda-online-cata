@@ -52,17 +52,19 @@
                         </p>
                         <p class="buttons">
                             <a href="{{route('tienda.show', $producto->id)}}" class="btn btn-outline-secondary">Ver detalles</a>
-                            <form action="{{route('cart.store')}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{$producto->id}}">
-                                <input type="hidden" name="name" value="{{$producto->nombre}}">
-                                <input type="hidden" name="price" value="{{$producto->precio}}">
-                                <p class="text-center buttons">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-shopping-cart"></i> Agregar al carro
-                                    </button>
-                                </p>
-                            </form>
+                            @auth
+                                <form action="{{route('cart.store')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$producto->id}}">
+                                    <input type="hidden" name="name" value="{{$producto->nombre}}">
+                                    <input type="hidden" name="price" value="{{$producto->precio}}">
+                                    <p class="text-center buttons">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-shopping-cart"></i> Agregar al carro
+                                        </button>
+                                    </p>
+                                </form>
+                            @endauth
                         </p>
                     </div>
                 </div>

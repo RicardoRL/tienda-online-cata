@@ -34,7 +34,9 @@
             @endif
 
             @if(Cart::getContent()->count() > 0)
+            <!--
             <form method="post" action="checkout1.html">
+            -->
               <p class="text-muted">Tienes {{Cart::getContent()->count()}} producto(s) en el carrito</p>
               <div class="table-responsive">
                 <table class="table">
@@ -61,15 +63,23 @@
                         </td>
                         <td>${{$item->model->precio}}</td>
                         <td>$0.00</td>
-                        <td>$246.00</td>
-                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                        <td>${{$item->getPriceSum()}}</td>
+                        <td>
+                          <form action="{{route('cart.destroy', $item->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
+                          </form>
+                        </td>
                       </tr>
                     </tbody>
                   @endforeach
                   <tfoot>
                     <tr>
                       <th colspan="5">Total</th>
-                      <th colspan="2">$446.00</th>
+                      <th colspan="2">${{Cart::getSubTotal()}}</th>
                     </tr>
                   </tfoot>
                 </table>
@@ -86,7 +96,9 @@
                   <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
                 </div>
               </div>
+            <!--
             </form>
+            -->
             @else
               <p class="text-muted">No tienes productos en el carrito</p>
             @endif
@@ -158,27 +170,27 @@
         <div class="col-lg-3">
           <div id="order-summary" class="box">
             <div class="box-header">
-              <h3 class="mb-0">Order summary</h3>
+              <h3 class="mb-0">Resumen de pedido</h3>
             </div>
             <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
             <div class="table-responsive">
               <table class="table">
                 <tbody>
                   <tr>
-                    <td>Order subtotal</td>
-                    <th>$446.00</th>
+                    <td>Subtotal</td>
+                    <th>${{Cart::getSubTotal()}}</th>
                   </tr>
                   <tr>
-                    <td>Shipping and handling</td>
-                    <th>$10.00</th>
+                    <td>Envío</td>
+                    <th>{{Cart::getCondition('envio')->getAttributes()['format']}}</th>
                   </tr>
                   <tr>
-                    <td>Tax</td>
-                    <th>$0.00</th>
+                    <td>I.V.A (16%)</td>
+                    <th>${{round(Cart::getCondition('IVA')->getCalculatedValue(Cart::getSubTotal()), 2)}}</th>
                   </tr>
                   <tr class="total">
                     <td>Total</td>
-                    <th>$456.00</th>
+                    <th>${{Cart::getTotal()}}</th>
                   </tr>
                 </tbody>
               </table>

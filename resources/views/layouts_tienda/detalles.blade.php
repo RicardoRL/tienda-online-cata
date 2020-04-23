@@ -49,17 +49,19 @@
                     </div>
                 </div>
                 <p class="price">${{$cerveza->precio}}</p>
-                <form action="{{route('cart.store')}}" method="POST">
-                    @csrf
-                    <input type="hidden" name="id" value="{{$cerveza->id}}">
-                    <input type="hidden" name="name" value="{{$cerveza->nombre}}">
-                    <input type="hidden" name="price" value="{{$cerveza->precio}}">
-                    <p class="text-center buttons">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-shopping-cart"></i> Agregar al carro
-                        </button>
-                    </p>
-                </form>
+                @auth
+                    <form action="{{route('cart.store')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$cerveza->id}}">
+                        <input type="hidden" name="name" value="{{$cerveza->nombre}}">
+                        <input type="hidden" name="price" value="{{$cerveza->precio}}">
+                        <p class="text-center buttons">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-shopping-cart"></i> Agregar al carro
+                            </button>
+                        </p>
+                    </form>
+                @endauth
                 <hr>
                 <div class="social">
                   <h4>Compártelo con tus amigos</h4>
