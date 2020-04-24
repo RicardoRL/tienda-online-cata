@@ -60,6 +60,8 @@ if(isset($cervecerias) && isset($estilos))
     <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
     <script src="/js/front.js"></script>
+
+    @stack('script-update-cart')
   </head>
   <body>
     <!-- navbar-->

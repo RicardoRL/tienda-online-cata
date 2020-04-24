@@ -34,9 +34,7 @@
             @endif
 
             @if(Cart::getContent()->count() > 0)
-            <!--
             <form method="post" action="checkout1.html">
-            -->
               <p class="text-muted">Tienes {{Cart::getContent()->count()}} producto(s) en el carrito</p>
               <div class="table-responsive">
                 <table class="table">
@@ -59,19 +57,17 @@
                         </td>
                         <td><a href="{{route('tienda.show', $item->model->id)}}">{{$item->model->nombre}}</a></td>
                         <td>
-                          <input type="number" value="2" class="form-control">
+                          <input type="number" value="{{$item->quantity}}" class="form-control" name="cantidad">
                         </td>
                         <td>${{$item->model->precio}}</td>
                         <td>$0.00</td>
                         <td>${{$item->getPriceSum()}}</td>
                         <td>
-                          <form action="{{route('cart.destroy', $item->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-primary">
-                              <i class="fa fa-trash-o"></i>
-                            </button>
-                          </form>
+                          <a href="{{route('cart.destroy', $item->id)}}"
+                            onclick="event.preventDefault();
+                            document.getElementById('deleteItem').submit();">
+                            <i class="fa fa-trash-o"></i>
+                          </a>
                         </td>
                       </tr>
                     </tbody>
@@ -87,18 +83,20 @@
               <!-- /.table-responsive-->
               <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
                 <div class="left">
-                  <a href="category.html" class="btn btn-outline-secondary">
-                    <i class="fa fa-chevron-left"></i> Continue shopping
+                  <a href="{{route('tienda.index')}}" class="btn btn-outline-secondary">
+                    <i class="fa fa-chevron-left"></i> Seguir comprando
                   </a>
                 </div>
                 <div class="right">
-                  <button class="btn btn-outline-secondary"><i class="fa fa-refresh"></i> Update cart</button>
-                  <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></button>
+                  <button type="submit" class="btn btn-outline-secondary" formaction="#"><i class="fa fa-refresh"></i> Actualizar carrito</button>
+                  <button type="submit" class="btn btn-primary">Continuar<i class="fa fa-chevron-right"></i></button>
                 </div>
               </div>
-            <!--
             </form>
-            -->
+            <form action="{{route('cart.destroy', $item->id)}}" method="POST" id="deleteItem">
+              @csrf
+              @method('DELETE')
+            </form>
             @else
               <p class="text-muted">No tienes productos en el carrito</p>
             @endif
@@ -194,20 +192,8 @@
                   </tr>
                 </tbody>
               </table>
+              <p id="demo"></p>
             </div>
-          </div>
-          <div class="box">
-            <div class="box-header">
-              <h4 class="mb-0">Coupon code</h4>
-            </div>
-            <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
-            <form>
-              <div class="input-group">
-                <input type="text" class="form-control"><span class="input-group-append">
-                <button type="button" class="btn btn-primary"><i class="fa fa-gift"></i></button></span>
-              </div>
-              <!-- /input-group-->
-            </form>
           </div>
         </div>
         <!-- /.col-md-3-->
@@ -216,3 +202,13 @@
   </div>
 </div>
 @endsection
+
+@push('script-update-cart')
+  <script src="./js/app.js"></script>
+  <script>
+    (function(){
+      const classname = document.querySelectorAll('.form-control')
+      document.getElementById("demo").innerHTML = classname.length;
+    })();
+  </script>
+@endpush

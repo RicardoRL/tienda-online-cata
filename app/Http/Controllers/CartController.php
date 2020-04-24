@@ -19,7 +19,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //dd(Cart::getContent()->all());
+        //dd(Cart::getContent());
         $impuesto = new \Darryldecode\Cart\CartCondition(array(
             'name' => 'IVA',
             'type' => 'tax',
@@ -64,6 +64,7 @@ class CartController extends Controller
         //dd($request);
         //Cart::add($request->id, $request->name, $request->price, 1, array())->associate('Cerveza');
         $duplicados = Cart::search(function($cartItem, $id) use ($request){
+            //dd($cartItem->id === $request->id);
             return $cartItem->id === $request->id;
         });
 
@@ -116,7 +117,8 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+        return $request->all();
     }
 
     /**
