@@ -57,7 +57,7 @@ Route::get('/contacto', function() {
 
 //Ruta para el carrito de compras
 Route::resource('cart', 'CartController');
-
+Route::get('cart/update', 'CartController@updating')->name('cart.updating');
 Route::get('vaciar', function(){
     Cart::clear();
 });

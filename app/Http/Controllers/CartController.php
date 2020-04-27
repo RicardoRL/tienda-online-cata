@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Cerveza;
 use Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -19,27 +20,28 @@ class CartController extends Controller
      */
     public function index()
     {
+        $cartConditions = Cart::getConditions();
+        if($cartConditions->isEmpty()){
+            $impuesto = new \Darryldecode\Cart\CartCondition(array(
+                'name' => 'IVA',
+                'type' => 'tax',
+                'target' => 'total',
+                'value' => '16%'
+            ));
+    
+            $envio = new \Darryldecode\Cart\CartCondition(array(
+                'name' => 'envio',
+                'type' => 'shipping',
+                'target' => 'total',
+                'value' => '+150',
+                'attributes' => array(
+                    'format' => '$150.00'
+                )
+            ));
+            Cart::condition($impuesto);
+            Cart::condition($envio);
+        }
         //dd(Cart::getContent());
-        $impuesto = new \Darryldecode\Cart\CartCondition(array(
-            'name' => 'IVA',
-            'type' => 'tax',
-            'target' => 'total',
-            'value' => '16%'
-        ));
-
-        $envio = new \Darryldecode\Cart\CartCondition(array(
-            'name' => 'envio',
-            'type' => 'shipping',
-            'target' => 'total',
-            'value' => '+150',
-            'attributes' => array(
-                'format' => '$150.00'
-            )
-        ));
-
-        Cart::condition($impuesto);
-        Cart::condition($envio);
-
         return view('layouts_cliente.clienteCompra');
     }
 
@@ -61,10 +63,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        //Cart::add($request->id, $request->name, $request->price, 1, array())->associate('Cerveza');
         $duplicados = Cart::search(function($cartItem, $id) use ($request){
-            //dd($cartItem->id === $request->id);
             return $cartItem->id === $request->id;
         });
 
@@ -82,6 +81,7 @@ class CartController extends Controller
             'attributes' => array(),
             'associatedModel' => $cerveza
         ));
+        //dd(Cart::getContent());
 
         return redirect()->route('cart.index')->with('success_message', 'El producto fue agregado al carro');
     }
@@ -94,7 +94,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -117,8 +117,14 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        return $request->all();
+        Cart::update($id, array(
+            'quantity' => array(
+                'relative' => false,
+                'value' => $request->quantity
+            ),
+        ));
+        session()->flash('success_message', 'La cantidad ha sido actualizada');
+        return response()->json(["mensaje_exito" => true]);
     }
 
     /**
@@ -132,5 +138,10 @@ class CartController extends Controller
         Cart::remove($id);
 
         return back()->with('success_message', 'El producto ha sido removido');
+    }
+
+    public function updating()
+    {
+        dd($_GET);
     }
 }

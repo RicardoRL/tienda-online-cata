@@ -34,8 +34,9 @@
             @endif
 
             @if(Cart::getContent()->count() > 0)
-            <form method="post" action="checkout1.html">
-              <p class="text-muted">Tienes {{Cart::getContent()->count()}} producto(s) en el carrito</p>
+            <!--
+            <form method="post" action="checkout1.html">-->
+              <p class="text-muted">Tienes {{Cart::getTotalQuantity()}} producto(s) en el carrito</p>
               <div class="table-responsive">
                 <table class="table">
                   <thead>
@@ -51,13 +52,17 @@
                     <tbody>
                       <tr>
                         <td>
-                          <a href="{{route('tienda.show', $item->model->id)}}">
+                          <a href="{{route('tienda.show', $item->id)}}">
                             <img src="{{$item->model->imagen}}" alt="$item->model->nombre" class="fit-image">
                           </a>
                         </td>
-                        <td><a href="{{route('tienda.show', $item->model->id)}}">{{$item->model->nombre}}</a></td>
+                        <td><a href="{{route('tienda.show', $item->id)}}">{{$item->model->nombre}}</a></td>
                         <td>
-                          <input type="number" value="{{$item->quantity}}" class="form-control" name="cantidad">
+                          <select id="cantidad" class="form-control-sm" data-id="{{$item->id}}">
+                            @for($i=1; $i<30+1; $i++)
+                              <option {{ $item->quantity == $i ? 'selected' : ''}}>{{$i}}</option>
+                            @endfor
+                          </select>
                         </td>
                         <td>${{$item->model->precio}}</td>
                         <td>$0.00</td>
@@ -75,7 +80,7 @@
                   <tfoot>
                     <tr>
                       <th colspan="5">Total</th>
-                      <th colspan="2">${{Cart::getSubTotal()}}</th>
+                      <th colspan="2">${{Cart::getSubTotal()}}</th><!--${{Cart::getSubTotal()}}-->
                     </tr>
                   </tfoot>
                 </table>
@@ -92,7 +97,7 @@
                   <button type="submit" class="btn btn-primary">Continuar<i class="fa fa-chevron-right"></i></button>
                 </div>
               </div>
-            </form>
+            <!--</form>-->
             <form action="{{route('cart.destroy', $item->id)}}" method="POST" id="deleteItem">
               @csrf
               @method('DELETE')
@@ -176,23 +181,23 @@
                 <tbody>
                   <tr>
                     <td>Subtotal</td>
-                    <th>${{Cart::getSubTotal()}}</th>
+                    <th>${{Cart::getSubTotal()}}</th><!--${{Cart::getSubTotal()}}-->
                   </tr>
                   <tr>
                     <td>Envío</td>
                     <th>{{Cart::getCondition('envio')->getAttributes()['format']}}</th>
+                    <!--{{Cart::getCondition('envio')->getAttributes()['format']}}-->
                   </tr>
                   <tr>
                     <td>I.V.A (16%)</td>
-                    <th>${{round(Cart::getCondition('IVA')->getCalculatedValue(Cart::getSubTotal()), 2)}}</th>
+                    <th>MIENTRAS</th>
                   </tr>
                   <tr class="total">
                     <td>Total</td>
-                    <th>${{Cart::getTotal()}}</th>
+                    <th>${{Cart::getTotal()}}</th><!--${{Cart::getTotal()}}-->
                   </tr>
                 </tbody>
               </table>
-              <p id="demo"></p>
             </div>
           </div>
         </div>
@@ -204,11 +209,39 @@
 @endsection
 
 @push('script-update-cart')
-  <script src="./js/app.js"></script>
-  <script>
-    (function(){
-      const classname = document.querySelectorAll('.form-control')
-      document.getElementById("demo").innerHTML = classname.length;
-    })();
-  </script>
+<!--
+<script>
+  function updateQty(){
+    var x = document.getElementById("cantidad").value;
+    document.getElementById("test").value = x;
+  }
+</script>
+-->
+<script src="/js/app.js"></script>
+<script>
+  (function(){
+    document.addEventListener("DOMContentLoaded", function(){
+      const classname = document.querySelectorAll('.form-control-sm');
+
+      Array.from(classname).forEach(function(element){
+        element.addEventListener('change', function(){
+          const id = element.getAttribute('data-id');
+          /*var req = axios.get('/cart').then(response => this.value = response.value);
+          req.then(x =>console.log("Hecho"));*/
+          axios.patch(`/cart/${id}`,{
+            quantity: this.value
+          })
+          .then(function(response){
+            //console.log(response);
+            window.location.href = "{{route('cart.index')}}"
+          })
+          .catch(function (error){
+            console.log(error);
+            window.location.href = "{{route('cart.index')}}"
+          });
+        })
+      })
+    })
+  })();
+</script>
 @endpush
