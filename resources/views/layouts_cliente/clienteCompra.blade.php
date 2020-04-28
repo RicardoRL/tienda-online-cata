@@ -68,11 +68,11 @@
                         <td>$0.00</td>
                         <td>${{$item->getPriceSum()}}</td>
                         <td>
-                          <a href="{{route('cart.destroy', $item->id)}}"
-                            onclick="event.preventDefault();
-                            document.getElementById('deleteItem').submit();">
-                            <i class="fa fa-trash-o"></i>
-                          </a>
+                          <form action="{{route('cart.destroy', $item->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+                          </form>
                         </td>
                       </tr>
                     </tbody>
@@ -98,10 +98,13 @@
                 </div>
               </div>
             <!--</form>-->
-            <form action="{{route('cart.destroy', $item->id)}}" method="POST" id="deleteItem">
-              @csrf
-              @method('DELETE')
-            </form>
+            <!--
+            @foreach(Cart::getContent() as $item)
+              <form action="{{route('cart.destroy', $item->id)}}" method="POST" id="deleteItem">
+                @csrf
+                @method('DELETE')
+              </form>
+            @endforeach-->
             @else
               <p class="text-muted">No tienes productos en el carrito</p>
             @endif
@@ -209,14 +212,6 @@
 @endsection
 
 @push('script-update-cart')
-<!--
-<script>
-  function updateQty(){
-    var x = document.getElementById("cantidad").value;
-    document.getElementById("test").value = x;
-  }
-</script>
--->
 <script src="/js/app.js"></script>
 <script>
   (function(){

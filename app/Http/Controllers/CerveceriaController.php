@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cerveceria;
+use App\Cerveza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Cerveza;
 
-class ShopController extends Controller
+class CerveceriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +16,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //Mostrar los estilos de cervezas en el sidebar menu izquierdo
-        $estilos = (DB::table('cervezas')->select('estilo')
-                    ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
-        
-        //Mostrar 12 cervezas aleatoriamente (esto es temporal)
-        $productos = Cerveza::inRandomOrder()->take(12)->get();
-        $productos = $productos->all();
-
-        return view('layouts_tienda.tienda', compact('estilos', 'productos'));
+        //
     }
 
     /**
@@ -50,27 +43,21 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cerveceria $cerveceria)
     {
-        //Mostrar los estilos de cervezas en el sidebar menu izquierdo
-        $estilos = (DB::table('cervezas')->select('estilo')
-                    ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
-
-        $cerveza = Cerveza::where('id', $id)->firstOrFail();
-
-        return view('layouts_tienda.producto', compact('cerveza', 'estilos'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cerveceria $cerveceria)
     {
         //
     }
@@ -79,10 +66,10 @@ class ShopController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cerveceria $cerveceria)
     {
         //
     }
@@ -90,16 +77,26 @@ class ShopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cerveceria $cerveceria)
     {
         //
     }
 
-    public function paginacion(int $paginas)
+    public function cervezas()
     {
-        dd($paginas);
+        $id = $_GET['id'];
+
+        $productos = Cerveza::whereHas('cerveceria', function($query) use ($id){
+            $query->where('id', $id);
+        })->get();
+
+        //Mostrar los estilos de cervezas en el sidebar menu izquierdo
+        $estilos = (DB::table('cervezas')->select('estilo')
+                    ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
+
+        return view('layouts_tienda.tienda', compact('productos', 'estilos'));
     }
 }

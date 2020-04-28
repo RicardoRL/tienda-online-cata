@@ -135,6 +135,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
+        //dd($id);
         Cart::remove($id);
 
         return back()->with('success_message', 'El producto ha sido removido');

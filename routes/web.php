@@ -26,7 +26,10 @@ Route::get('/inicio', function() {
     $cervezas = Cerveza::inRandomOrder()->take(10)->get();
     $cervezas = $cervezas->all();
 
-    return view('layouts.content')->with('cervezas', $cervezas);
+    //$cervecerias = mostrarCerveceriasMenu();
+    //dd($cervecerias);
+
+    return view('layouts.content', compact('cervezas'));
 })->name('inicio');
 
 //Rutas para el cliente
@@ -44,6 +47,10 @@ Route::resource('tarjeta', 'TarjetaController');
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
 Route::resource('editor', 'EditorController');
+
+//Rutas para cerveceria
+Route::get('cerveceria/cervezas', 'CerveceriaController@cervezas')->name('cerveceria.cervezas');
+Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para la tienda
 Route::get('tienda/paginacion/{paginas}', 'ShopController@paginacion')->name('tienda.paginacion');

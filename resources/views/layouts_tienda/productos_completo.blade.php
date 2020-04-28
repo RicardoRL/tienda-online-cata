@@ -75,31 +75,20 @@
     <div class="pages">
         <nav aria-label="Page navigation example" class="d-flex justify-content-center">
             <ul class="pagination">
-                @if(count($paginas) >= $limite)
-                    <li class="page-item">
-                        <a href="{{route('tienda.paginacion', $paginas)}}" aria-label="Previous" class="page-link">
-                            <span aria-hidden="true">«</span>
-                            <span class="sr-only">Atrás</span>
-                        </a>
-                    </li>
-                @endif
-                @if(count($paginas) < $limite)
-                    @for($i = 1; $i < $limite; $i++)
-                        <li class="page-item active"><a href="{{route('tienda.show')}}" class="page-link">{{$i}}</a></li>
-                    @endfor
-                @else
-                    @for($i = $inicio; $i <= $limite; $i++)
-                        <li class="page-item"><a href="#" class="page-link">{{$i}}</a></li>
-                    @endfor
-                @endif
-                @if(count($paginas) >= $limite)
-                    <li class="page-item">
-                        <a href="{{route('tienda.paginacion', count($paginas)-$limite)}}" aria-label="Next" class="page-link">
-                            <span aria-hidden="true">»</span>
-                            <span class="sr-only">Siguiente</span>
-                        </a>
-                    </li>
-                @endif
+                <li class="page-item">
+                    <a href="#" aria-label="Previous" class="page-link">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Atrás</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item">
+                    <a href="#" aria-label="Next" class="page-link">
+                        <span aria-hidden="true">»</span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
