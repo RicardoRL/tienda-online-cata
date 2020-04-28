@@ -38,7 +38,7 @@ class CerveceriasSeeder extends Seeder
             'imagen' => 'allende.png',
         ]);
         DB::table('cervecerias')->insert([
-            'nombre' => 'Alma Negra',
+            'nombre' => 'Alma Cerveceria',
             'ciudad' => 'Guerrero',
             'sitio_web' => 'https://www.facebook.com/AlmaNegraIguala/',
             'contacto' => '733 144 9265',
@@ -137,31 +137,6 @@ class CerveceriasSeeder extends Seeder
             'contacto' => '33 2465 9094',
             'imagen' => 'de-la-o.jpg',
         ]);
-
-        DB::table('cervecerias')->insert([
-            'nombre' => 'Duende rojo',
-            'ciudad' => 'Guadalajara, Jalisco',
-            'sitio_web' => 'http://www.duenderojo.com/',
-            'contacto' => '33 1983 6317',
-            'imagen' => 'duende_rojo.jpg',
-        ]);
-
-        DB::table('cervecerias')->insert([
-            'nombre' => 'Don Javier',
-            'ciudad' => 'Ciudad de Mexico',
-            'sitio_web' => 'https://www.facebook.com/CervezaArtesanalDonJavier/',
-            'contacto' => '+52 1 442 595 8885',
-            'imagen' => 'don_javier.jpg',
-        ]);
-
-        DB::table('cervecerias')->insert([
-            'nombre' => 'Diosas',
-            'ciudad' => 'Ciudad de México',
-            'sitio_web' => 'http://www.diosasdemalta.com.mx/',
-            'contacto' => '',
-            'imagen' => 'diosas.jpg',
-        ]);
-
             // Cervecerias con la letra E
 
         DB::table('cervecerias')->insert([
@@ -570,6 +545,15 @@ class CerveceriasSeeder extends Seeder
             'sitio_web' => 'www.zuzu.beer',
             'contacto' => '',
             'imagen' => 'zuzu.jpg',
+        ]);
+
+        //Cervezas importadas
+        DB::table('cervecerias')->insert([
+            'nombre' => 'Eurocervezas',
+            'ciudad' => 'México',
+            'sitio_web' => 'http://eurocervezas.mx/contacto/',
+            'contacto' => '5526520174',
+            'imagen' => 'eurocervezas.jpg',
         ]);
     }
 }

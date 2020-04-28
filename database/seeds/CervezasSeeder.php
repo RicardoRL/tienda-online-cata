@@ -17,17 +17,18 @@ class CervezasSeeder extends Seeder
         while(($datos = fgetcsv($prueba,1000,"|")) !== FALSE)
         {
             DB::table('cervezas')->insert([
-                'nombre' => $datos[0],
-                'estilo' => $datos[1],
-                'aspecto' => $datos[2],
-                'sabor_aroma' => $datos[3],
-                'alcohol' => $datos[4],
-                'temp_consumo' => $datos[5],
-                'maridaje' => $datos[6],
-                'presentacion' => $datos[7],
-                'precio' => $datos[8],
-                'cantidad' => $datos[9],
-                'imagen' => $datos[10],
+                'cerveceria_id' => $datos[0],
+                'nombre' => $datos[1],
+                'estilo' => $datos[2],
+                'aspecto' => $datos[3],
+                'sabor_aroma' => $datos[4],
+                'alcohol' => $datos[5],
+                'temp_consumo' => $datos[6],
+                'maridaje' => $datos[7],
+                'presentacion' => $datos[8],
+                'precio' => $datos[9],
+                'cantidad' => $datos[10],
+                'imagen' => $datos[11],
             ]);
         }
         fclose($prueba);

@@ -16,7 +16,7 @@ class CreateCerveceriasTable extends Migration
         Schema::create('cervecerias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 100)->unique();
-            $table->string('ciudad', 150);
+            $table->string('ciudad',150);
             $table->string('sitio_web')->nullable();
             $table->string('contacto')->nullable();
             $table->string('imagen')->nullable();
