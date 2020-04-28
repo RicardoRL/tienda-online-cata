@@ -98,13 +98,6 @@
                 </div>
               </div>
             <!--</form>-->
-            <!--
-            @foreach(Cart::getContent() as $item)
-              <form action="{{route('cart.destroy', $item->id)}}" method="POST" id="deleteItem">
-                @csrf
-                @method('DELETE')
-              </form>
-            @endforeach-->
             @else
               <p class="text-muted">No tienes productos en el carrito</p>
             @endif

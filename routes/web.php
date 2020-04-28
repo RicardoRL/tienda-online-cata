@@ -52,6 +52,10 @@ Route::resource('editor', 'EditorController');
 Route::get('cerveceria/cervezas', 'CerveceriaController@cervezas')->name('cerveceria.cervezas');
 Route::resource('cerveceria', 'CerveceriaController');
 
+//Rutas para cerveza
+Route::get('cervezas/{estilo}', 'CervezaController@estilos')->name('cerveza.estilo');
+Route::resource('cerveza', 'CervezaController');
+
 //Rutas para la tienda
 Route::get('tienda/paginacion/{paginas}', 'ShopController@paginacion')->name('tienda.paginacion');
 Route::resource('tienda', 'ShopController');

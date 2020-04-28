@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cerveza;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CervezaController extends Controller
 {
@@ -81,5 +82,16 @@ class CervezaController extends Controller
     public function destroy(Cerveza $cerveza)
     {
         //
+    }
+
+    public function estilos($estilo)
+    {
+        //Mostrar los estilos de cervezas en el sidebar menu izquierdo
+        $estilos = (DB::table('cervezas')->select('estilo')
+                    ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
+
+        $productos = Cerveza::where('estilo', $estilo)->get()->all();
+        
+        return view('layouts_tienda.tienda', compact('productos', 'estilos'));
     }
 }
