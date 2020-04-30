@@ -60,7 +60,7 @@ _________________________________________________________
     </div>
     <div class="row justify-content-center">
       <p class="loadMore">
-        <a href="{{route('tienda.index')}}" class="btn btn-primary btn-lg">
+        <a href="{{route('tienda.index', ['block' => 1, 'page' => 1])}}" class="btn btn-primary btn-lg">
           Mostrar todo
         </a>
       </p>

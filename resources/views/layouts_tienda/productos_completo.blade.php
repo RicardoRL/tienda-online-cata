@@ -31,33 +31,33 @@
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front">
-                                <a href="{{route('tienda.show', $producto->id)}}">
-                                    <img src="{{$producto->imagen}}" alt="" class="img-fluid">
+                                <a href="{{route('tienda.show', $producto['id'])}}">
+                                    <img src="{{$producto['imagen']}}" alt="" class="img-fluid">
                                 </a>
                             </div>
                             <div class="back">
-                                <a href="{{route('tienda.show', $producto->id)}}">
-                                    <img src="{{$producto->imagen}}" alt="" class="img-fluid">
+                                <a href="{{route('tienda.show', $producto['id'])}}">
+                                    <img src="{{$producto['imagen']}}" alt="" class="img-fluid">
                                 </a>
                             </div>
                         </div>
                     </div>
                     <a href="#" class="invisible">
-                        <img src="{{$producto->imagen}}" alt="" class="img-fluid">
+                        <img src="{{$producto['imagen']}}" alt="" class="img-fluid">
                     </a>
                     <div class="text">
-                        <h3><a href="{{route('tienda.show', $producto->id)}}">{{$producto->nombre}}</a></h3>
+                        <h3><a href="{{route('tienda.show', $producto['id'])}}">{{$producto['nombre']}}</a></h3>
                         <p class="price"> 
-                            <del></del>${{$producto->precio}}
+                            <del></del>${{$producto['precio']}}
                         </p>
                         <p class="buttons">
-                            <a href="{{route('tienda.show', $producto->id)}}" class="btn btn-outline-secondary">Ver detalles</a>
+                            <a href="{{route('tienda.show', $producto['id'])}}" class="btn btn-outline-secondary">Ver detalles</a>
                             @auth
                                 <form action="{{route('cart.store')}}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{$producto->id}}">
-                                    <input type="hidden" name="name" value="{{$producto->nombre}}">
-                                    <input type="hidden" name="price" value="{{$producto->precio}}">
+                                    <input type="hidden" name="id" value="{{$producto['id']}}">
+                                    <input type="hidden" name="name" value="{{$producto['nombre']}}">
+                                    <input type="hidden" name="price" value="{{$producto['precio']}}">
                                     <p class="text-center buttons">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fa fa-shopping-cart"></i> Agregar al carro
@@ -72,24 +72,5 @@
         @endforeach
         <!-- endforeach -->
     </div>
-    <div class="pages">
-        <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a href="#" aria-label="Previous" class="page-link">
-                        <span aria-hidden="true">«</span>
-                        <span class="sr-only">Atrás</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                <li class="page-item">
-                    <a href="#" aria-label="Next" class="page-link">
-                        <span aria-hidden="true">»</span>
-                        <span class="sr-only">Siguiente</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    @include('layouts_tienda.paginacion')
 </div>
