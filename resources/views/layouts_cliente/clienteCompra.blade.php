@@ -184,7 +184,7 @@
                   </tr>
                   <tr>
                     <td>I.V.A (16%)</td>
-                    <th>${{round(Cart::getCondition('IVA')->getCalculatedValue(Cart::getSubTotal()), 2)}}</th>
+                    <th>MIENTRAS</th>
                   </tr>
                   <tr class="total">
                     <td>Total</td>
