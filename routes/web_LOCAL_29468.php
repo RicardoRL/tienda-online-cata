@@ -27,10 +27,7 @@ Route::get('/inicio', function() {
     $cervezas = Cerveza::inRandomOrder()->take(10)->get();
     $cervezas = $cervezas->all();
 
-    //$cervecerias = mostrarCerveceriasMenu();
-    //dd($cervecerias);
-
-    return view('layouts.content', compact('cervezas'));
+    return view('layouts.content')->with('cervezas', $cervezas);
 })->name('inicio');
 
 //Rutas para el cliente
@@ -68,11 +65,7 @@ Route::get('/contacto', function() {
 
 //Ruta para el carrito de compras
 Route::resource('cart', 'CartController');
-<<<<<<< HEAD
 Route::get('cart/update', 'CartController@updating')->name('tienda.paginacion');
-=======
-Route::get('cart/update', 'CartController@updating')->name('cart.updating');
->>>>>>> e359e4d4f8b775a825098d0b752e86969dbb6a9a
 Route::get('vaciar', function(){
     Cart::clear();
 });

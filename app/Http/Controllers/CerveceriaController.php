@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cerveceria;
 use App\Cerveza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CervezaController extends Controller
+class CerveceriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +43,10 @@ class CervezaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cerveza  $cerveza
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function show(Cerveza $cerveza)
+    public function show(Cerveceria $cerveceria)
     {
         //
     }
@@ -53,10 +54,10 @@ class CervezaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cerveza  $cerveza
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cerveza $cerveza)
+    public function edit(Cerveceria $cerveceria)
     {
         //
     }
@@ -65,10 +66,10 @@ class CervezaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cerveza  $cerveza
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cerveza $cerveza)
+    public function update(Request $request, Cerveceria $cerveceria)
     {
         //
     }
@@ -76,22 +77,26 @@ class CervezaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cerveza  $cerveza
+     * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cerveza $cerveza)
+    public function destroy(Cerveceria $cerveceria)
     {
         //
     }
 
-    public function estilos($estilo)
+    public function cervezas()
     {
+        $id = $_GET['id'];
+
+        $productos = Cerveza::whereHas('cerveceria', function($query) use ($id){
+            $query->where('id', $id);
+        })->get();
+
         //Mostrar los estilos de cervezas en el sidebar menu izquierdo
         $estilos = (DB::table('cervezas')->select('estilo')
                     ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
 
-        $productos = Cerveza::where('estilo', $estilo)->get()->all();
-        
         return view('layouts_tienda.tienda', compact('productos', 'estilos'));
     }
 }

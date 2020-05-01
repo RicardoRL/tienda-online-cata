@@ -1,22 +1,23 @@
 <?php
+//$cervecerias = mostrarCerveceriasMenu();
 $cervecerias = mostrarCerveceriasMenu();
 $estilos = mostrarEstilosMenu();
-if(isset($cervecerias) && isset($estilos))
+if(isset($estilos))
 {
-  $grupo1 = $cervecerias[0];
+  /*$grupo1 = $cervecerias[0];
   $grupo2 = $cervecerias[1];
   $grupo3 = $cervecerias[2];
-  $grupo4 = $cervecerias[3];
+  $grupo4 = $cervecerias[3];*/
 
   $estilos1 = $estilos[0];
   $estilos2 = $estilos[1];
   $estilos3 = $estilos[2];
   $estilos4 = $estilos[3];
   
-  $c1 = count($grupo1);
+  /*$c1 = count($grupo1);
   $c2 = count($grupo2);
   $c3 = count($grupo3);
-  $c4 = count($grupo4);
+  $c4 = count($grupo4);*/
 
   $d1 = count($estilos1);
   $d2 = count($estilos2);
@@ -62,6 +63,7 @@ if(isset($cervecerias) && isset($estilos))
     <script src="/js/front.js"></script>
 
     @stack('script-update-cart')
+    @stack('script-menu')
   </head>
   <body>
     <!-- navbar-->
@@ -162,67 +164,61 @@ if(isset($cervecerias) && isset($estilos))
               @else
                 <li class="nav-item"><a href="{{route('cliente.index')}}" class="nav-link">Inicio</a></li>
               @endguest
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas mexicanas<b class="caret"></b></a>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervecerías<b class="caret"></b></a>
                 <ul class="dropdown-menu megamenu force-scroll">
                   <li>
                     <div class="row">
                       <div class="col-md-6 col-lg-3">
                         <h5>A - G</h5>
                         <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $c1; $i++)
-                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo1[$i]}}</a></li>
+                        @for($i = 0; $i < $cervecerias[0]['grupo1']['cantidad']; $i++)
+                          <li class="nav-item">
+                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo1']['conjunto'][$i]->id])}}"
+                              class="nav-link prueba">
+                              {{$cervecerias[0]['grupo1']['conjunto'][$i]->nombre}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
                         <h5>H - N</h5>
                         <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $c2; $i++)
-                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo2[$i]}}</a></li>
+                        @for($i = 0; $i < $cervecerias[0]['grupo2']['cantidad']; $i++)
+                          <li class="nav-item">
+                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo2']['conjunto'][$i]->id])}}"
+                              class="nav-link">
+                              {{$cervecerias[0]['grupo2']['conjunto'][$i]->nombre}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
                         <h5>O - T</h5>
                         <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $c3; $i++)
-                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo3[$i]}}</a></li>
+                        @for($i = 0; $i < $cervecerias[0]['grupo3']['cantidad']; $i++)
+                          <li class="nav-item">
+                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo3']['conjunto'][$i]->id])}}"
+                              class="nav-link">
+                              {{$cervecerias[0]['grupo3']['conjunto'][$i]->nombre}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
                         <h5>U - Z</h5>
                         <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $c4; $i++)
-                          <li class="nav-item"><a href="category.html" class="nav-link">{{$grupo4[$i]}}</a></li>
+                        @for($i = 0; $i < $cervecerias[0]['grupo4']['cantidad']; $i++)
+                          <li class="nav-item">
+                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo4']['conjunto'][$i]->id])}}"
+                              class="nav-link">
+                              {{$cervecerias[0]['grupo4']['conjunto'][$i]->nombre}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervezas importadas<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <div class="banner"><a href="#"><img src="img/banner.jpg" alt="" class="img img-fluid"></a></div>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>cervecerias</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">carlsberg</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">pilsner urquell</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">schneider weisse</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">stiegl</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">urpiner</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3"></div>
-                      <div class="col-md-6 col-lg-3">
-                        <div class="banner"><a href="#"><img src="img/banner.jpg" alt="" class="img img-fluid"></a></div>
-                        <div class="banner"><a href="#"><img src="img/banner2.jpg" alt="" class="img img-fluid"></a></div>
                       </div>
                     </div>
                   </li>
@@ -235,28 +231,44 @@ if(isset($cervecerias) && isset($estilos))
                       <div class="col-md-6 col-lg-3">
                         <ul class="list-unstyled mb-3">
                         @for($i = 0; $i < $d1; $i++)
-                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos1[$i]}}</a></li>
+                          <li class="nav-item">
+                            <a href="{{route('cerveza.estilo', $estilos1[$i])}}" class="nav-link">
+                              {{$estilos1[$i]}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
                         <ul class="list-unstyled mb-3">
                         @for($i = 0; $i < $d2; $i++)
-                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos2[$i]}}</a></li>
+                          <li class="nav-item">
+                            <a href="{{route('cerveza.estilo', $estilos2[$i])}}" class="nav-link">
+                              {{$estilos2[$i]}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
                         <ul class="list-unstyled mb-3">
                         @for($i = 0; $i < $d3; $i++)
-                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos3[$i]}}</a></li>
+                          <li class="nav-item">
+                            <a href="{{route('cerveza.estilo', $estilos3[$i])}}" class="nav-link">
+                              {{$estilos3[$i]}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">
                         <ul class="list-unstyled mb-3">
                         @for($i = 0; $i < $d4; $i++)
-                          <li class="nav-item"><a href="detail.html" class="nav-link">{{$estilos4[$i]}}</a></li>
+                          <li class="nav-item">
+                            <a href="{{route('cerveza.estilo', $estilos4[$i])}}" class="nav-link">
+                              {{$estilos4[$i]}}
+                            </a>
+                          </li>
                         @endfor
                         </ul>
                       </div>

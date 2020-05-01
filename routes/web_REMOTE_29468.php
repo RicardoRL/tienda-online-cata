@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Cerveza;
-use App\Evento;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +57,7 @@ Route::get('cervezas/{estilo}', 'CervezaController@estilos')->name('cerveza.esti
 Route::resource('cerveza', 'CervezaController');
 
 //Rutas para la tienda
+Route::get('tienda/paginacion/{paginas}', 'ShopController@paginacion')->name('tienda.paginacion');
 Route::resource('tienda', 'ShopController');
 
 //Ruta para contacto
@@ -68,27 +68,7 @@ Route::get('/contacto', function() {
 
 //Ruta para el carrito de compras
 Route::resource('cart', 'CartController');
-<<<<<<< HEAD
-Route::get('cart/update', 'CartController@updating')->name('tienda.paginacion');
-=======
 Route::get('cart/update', 'CartController@updating')->name('cart.updating');
->>>>>>> e359e4d4f8b775a825098d0b752e86969dbb6a9a
 Route::get('vaciar', function(){
     Cart::clear();
 });
-
-//Ruta para Eventos
-Route::get('/evento/Delete/{id}', function($id) {
-    $evento = Evento::findOrFail($id);
-    return view ('layouts_evento.eventoShow', compact('evento'));
-});
-
-Route::get('/evento/Delete', function() {
-    $evento = Evento::all();
-    return view('layouts_evento.eventoDelete',compact('evento'));
-});
-
-Route::resource('evento', 'EventoController');
-
-
-
