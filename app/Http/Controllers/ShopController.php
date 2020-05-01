@@ -16,6 +16,7 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+        //dd((int)$request->input("page"));
         //Mostrar los estilos de cervezas en el sidebar menu izquierdo
         $estilos = (DB::table('cervezas')->select('estilo')
                     ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
@@ -32,13 +33,15 @@ class ShopController extends Controller
             'path' => $request->url(),
             'query' => $request->query(),
         ]);
+        //dd($array);
+        //dd(array_key_last($array->all()));
         //Fin paginador
-
         //Obtener los productos como array
         $productos = $array->all();
         
         //Variables adicionales para personalizar paginación
-        $block =(int)$request->input("block") ?? 1;
+        //dd((int)$request->input("block"));
+        $block = $request->input("block") ?? 1;
         $limit = 5;
         $max_per_block = ($block < $limit) ? ($limit * $block) : (($array->lastPage() - $current_page) + 1);
         $endFor = ($block < $limit) ? $max_per_block : $array->lastPage();
