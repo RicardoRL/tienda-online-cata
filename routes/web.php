@@ -71,14 +71,17 @@ Route::get('vaciar', function(){
 });
 
 //Ruta para Eventos
-Route::get('/evento/Delete/{id}', function($id) {
+Route::get('/evento/delete/{id}', function($id) {
     $evento = Evento::findOrFail($id);
     return view ('layouts_evento.eventoShow', compact('evento'));
 });
 
-Route::get('/evento/Delete', function() {
+Route::get('/evento/delete', function() {
     $evento = Evento::all();
     return view('layouts_evento.eventoDelete',compact('evento'));
 });
 
 Route::resource('evento', 'EventoController');
+
+
+

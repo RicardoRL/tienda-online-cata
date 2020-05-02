@@ -8,38 +8,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor2/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor2/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor2/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor2/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css2/fontastic.css">
+    <link rel="stylesheet" href="/css2/fontastic.css">
     <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="/https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <!-- jQuery Circle-->
-    <link rel="stylesheet" href="css2/grasp_mobile_progress_circle-1.0.0.min.css">
+    <link rel="stylesheet" href="/css2/grasp_mobile_progress_circle-1.0.0.min.css">
     <!-- Custom Scrollbar-->
-    <link rel="stylesheet" href="vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="/vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css2/style.default.premium.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/css2/style.default.premium.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <!-- JavaScript files-->
-    <script src="vendor2/jquery/jquery.min.js"></script>
-    <script src="vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
-    <script src="vendor2/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor2/chart.js/Chart.min.js"></script>
-    <script src="vendor2/jquery-validation/jquery.validate.min.js"></script>
-    <script src="vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/charts-home.js"></script>
+    <script src="/vendor2/jquery/jquery.min.js"></script>
+    <script src="/vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+    <script src="/vendor2/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/vendor2/chart.js/Chart.min.js"></script>
+    <script src="/vendor2/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/charts-home.js"></script>
     <!-- Notifications-->
-    <script src="vendor2/messenger-hubspot/build/js/messenger.min.js">   </script>
-    <script src="vendor2/messenger-hubspot/build/js/messenger-theme-flat.js">       </script>
-    <script src="js/home-premium.js"> </script>
+    <script src="/vendor2/messenger-hubspot/build/js/messenger.min.js">   </script>
+    <script src="/vendor2/messenger-hubspot/build/js/messenger-theme-flat.js">       </script>
+    <script src="/js/home-premium.js"> </script>
     <!-- Main File-->
-    <script src="js/front2.js"></script>
+    <script src="/js/front2.js"></script>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -65,9 +65,9 @@
             <li><a href="{{route('editor.index')}}"><i class="icon-home"></i>Inicio</a></li>
             <li><a href="#formsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Eventos</a>
               <ul id="formsDropdown" class="collapse list-unstyled ">
-                <li><a href="#">Nuevo evento</a></li>
-                <li><a href="#">Actualizar evento</a></li>
-                <li><a href="#">Borrar evento</a></li>
+                <li><a href="{{route('evento.create')}}">Nuevo evento</a></li>
+                <li><a href="{{route('evento.index')}}">Actualizar evento</a></li>
+                <li><a href="/evento/delete">Borrar evento</a></li>
               </ul>
             </li>
             <li><a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart"></i>Ventas</a>
@@ -187,6 +187,9 @@
         <main>
           @yield('content')
         </main>
+
+      
+
         <footer class="main-footer">
           <div class="container-fluid">
             <div class="row">
