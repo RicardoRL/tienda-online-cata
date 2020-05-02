@@ -1,29 +1,6 @@
 <?php
-//$cervecerias = mostrarCerveceriasMenu();
 $cervecerias = mostrarCerveceriasMenu();
 $estilos = mostrarEstilosMenu();
-if(isset($estilos))
-{
-  /*$grupo1 = $cervecerias[0];
-  $grupo2 = $cervecerias[1];
-  $grupo3 = $cervecerias[2];
-  $grupo4 = $cervecerias[3];*/
-
-  $estilos1 = $estilos[0];
-  $estilos2 = $estilos[1];
-  $estilos3 = $estilos[2];
-  $estilos4 = $estilos[3];
-  
-  /*$c1 = count($grupo1);
-  $c2 = count($grupo2);
-  $c3 = count($grupo3);
-  $c4 = count($grupo4);*/
-
-  $d1 = count($estilos1);
-  $d2 = count($estilos2);
-  $d3 = count($estilos3);
-  $d4 = count($estilos4);
-}
 ?>
 <!DOCTYPE html>
 <html>

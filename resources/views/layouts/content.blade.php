@@ -11,14 +11,10 @@
             <div class="item"><img src="img/img-index2.gif" alt="" class="img-fluid"></div>
             <div class="item"><img src="img/img-index3.gif" alt="" class="img-fluid"></div>
           </div>
-          <!-- /#main-slider-->
         </div>
       </div>
     </div>
-    <!--
-    *** ADVANTAGES HOMEPAGE ***
-    _________________________________________________________
-    -->
+    <!--*** ADVANTAGES HOMEPAGE ***-->
     <div id="advantages">
       <div class="container">
         <div class="row mb-4">
@@ -44,19 +40,9 @@
             </div>
           </div>
         </div>
-        <!-- /.row-->
       </div>
-      <!-- /.container-->
-    </div>
-    <!-- /#advantages-->
-    <!-- *** ADVANTAGES END ***-->
-    <!--
-    *** HOT PRODUCT SLIDESHOW ***
-    _________________________________________________________
-    -->
-    @include('layouts.products')
-    @include('layouts.blog')
-    <footer>
-      @include('layouts.footer')
-    </footer>
+    </div><!-- *** ADVANTAGES END ***-->
+    @include('layouts.products-section')
+    <!-- el include blog -->
+    @include('layouts.footer')
 @endsection

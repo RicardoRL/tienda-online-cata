@@ -1,7 +1,3 @@
-<!--
-*** HOT PRODUCT SLIDESHOW ***
-_________________________________________________________
--->
 <div id="hot">
   <div class="box py-4">
     <div class="container">
@@ -53,10 +49,8 @@ _________________________________________________________
           -->
           <!-- /.ribbon-->
         </div>
-        <!-- /.product-->
       </div>
       @endforeach
-      <!-- /.product-slider-->
     </div>
     <div class="row justify-content-center">
       <p class="loadMore">
@@ -65,8 +59,5 @@ _________________________________________________________
         </a>
       </p>
     </div>
-    <!-- /.container-->
   </div>
-  <!-- /#hot-->
-  <!-- *** HOT END ***-->
 </div>

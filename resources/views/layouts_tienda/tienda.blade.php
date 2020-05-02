@@ -18,11 +18,9 @@
                         </ol>
                     </nav>
                 </div>
-                @include('layouts_tienda.estilos_marcas')
-                @include('layouts_tienda.productos_completo')
+                @include('layouts_tienda.sidebars')
+                @include('layouts_tienda.all-products')
             </div>
         </div>
-        <footer>
-            @include('layouts.footer')
-        </footer>
+        @include('layouts.footer')
 @endsection

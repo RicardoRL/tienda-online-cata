@@ -77,34 +77,53 @@ function mostrarEstilosMenu()
 
     $total = count($cervezas);
 
-    $estilos1 = array();
-    $estilos2 = array();
-    $estilos3 = array();
-    $estilos4 = array();
+    $conjuntos = array(
+      "estilos1" => array(
+          "cantidad" => 0,
+          "conjunto" => array()
+      ),
+      "estilos2" => array(
+          "cantidad" => 0,
+          "conjunto" => array()
+      ),
+      "estilos3" => array(
+          "cantidad" => 0,
+          "conjunto" => array()
+      ),
+      "estilos4" => array(
+          "cantidad" => 0,
+          "conjunto" => array()
+      )
+  );
 
     for($i = 0; $i < $total; $i++)
     {
-        $estilo = $cervezas[$i]->estilo;
+      $estilo = $cervezas[$i]->estilo;
 
-        if($i >= 0 && $i <= 30)
-        {
-            $estilos1[] = $estilo;
-        }
-        else if($i >= 31 && $i <=60)
-        {
-            $estilos2[] = $estilo;
-        }
-        else if($i >= 61 && $i <= 90)
-        {
-            $estilos3[] = $estilo;
-        }
-        else if($i >= 91 && $i <= 120)
-        {
-            $estilos4[] = $estilo;
-        }
+      if($i >= 0 && $i <= 30)
+      {
+        $conjuntos["estilos1"]["conjunto"][] = $estilo;
+      }
+      else if($i >= 31 && $i <=60)
+      {
+        $conjuntos["estilos2"]["conjunto"][] = $estilo;
+      }
+      else if($i >= 61 && $i <= 90)
+      {
+        $conjuntos["estilos3"]["conjunto"][] = $estilo;
+      }
+      else if($i >= 91 && $i <= 120)
+      {
+        $conjuntos["estilos4"]["conjunto"][] = $estilo;
+      }
     }
 
-    return array($estilos1, $estilos2, $estilos3, $estilos4);
+    $conjuntos["estilos1"]["cantidad"] = count($conjuntos["estilos1"]["conjunto"]);
+    $conjuntos["estilos2"]["cantidad"] = count($conjuntos["estilos2"]["conjunto"]);
+    $conjuntos["estilos3"]["cantidad"] = count($conjuntos["estilos3"]["conjunto"]);
+    $conjuntos["estilos4"]["cantidad"] = count($conjuntos["estilos4"]["conjunto"]);
+    
+    return $conjuntos;
 }
 
 ?>
