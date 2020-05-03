@@ -18,7 +18,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-12 col-lg-7 products-showing">Mostrando <strong></strong> de <strong></strong> productos
+            <div class="col-md-12 col-lg-7 products-showing">Mostrando <strong>{{$set["paginator"]->count()}}</strong> de <strong>{{$set["paginator"]->total()}}</strong> producto(s)
             </div>
         </div>
     </div>

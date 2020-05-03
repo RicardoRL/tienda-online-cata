@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Cerveza;
+use App\Domicilio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -79,17 +81,6 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        /*
-        return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:50'],
-            'apepat' => ['required', 'string', 'max:50'],
-            'apemat' => ['required', 'string', 'max:50'],
-            'fecnac' => ['required', 'date'],
-            'correo' => ['required', 'string', 'email', 'max:100', 'unique:clientes'],
-            'password' => ['required', 'string', 'min:8'],
-            'telefono' => ['required', 'string', 'min:10'],
-        ]);
-        */
         $request->validate([
             'nombre' => 'required|string|max:50',
             'apepat' => 'required|string|max:50',
@@ -122,13 +113,38 @@ class ClienteController extends Controller
 
     public function passwd()
     {
-        //dd($cliente_id);
-        //$cliente_id = $cliente->id;
         return view('layouts_cliente.clientePassword');
     }
 
-    /*public function compra()
+    public function checkout_dom()
     {
-        return view('layouts_cliente.clienteCompra');
-    }*/
+      $cliente_id = \Auth::user()->id;
+      $domicilio_array = DB::table('domicilios')->where('cliente_id', $cliente_id)->get();
+      $domicilio = new Domicilio();
+
+      if(!empty($domicilio_array->all()))
+      {
+        $domicilio_array = DB::table('domicilios')->where('cliente_id', $cliente_id)->get()->toArray()[0];
+
+        $domicilio->id = $domicilio_array->id;
+        $domicilio->cliente_id = $domicilio_array->cliente_id;
+        $domicilio->codigo_postal = $domicilio_array->codigo_postal;
+        $domicilio->estado = $domicilio_array->estado;
+        $domicilio->ciudad = $domicilio_array->ciudad;
+        $domicilio->colonia = $domicilio_array->colonia;
+        $domicilio->calle_principal = $domicilio_array->calle_principal;
+        $domicilio->num_ext = $domicilio_array->num_ext;
+        $domicilio->num_int = $domicilio_array->num_int;
+        $domicilio->calle1 = $domicilio_array->calle1;
+        $domicilio->calle2 = $domicilio_array->calle2;
+        $domicilio->referencia = $domicilio_array->referencia;
+      }
+
+      return view('layouts.checkout', compact('domicilio'));
+    }
+
+    public function checkout_env()
+    {
+      return view('layouts.checkout');
+    }
 }

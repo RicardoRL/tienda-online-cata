@@ -57,7 +57,7 @@
               @else
                 <li class="nav-item"><a href="{{route('cliente.index')}}" class="nav-link">Inicio</a></li>
               @endguest
-
+              <li class="nav-item"><a href="{{route('tienda.index')}}" class="nav-link">tienda</a></li>
               @include('partials.menus.cervecerias-menu')
               @include('partials.menus.estilos-menu')
             </ul>

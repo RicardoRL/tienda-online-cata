@@ -21,27 +21,51 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Aspecto</th>
-                                        <td>{{$cerveza->aspecto}}</td>
+                                        @if($cerveza->aspecto != 'NULL')
+                                          <td>{{$cerveza->aspecto}}</td>
+                                        @else
+                                          <td>-</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <th scope="row">Sabor y aroma</th>
-                                        <td>{{$cerveza->sabor_aroma}}</td>
+                                        @if($cerveza->sabor_aroma != 'NULL')
+                                          <td>{{$cerveza->sabor_aroma}}</td>
+                                        @else
+                                          <td>-</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <th scope="row">Alcohol</th>
-                                        <td>{{$cerveza->alcohol}}</td>
+                                        @if($cerveza->alcohol != 'NULL')
+                                          <td>{{$cerveza->alcohol}}</td>
+                                        @else
+                                          <td>-</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <th scope="row">Temperatura de consumo</th>
-                                        <td>{{$cerveza->temp_consumo}}</td>
+                                        @if($cerveza->temp_consumo != 'NULL')
+                                          <td>{{$cerveza->temp_consumo}}</td>
+                                        @else
+                                          <td>-</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <th scope="row">Maridaje</th>
-                                        <td>{{$cerveza->maridaje}}</td>
+                                        @if($cerveza->maridaje != 'NULL')
+                                          <td>{{$cerveza->maridaje}}</td>
+                                        @else
+                                          <td>-</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <th scope="row">Presentación</th>
-                                        <td>{{$cerveza->presentacion}}</td>
+                                        @if($cerveza->presentacion != 'NULL')
+                                          <td>{{$cerveza->presentacion}}</td>
+                                        @else
+                                          <td>-</td>
+                                        @endif
                                     </tr>
                                 </tbody>
                             </table>

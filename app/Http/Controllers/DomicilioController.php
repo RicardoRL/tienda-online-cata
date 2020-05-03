@@ -20,7 +20,7 @@ class DomicilioController extends Controller
      */
     public function index()
     {
-        $domicilios = Domicilio::all();
+        //$domicilios = Domicilio::all();
         //dd($domicilios);
         return view('layouts_cliente.clienteDomicilio');
     }

@@ -14,6 +14,13 @@ function getEstilos()
   return $estilos;
 }
 
+function getCervecerias()
+{
+  $cervecerias = DB::table('cervecerias')->select('id', 'nombre')->orderBy('nombre')->get();
+
+  return $cervecerias;
+}
+
 function cervecerias()
 {
   //Función para mostrar las cervecerías disponibles en el menú inicial
@@ -134,7 +141,7 @@ function estilos_cerveza()
 
 function paginator(Request $request, $productos)
 {
-  $array = $productos->toArray();
+  $array = (is_array($productos)) ? $productos : $productos->toArray();
   $total = count($productos);
   $per_page = 24;
   $current_page = $request->input("page") ?? 1;
