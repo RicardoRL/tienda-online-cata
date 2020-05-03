@@ -88,7 +88,7 @@
               <!-- /.table-responsive-->
               <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
                 <div class="left">
-                  <a href="{{route('tienda.index')}}" class="btn btn-outline-secondary">
+                  <a href="{{route('tienda.index', ['page' => 1, 'block' => 1])}}" class="btn btn-outline-secondary">
                     <i class="fa fa-chevron-left"></i> Seguir comprando
                   </a>
                 </div>

@@ -1,30 +1,3 @@
-<?php
-//$cervecerias = mostrarCerveceriasMenu();
-$cervecerias = mostrarCerveceriasMenu();
-$estilos = mostrarEstilosMenu();
-if(isset($estilos))
-{
-  /*$grupo1 = $cervecerias[0];
-  $grupo2 = $cervecerias[1];
-  $grupo3 = $cervecerias[2];
-  $grupo4 = $cervecerias[3];*/
-
-  $estilos1 = $estilos[0];
-  $estilos2 = $estilos[1];
-  $estilos3 = $estilos[2];
-  $estilos4 = $estilos[3];
-  
-  /*$c1 = count($grupo1);
-  $c2 = count($grupo2);
-  $c3 = count($grupo3);
-  $c4 = count($grupo4);*/
-
-  $d1 = count($estilos1);
-  $d2 = count($estilos2);
-  $d3 = count($estilos3);
-  $d4 = count($estilos4);
-}
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -63,100 +36,20 @@ if(isset($estilos))
     <script src="/js/front.js"></script>
 
     @stack('script-update-cart')
-    @stack('script-menu')
   </head>
   <body>
     <!-- navbar-->
     <header class="header mb-5">
-      <!--
-      *** TOPBAR ***
-      _________________________________________________________
-      -->
+      <!--TOPBAR-->
       <div id="top">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
-            <div class="col-lg-6 text-center text-lg-right">
-            @guest
-              <ul class="menu list-inline mb-0">
-                <li class="list-inline-item"><a href="{{route('login')}}" data-toggle="modal" data-target="#login-modal">Ingresar</a></li>
-                <li class="list-inline-item"><a href="{{route('register')}}">Registrar</a></li>
-                <li class="list-inline-item"><a href="contact.html">Contacto</a></li>
-              </ul>
-            @else
-              <ul class="menu list-inline mb-0">
-                <li class="list-inline-item"><a>Bienvenido {{Auth::user()->nombre}}</a></li>
-                <li class="list-inline-item"><a href="{{route('cliente.show', [Auth::user()->id])}}">Mi Cuenta</a></li>
-                <li class="list-inline-item"><a href="{{route('logout')}}"
-                                              onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">Salir</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-              </ul>
-            @endguest
-            </div>
-          </div>
-        </div>
-        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Ingresar</h5>
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-              </div>
-              <div class="modal-body">
-                <form action="{{route('login')}}" method="POST">
-                  @csrf
-                  <div class="form-group">
-                    <input id="email-modal" type="text" placeholder="Correo electrónico" class="form-control" name="correo" required>
-                    @error('email-modal')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                  </div>
-                  <div class="form-group">
-                    <input id="password-modal" type="password" placeholder="Contraseña" class="form-control" name="password" required>
-                    @error('password-modal')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                  </div>
-                  <p class="text-center">
-                    <button class="btn btn-primary"><i class="fa fa-sign-in"></i>Ingresar</button>
-                  </p>
-                </form>
-                <p class="text-center text-muted">¿Aún no has creado tu cuenta?</p>
-                <p class="text-center text-muted">
-                  <a href="{{route('register')}}">
-                    <strong>¡Regístrate ahora!</strong>
-                  </a> Es rápido y fácil y podrás tener acceso a descuentos especiales y mucho más.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- *** TOP BAR END ***-->
-        
-        
-      </div>
+        <!-- LOGIN AND REGISTRATION -->
+        @include('partials.login-register')
+        <!-- LOGIN MODAL -->
+        @include('partials.login-client')
+      </div><!-- *** TOP BAR END ***-->
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          @guest
-            <a href="{{route('inicio')}}" class="navbar-brand home">
-              <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
-              <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
-              <span class="sr-only">Obaju - go to homepage</span>
-            </a>
-          @else
-            <a href="{{route('cliente.index')}}" class="navbar-brand home">
-              <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
-              <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
-              <span class="sr-only">Obaju - go to homepage</span>
-            </a>
-          @endguest
-          <div class="navbar-buttons">
-            <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
-            <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
-          </div>
+          @include('partials.logo')
           <div id="navigation" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
               @guest
@@ -164,157 +57,18 @@ if(isset($estilos))
               @else
                 <li class="nav-item"><a href="{{route('cliente.index')}}" class="nav-link">Inicio</a></li>
               @endguest
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">cervecerías<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu force-scroll">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <h5>A - G</h5>
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $cervecerias[0]['grupo1']['cantidad']; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo1']['conjunto'][$i]->id])}}"
-                              class="nav-link prueba">
-                              {{$cervecerias[0]['grupo1']['conjunto'][$i]->nombre}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>H - N</h5>
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $cervecerias[0]['grupo2']['cantidad']; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo2']['conjunto'][$i]->id])}}"
-                              class="nav-link">
-                              {{$cervecerias[0]['grupo2']['conjunto'][$i]->nombre}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>O - T</h5>
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $cervecerias[0]['grupo3']['cantidad']; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo3']['conjunto'][$i]->id])}}"
-                              class="nav-link">
-                              {{$cervecerias[0]['grupo3']['conjunto'][$i]->nombre}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <h5>U - Z</h5>
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $cervecerias[0]['grupo4']['cantidad']; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveceria.cervezas', ['id'=>$cervecerias[0]['grupo4']['conjunto'][$i]->id])}}"
-                              class="nav-link">
-                              {{$cervecerias[0]['grupo4']['conjunto'][$i]->nombre}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Estilos<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu force-scroll">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $d1; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveza.estilo', $estilos1[$i])}}" class="nav-link">
-                              {{$estilos1[$i]}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $d2; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveza.estilo', $estilos2[$i])}}" class="nav-link">
-                              {{$estilos2[$i]}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $d3; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveza.estilo', $estilos3[$i])}}" class="nav-link">
-                              {{$estilos3[$i]}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                      <div class="col-md-6 col-lg-3">
-                        <ul class="list-unstyled mb-3">
-                        @for($i = 0; $i < $d4; $i++)
-                          <li class="nav-item">
-                            <a href="{{route('cerveza.estilo', $estilos4[$i])}}" class="nav-link">
-                              {{$estilos4[$i]}}
-                            </a>
-                          </li>
-                        @endfor
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
+
+              @include('partials.menus.cervecerias-menu')
+              @include('partials.menus.estilos-menu')
             </ul>
-            <div class="navbar-buttons d-flex justify-content-end">
-              <!-- /.nav-collapse-->
-              <div id="search-not-mobile" class="navbar-collapse collapse"></div>
-              <a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block">
-                <span class="sr-only">Toggle search</span>
-                <i class="fa fa-search"></i>
-              </a>
-              @auth
-                <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
-                  <a href="{{route('cart.index')}}" class="btn btn-primary navbar-btn">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span>{{Cart::getContent()->count()}}</span>
-                  </a>
-                </div>
-              @endauth
-            </div>
+            @include('partials.navbar-buttons')
           </div>
         </div>
       </nav>
-      <div id="search" class="collapse">
-        <div class="container">
-          <form role="search" class="ml-auto">
-            <div class="input-group">
-              <input type="text" placeholder="Search" class="form-control">
-              <div class="input-group-append">
-                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
+      @include('partials.search')
     </header>
     <main>
       @yield('content')
     </main>
-    <!--
-    *** COPYRIGHT ***
-    _________________________________________________________
-    -->
   </body>
 </html>
