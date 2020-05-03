@@ -147,4 +147,14 @@ class ClienteController extends Controller
     {
       return view('layouts.checkout');
     }
+
+    public function checkout_pag()
+    {
+      return view('layouts.checkout');
+    }
+
+    public function checkout_rev()
+    {
+      return view('layouts.checkout');
+    }
 }

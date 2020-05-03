@@ -19,6 +19,10 @@
               @include('partials.checkouts.checkoutDomicilio')
             @elseif(\Request::is('cliente/checkout/envio'))
               @include('partials.checkouts.checkoutEnvio')
+            @elseif(\Request::is('cliente/checkout/pago'))
+              @include('partials.checkouts.checkoutPago')
+            @elseif(\Request::is('cliente/checkout/revision'))
+              @include('partials.checkouts.checkoutRevision')
             @endif
           </div>
         </div>
