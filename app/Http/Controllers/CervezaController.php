@@ -86,12 +86,5 @@ class CervezaController extends Controller
 
     public function estilos($estilo)
     {
-        //Mostrar los estilos de cervezas en el sidebar menu izquierdo
-        $estilos = (DB::table('cervezas')->select('estilo')
-                    ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
-
-        $productos = Cerveza::where('estilo', $estilo)->get()->all();
-        
-        return view('layouts_tienda.tienda', compact('productos', 'estilos'));
     }
 }

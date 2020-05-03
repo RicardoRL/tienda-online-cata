@@ -19,6 +19,9 @@ class ShopController extends Controller
     {
         //Mostrar los estilos de cervezas en el sidebar menu izquierdo
         $estilos = getEstilos();
+
+        $cervecerias = getCervecerias();
+        //dd($cervecerias);
         
         //Crear paginador personalizado
         $productos = Cerveza::all();
@@ -27,28 +30,7 @@ class ShopController extends Controller
         //Obtener los productos como array
         $productos = $set['paginator']->all();
 
-        return view('layouts_tienda.tienda', compact('estilos', 'productos', 'set'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('layouts_tienda.tienda', compact('estilos', 'productos', 'set', 'cervecerias'));
     }
 
     /**
@@ -62,19 +44,16 @@ class ShopController extends Controller
       //Mostrar los estilos de cervezas en el sidebar menu izquierdo
       $estilos = getEstilos();
 
+      $cervecerias = getCervecerias();
+
       $cerveza = Cerveza::where('id', $id)->firstOrFail();
 
-      return view('layouts_tienda.producto', compact('cerveza', 'estilos'));
+      return view('layouts_tienda.producto', compact('cerveza', 'estilos', 'cervecerias'));
     }
 
-    public function update(Request $request, $id)
+    public function porCerveceria(Request $request)
     {
-
-    }
-
-    public function porCerveceria()
-    {
-      $id = $_GET['id'];
+      $id = (int)$request->input('id');
 
       $productos = Cerveza::whereHas('cerveceria', function($query) use ($id){
         $query->where('id', $id);
@@ -82,16 +61,24 @@ class ShopController extends Controller
 
       $estilos = getEstilos();
 
-      return view('layouts_tienda.tienda', compact('productos', 'estilos'));
+      $cervecerias = getCervecerias();
+
+      $set = paginator($request, $productos);
+
+      return view('layouts_tienda.tienda', compact('productos', 'estilos', 'set', 'cervecerias'));
     }
 
-    public function porEstilo($estilo)
+    public function porEstilo(Request $request, $estilo)
     {
       $estilos = getEstilos();
 
+      $cervecerias = getCervecerias();
+
       $productos = Cerveza::where('estilo', $estilo)->get()->all();
+
+      $set = paginator($request, $productos);
         
-      return view('layouts_tienda.tienda', compact('productos', 'estilos'));
+      return view('layouts_tienda.tienda', compact('productos', 'estilos', 'set', 'cervecerias'));
     }
 
     /**

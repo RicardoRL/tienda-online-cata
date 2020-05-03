@@ -93,8 +93,7 @@
                   </a>
                 </div>
                 <div class="right">
-                  <button type="submit" class="btn btn-outline-secondary" formaction="#"><i class="fa fa-refresh"></i> Actualizar carrito</button>
-                  <button type="submit" class="btn btn-primary">Continuar<i class="fa fa-chevron-right"></i></button>
+                  <a href="{{route('cliente.checkout_dom')}}" class="btn btn-primary">Continuar<i class="fa fa-chevron-right"></i></a>
                 </div>
               </div>
             <!--</form>-->
@@ -169,7 +168,7 @@
         <div class="col-lg-3">
           <div id="order-summary" class="box">
             <div class="box-header">
-              <h3 class="mb-0">Resumen de pedido</h3>
+              <h4 class="mb-0">Resumen de pedido</h4>
             </div>
             <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
             <div class="table-responsive">

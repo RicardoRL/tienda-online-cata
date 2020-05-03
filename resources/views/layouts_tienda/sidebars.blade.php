@@ -23,12 +23,13 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <!-- foreach -->
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> <!--Marca de cerveza-->
-                        </label>
-                    </div>
+                    @foreach($cervecerias as $cerveceria)
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox">{{$cerveceria->nombre}}
+                          </label>
+                      </div>
+                    @endforeach
                 </div>
                 <button class="btn btn-default btn-sm btn-primary">
                     <i class="fa fa-pencil"></i>Aplicar

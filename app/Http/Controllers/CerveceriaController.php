@@ -84,19 +84,4 @@ class CerveceriaController extends Controller
     {
         //
     }
-
-    public function cervezas()
-    {
-        $id = $_GET['id'];
-
-        $productos = Cerveza::whereHas('cerveceria', function($query) use ($id){
-            $query->where('id', $id);
-        })->get();
-
-        //Mostrar los estilos de cervezas en el sidebar menu izquierdo
-        $estilos = (DB::table('cervezas')->select('estilo')
-                    ->groupBy('estilo')->orderBy('estilo', 'ASC')->get())->all();
-
-        return view('layouts_tienda.tienda', compact('productos', 'estilos'));
-    }
 }

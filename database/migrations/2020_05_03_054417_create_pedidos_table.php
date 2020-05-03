@@ -13,14 +13,16 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('cliente_id')->nullable();
-            $table->date('fecha');
-            $table->integer('cantidad')->unsigned();
-            $table->decimal('total', 11, 2);
-            $table->timestamps();
-        });
+      Schema::create('pedidos', function (Blueprint $table) {
+        $table->bigIncrements('id');
+        $table->unsignedBigInteger('cliente_id')->nullable();
+        $table->date('fecha');
+        $table->string('metodo_envio');
+        $table->string('metodo_pago');
+        $table->integer('cantidad')->unsigned();
+        $table->decimal('total', 11, 2);
+        $table->timestamps();
+    });
     }
 
     /**
