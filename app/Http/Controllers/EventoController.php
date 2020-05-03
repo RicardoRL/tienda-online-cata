@@ -42,7 +42,11 @@ class EventoController extends Controller
 
         Evento::create($entrada);
 
-        return view ('layouts_editor.editorMenu');
+        return redirect()->route('editor.index')
+                ->with([
+                    'alerta'=>'Has creado correctamente un nuevo evento ',
+                    'clase-alerta'=>'alert-success',
+                    ]);
        /* $id2 = 0;
         foreach($entrada as $mientrada){
             $id2 = $id2 + 1;
@@ -70,7 +74,10 @@ class EventoController extends Controller
         $evento = Evento::findOrFail($id);
 
         $evento->update($entrada);
-        return redirect()->route('evento.index');
+        return redirect()->route('evento.index')->with([
+            'eventoActualizacion'=>'Has actualizado correctamente el evento ',
+            'clase-alerta'=>'alert-info',
+            ]);;
     }
 
   /*  public function show($id)
@@ -91,7 +98,10 @@ class EventoController extends Controller
         
         $evento->delete();
 
-        return redirect()->route('editor.index');
+        return redirect()->route('editor.index')->with([
+            'eventoDelete'=>'Has eliminado el evento correctamente ',
+            'clase-alerta'=>'alert-danger',
+            ]);;;
     }
 
 }

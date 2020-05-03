@@ -53,7 +53,10 @@ class EditorLoginController extends Controller
         if (auth()->guard('editor')->attempt(['correo' => $request->correo, 'password' => $request->password]))
         {
             //dd(auth()->guard('editor')->user()->nombre);
-            return redirect()->route('editor.index');
+            return redirect()->route('editor.index')
+                ->with([
+                'logeado'=>'Mensaje',
+                ]);
         }
         /*if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);

@@ -34,10 +34,12 @@
     <script src="/vendor2/jquery-validation/jquery.validate.min.js"></script>
     <script src="/vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="/js/charts-home.js"></script>
-    <!-- Notifications-->
+    <!-- Notifications
+    
     <script src="/vendor2/messenger-hubspot/build/js/messenger.min.js">   </script>
     <script src="/vendor2/messenger-hubspot/build/js/messenger-theme-flat.js">       </script>
-    <script src="/js/home-premium.js"> </script>
+    <script src="/js/home-premium.js"> </script>-->
+    
     <!-- Main File-->
     <script src="/js/front2.js"></script>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -185,6 +187,8 @@
           </nav>
         </header>
         <main>
+        @extends('layouts_editor.editorAlertas')
+        
           @yield('content')
         </main>
 
