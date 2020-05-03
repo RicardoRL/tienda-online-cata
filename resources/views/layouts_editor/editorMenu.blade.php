@@ -63,14 +63,24 @@
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <h5 class="sidenav-heading">Menú</h5>
+          <!-- Editores -->
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="{{route('editor.index')}}"><i class="icon-home"></i>Inicio</a></li>
+            <li><a href="#formsDropdow" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Editores</a>
+              <ul id="formsDropdow" class="collapse list-unstyled ">
+                <li><a href="{{route('evento.create')}}">Nuevo Editor</a></li>
+                <li><a href="{{route('evento.index')}}">Actualizar Editor</a></li>
+                <li><a href="/evento/delete">Borrar Editor</a></li>
+          </ul>
+            </li>
+            <!-- Eventos -->
+          <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="#formsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Eventos</a>
               <ul id="formsDropdown" class="collapse list-unstyled ">
                 <li><a href="{{route('evento.create')}}">Nuevo evento</a></li>
                 <li><a href="{{route('evento.index')}}">Actualizar evento</a></li>
                 <li><a href="/evento/delete">Borrar evento</a></li>
-              </ul>
+          </ul>
             </li>
             <li><a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart"></i>Ventas</a>
               <ul id="chartsDropdown" class="collapse list-unstyled ">
