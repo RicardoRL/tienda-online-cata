@@ -35,6 +35,8 @@ Route::get('passwd/{cliente}', 'ClienteController@passwd')->name('cliente.passwd
 Route::get('cliente/compra', 'ClienteController@compra')->name('cliente.compra');
 Route::get('cliente/checkout/domicilio', 'ClienteController@checkout_dom')->name('cliente.checkout_dom');
 Route::get('cliente/checkout/envio', 'ClienteController@checkout_env')->name('cliente.checkout_env');
+Route::get('cliente/checkout/pago', 'ClienteController@checkout_pag')->name('cliente.checkout_pag');
+Route::get('cliente/checkout/revision', 'ClienteController@checkout_rev')->name('cliente.checkout_rev');
 Route::resource('cliente', 'ClienteController');
 
 //Ruta para domicilio
