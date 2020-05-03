@@ -2,7 +2,7 @@
   <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">
       @isset($set)
-        @if($set["paginator"]->lastPage() <= $set["limit"])
+        @if($set["paginator"]->lastPage() <= $set["limit_blocks"])
           @for($i = $set["start"]; $i<= $set["end"]; $i++)
             <li class="page-item">
               <a href='/tienda?block={{$set["block"]}}&page={{$set["paginator"]->currentPage()}}'
@@ -32,7 +32,7 @@
             </li>
           @endfor
           <li class="page-item">
-            @if($set["block"] == $set["limit"])
+            @if($set["block"] == $set["limit_blocks"])
               <a href="#" aria-label="Next" class="page-link">
             @else
               <a href='/tienda?block={{$set["block"]+1}}&page={{$set["end"]+1}}' aria-label="Next" class="page-link">

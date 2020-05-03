@@ -1,7 +1,3 @@
-<?php
-$cervecerias = mostrarCerveceriasMenu();
-$estilos = mostrarEstilosMenu();
-?>
 <!DOCTYPE html>
 <html>
   <head>

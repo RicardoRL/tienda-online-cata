@@ -140,9 +140,4 @@ class CartController extends Controller
 
         return back()->with('success_message', 'El producto ha sido removido');
     }
-
-    public function updating()
-    {
-        dd($_GET);
-    }
 }

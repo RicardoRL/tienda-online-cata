@@ -47,14 +47,16 @@ Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.lo
 Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria
-Route::get('cerveceria/cervezas', 'CerveceriaController@cervezas')->name('cerveceria.cervezas');
+//Route::get('cerveceria/cervezas', 'CerveceriaController@cervezas')->name('cerveceria.cervezas');
 Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para cerveza
-Route::get('cervezas/{estilo}', 'CervezaController@estilos')->name('cerveza.estilo');
+//Route::get('cervezas/{estilo}', 'CervezaController@estilos')->name('cerveza.estilo');
 Route::resource('cerveza', 'CervezaController');
 
 //Rutas para la tienda
+Route::get('tienda/cervezas', 'ShopController@porCerveceria')->name('tienda.porCerveceria');
+Route::get('estilo/{estilo}', 'ShopController@porEstilo')->name('tienda.porEstilo');
 Route::resource('tienda', 'ShopController');
 
 //Ruta para contacto
