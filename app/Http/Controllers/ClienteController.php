@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Cerveza;
 use App\Domicilio;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -148,8 +149,60 @@ class ClienteController extends Controller
       return view('layouts.checkout');
     }
 
-    public function checkout_pag()
+    public function checkout_pag(Request $request)
     {
+      $conditions = Cart::getConditions();
+      $exite_condicion = false;
+
+      foreach($conditions as $condition)
+      {
+        if($condition->getType() == 'shipping')
+        {
+          if($condition->getAttributes()['tipo'] == $request->envio)
+          {
+            $exite_condicion = true;
+          }
+          else{
+            Cart::removeCartCondition($condition->getAttributes()['tipo']);
+          }
+        }
+      }
+
+      if($exite_condicion == false)
+      {
+        $envio = null;
+        if($request->envio == 'normal')
+        {
+          $envio = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'envio',
+            'type' => 'shipping',
+            'target' => 'total',
+            'value' => '+100',
+            'attributes' => array(
+              'format' => '$100.00',
+              'tipo' => 'normal'
+            )
+          ));
+        }
+        else if($request->envio == 'expres')
+        {
+          $envio = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'envio',
+            'type' => 'shipping',
+            'target' => 'total',
+            'value' => '+150',
+            'attributes' => array(
+              'format' => '$150.00',
+              'tipo' => 'expres'
+            )
+          )); 
+        }
+
+        if(!empty($envio)){
+          Cart::condition($envio);
+        }
+      }
+
       return view('layouts.checkout');
     }
 

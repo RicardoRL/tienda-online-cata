@@ -29,7 +29,7 @@ class CartController extends Controller
                 'value' => '16%'
             ));
     
-            $envio = new \Darryldecode\Cart\CartCondition(array(
+            /*$envio = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'envio',
                 'type' => 'shipping',
                 'target' => 'total',
@@ -37,11 +37,11 @@ class CartController extends Controller
                 'attributes' => array(
                     'format' => '$150.00'
                 )
-            ));
+            ));*/
             Cart::condition($impuesto);
-            Cart::condition($envio);
+            //Cart::condition($envio);
         }
-        //dd(Cart::getContent());
+
         return view('layouts_cliente.clienteCompra');
     }
 
