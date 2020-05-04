@@ -19,6 +19,7 @@ class EditorController extends Controller
      */
     public function index()
     {
+        //dd(\Auth::guard('editor')->id());
         return view('layouts_editor.editorInicioContenido');
     }
 

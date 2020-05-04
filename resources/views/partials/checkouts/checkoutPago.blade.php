@@ -13,7 +13,7 @@
   </a>
 </div>
 <div class="content py-3">
-  <form action="{{route('cliente.checkout_rev')}}" method="POST">
+  <form action="{{route('cliente.checkout_rev')}}" method="GET">
     @csrf
     <div class="row">
       <div class="col-md-6">

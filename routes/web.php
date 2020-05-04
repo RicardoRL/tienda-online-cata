@@ -36,8 +36,8 @@ Route::get('passwd/{cliente}', 'ClienteController@passwd')->name('cliente.passwd
 Route::get('cliente/compra', 'ClienteController@compra')->name('cliente.compra');
 Route::get('cliente/checkout/domicilio', 'ClienteController@checkout_dom')->name('cliente.checkout_dom');
 Route::get('cliente/checkout/envio', 'ClienteController@checkout_env')->name('cliente.checkout_env');
-Route::post('cliente/checkout/pago', 'ClienteController@checkout_pag')->name('cliente.checkout_pag');
-Route::post('cliente/checkout/revision', 'ClienteController@checkout_rev')->name('cliente.checkout_rev');
+Route::get('cliente/checkout/pago', 'ClienteController@checkout_pag')->name('cliente.checkout_pag');
+Route::get('cliente/checkout/revision', 'ClienteController@checkout_rev')->name('cliente.checkout_rev');
 Route::resource('cliente', 'ClienteController');
 
 //Ruta para domicilio
@@ -62,11 +62,9 @@ Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.lo
 Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria
-//Route::get('cerveceria/cervezas', 'CerveceriaController@cervezas')->name('cerveceria.cervezas');
 Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para cerveza
-//Route::get('cervezas/{estilo}', 'CervezaController@estilos')->name('cerveza.estilo');
 Route::resource('cerveza', 'CervezaController');
 
 //Rutas para la tienda
@@ -82,7 +80,7 @@ Route::get('/contacto', function() {
 
 //Ruta para el carrito de compras
 Route::resource('cart', 'CartController');
-Route::get('cart/update', 'CartController@updating')->name('cart.updating');
+Route::post('cart/coupon', 'CartController@apply')->name('cart.apply');
 Route::get('vaciar', function(){
     Cart::clear();
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cerveza;
+use App\Coupon;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -28,18 +29,8 @@ class CartController extends Controller
                 'target' => 'total',
                 'value' => '16%'
             ));
-    
-            /*$envio = new \Darryldecode\Cart\CartCondition(array(
-                'name' => 'envio',
-                'type' => 'shipping',
-                'target' => 'total',
-                'value' => '+150',
-                'attributes' => array(
-                    'format' => '$150.00'
-                )
-            ));*/
+
             Cart::condition($impuesto);
-            //Cart::condition($envio);
         }
 
         return view('layouts_cliente.clienteCompra');
@@ -139,5 +130,63 @@ class CartController extends Controller
         Cart::remove($id);
 
         return back()->with('success_message', 'El producto ha sido removido');
+    }
+
+    public function apply(Request $request)
+    {
+      $coupon = Coupon::findByCode($request->cupon);
+      $cuenta_cupones = 0;
+
+      //Si el código no existe
+      if(is_null($coupon))
+      {
+        return redirect()->route('cart.index')->with('error_message', 'Cupón no válido');
+      }
+
+      $coupon_type = $coupon->coupon_type;
+
+      //Verificación del tipo de cupón para saber qué método utilizar
+      if($coupon_type == "App\CantidadMinimaCoupon")
+      {
+        $desc = $coupon->desc_por_cant(Cart::getSubtotal(), Cart::getTotalQuantity());
+      }
+      else{
+        $desc = $coupon->descuento(Cart::getSubtotal());
+      }
+
+      //Creación del array de condición para el carrito
+      $cupon_condition = new \Darryldecode\Cart\CartCondition(array(
+        'name' => 'cupon_'.$coupon->codigo,
+        'type' => 'coupon',
+        'target' => 'subtotal',
+        'value' => '-'.$desc,
+        'attributes' => array(
+          'codigo' => $coupon->codigo
+        )
+      ));
+
+      $conditions = Cart::getConditions();
+
+      //Ciclo que verifica si ya existen condiciones tipo cupón y ver si ya hay dos o si se ha utilizado el cupón
+      foreach($conditions as $condition)
+      {
+        if($condition->getType() == 'coupon')
+        {
+          $cuenta_cupones++;
+          if($cuenta_cupones == 2)
+          {
+            return redirect()->route('cart.index')->with('error_message', 'No puedes utilizar más de dos cupones');
+          }
+          else if($condition->getAttributes()['codigo'] == $coupon->codigo)
+          {
+            return redirect()->route('cart.index')->with('error_message', 'Este cupón ha sido utilizado');
+          }
+        }
+      }
+
+      //Si no hay ningún problema se aplica el cupón
+      Cart::condition($cupon_condition);
+
+      return redirect()->route('cart.index')->with('success_message', 'Tu cupón ha sido aplicado');;
     }
 }
