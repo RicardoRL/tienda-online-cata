@@ -30,7 +30,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Nombre: </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nombre">
+                        <input type="text" class="form-control" name="nombre" required>
                         @error('nombre')
                                     <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -40,7 +40,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Fecha:</label>
                       <div class="col-sm-10">
-                        <input type="date" class="form-control" name="fecha" >
+                        <input type="date" class="form-control" name="fecha" required>
                         @error('fecha')
                                     <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -50,7 +50,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Asistentes: </label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="asistentes" >
+                        <input type="number" class="form-control" name="asistentes" required>
                             
                             @error('asistentes')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -91,7 +91,7 @@
                 <div class="custom-file col-md-16 mt-3 mb-3">
                 <div class="col-sm-10">
                         <label for=""> <h4>  </h4> </label> 
-                        <input type="file" name="imagen" style="text-align:right"> 
+                        <input type="file" name="imagen" style="text-align:right" required> 
                     </div>
                     </div>
                 </div>

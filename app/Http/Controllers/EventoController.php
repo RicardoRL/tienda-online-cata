@@ -101,7 +101,7 @@ class EventoController extends Controller
         return redirect()->route('editor.index')->with([
             'eventoDelete'=>'Has eliminado el evento correctamente ',
             'clase-alerta'=>'alert-danger',
-            ]);;;
+            ]);
     }
 
 }

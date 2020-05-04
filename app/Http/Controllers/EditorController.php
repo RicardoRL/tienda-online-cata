@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Editor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EditorController extends Controller
 {
@@ -29,7 +30,7 @@ class EditorController extends Controller
     public function create()
     {
         //
-       
+        return view('layouts_editor.editorCreate');
     }
 
     /**
@@ -40,7 +41,31 @@ class EditorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required|max:50',
+            'apepat' => 'required|max:50',
+            'apemat' => 'required|max:50',
+            'fecnac' => 'required',
+            'correo' => 'required|min:5|max:100',
+            'password' => 'required|min:8',
+        ]);
+
+        $data=$request->all();
+
+        Editor::create([
+            'nombre' => $data['nombre'],
+            'apepat' => $data['apepat'],
+            'apemat' => $data['apemat'],
+            'fecnac' => $data['fecnac'],
+            'correo' => $data['correo'],
+            'password' => Hash::make($data['password']),
+        ]);
+  
+        return redirect()->route('editor.index')->with([
+            'editorCreado'=>'Has agregado a un Editor exitosamente',
+            'clase-alerta'=>'alert-success',
+        ]);
+
     }
 
     /**
@@ -49,9 +74,10 @@ class EditorController extends Controller
      * @param  \App\Editor  $editor
      * @return \Illuminate\Http\Response
      */
-    public function show(Editor $editor)
+    public function show($id)
     {
-        //
+        $editor = Editor::findOrFail($id);
+        return view ('layouts_editor.editorShow', compact('editor'));
     }
 
     /**
@@ -60,9 +86,11 @@ class EditorController extends Controller
      * @param  \App\Editor  $editor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Editor $editor)
+    public function edit($id)
     {
-        //
+        $editor = Editor::findOrFail($id);
+        return view ('layouts_editor.editorEdit', compact('editor'));
+    
     }
 
     /**
@@ -72,9 +100,15 @@ class EditorController extends Controller
      * @param  \App\Editor  $editor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Editor $editor)
+    public function update(Request $request, $id)
     {
-        //
+        $entrada=$request->all();
+         $editor = Editor::findOrFail($id);
+         $editor->update($entrada);
+        return redirect()->route('editor.index')->with([
+            'editorUpdate'=>'Has actualizado correctamente al editor ',
+            'clase-alerta'=>'alert-info',
+            ]);;
     }
 
     /**
@@ -83,8 +117,15 @@ class EditorController extends Controller
      * @param  \App\Editor  $editor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Editor $editor)
+    public function destroy($id)
     {
-        //
+        $editor = Editor::findorFail($id);
+
+        $editor->delete();
+
+        return redirect()->route('editor.index')->with([
+            'editorDelete'=>'Se ha eliminado el editor correctamente',
+            'clase-alerta'=>'alert-danger',
+        ]);
     }
 }

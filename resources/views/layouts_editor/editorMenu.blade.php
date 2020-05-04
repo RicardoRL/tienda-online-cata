@@ -66,11 +66,11 @@
           <!-- Editores -->
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="{{route('editor.index')}}"><i class="icon-home"></i>Inicio</a></li>
-            <li><a href="#formsDropdow" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Editores</a>
+            <li><a href="#formsDropdow" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Editores</a>
               <ul id="formsDropdow" class="collapse list-unstyled ">
-                <li><a href="{{route('evento.create')}}">Nuevo Editor</a></li>
-                <li><a href="{{route('evento.index')}}">Actualizar Editor</a></li>
-                <li><a href="/evento/delete">Borrar Editor</a></li>
+                <li><a href="{{route('editor.create')}}">Nuevo Editor</a></li>
+                <li><a href="/editor/update">Actualizar Editor</a></li>
+                <li><a href="/editor/delete">Borrar Editor</a></li>
           </ul>
             </li>
             <!-- Eventos -->

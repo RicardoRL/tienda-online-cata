@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Cerveza;
 use App\Evento;
+use App\Editor;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,16 @@ Route::resource('domicilio', 'DomicilioController');
 Route::resource('tarjeta', 'TarjetaController');
 
 //Rutas para editor
+Route::get('/editor/update', function() {
+    $editor = Editor::all();
+    return view('layouts_editor.editorUPdate',compact('editor'));
+});
+
+Route::get('/editor/delete', function() {
+    $editor = Editor::all();
+    return view('layouts_editor.editorDelete',compact('editor'));
+});
+
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
 Route::resource('editor', 'EditorController');

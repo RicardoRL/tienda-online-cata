@@ -30,7 +30,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Nombre: </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nombre" value="{{$evento->nombre}}">
+                        <input type="text" class="form-control" name="nombre" value="{{$evento->nombre}}" require>
                         <input type="hidden" name="_method" value="PUT">     
                         @error('nombre')
                                     <div class="alert alert-danger">{{ $message }}</div>
