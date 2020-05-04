@@ -13,33 +13,36 @@
   </a>
 </div>
 <div class="content py-3">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="box shipping-method">
-        <h4>Tarjeta de crédito/débito</h4>
-        <p>Realizar tu pago con tarjeta.</p>
-        <div class="box-footer text-center">
-          <input type="radio" name="delivery" value="expres">
+  <form action="{{route('cliente.checkout_rev')}}" method="POST">
+    @csrf
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box shipping-method">
+          <h4>Tarjeta de crédito/débito</h4>
+          <p>Realizar tu pago con tarjeta.</p>
+          <div class="box-footer text-center">
+            <input type="radio" name="pago" value="tarjeta">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box shipping-method">
+          <h4>PayPal</h4>
+          <p>Realizar tu pago a través de PayPal.</p>
+          <div class="box-footer text-center">
+            <input type="radio" name="pago" value="paypal">
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="box shipping-method">
-        <h4>PayPal</h4>
-        <p>Realizar tu pago a través de PayPal.</p>
-        <div class="box-footer text-center">
-          <input type="radio" name="delivery" value="normal">
-        </div>
-      </div>
+    <div class="box-footer d-flex justify-content-between">
+      <a href="{{route('cliente.checkout_env')}}" class="btn btn-outline-secondary">
+        <i class="fa fa-chevron-left"></i>Regresa a Envío
+      </a>
+      <button type="submit" class="btn btn-primary">
+        Revisa tu pedido
+        <i class="fa fa-chevron-right"></i>
+      </button>
     </div>
-  </div>
-</div>
-<div class="box-footer d-flex justify-content-between">
-  <a href="{{route('cliente.checkout_env')}}" class="btn btn-outline-secondary">
-    <i class="fa fa-chevron-left"></i>Regresa a Envío
-  </a>
-  <a href="{{route('cliente.checkout_rev')}}" class="btn btn-primary">
-    Revisa tu pedido
-    <i class="fa fa-chevron-right"></i>
-  </a>
+  </form>
 </div>

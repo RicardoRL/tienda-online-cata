@@ -13,33 +13,38 @@
   </a>
 </div>
 <div class="content py-3">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="box shipping-method">
-        <h4>Envío exprés</h4>
-        <p>Recibirás tu pedido en un máximo de 3 días hábiles.</p>
-        <div class="box-footer text-center">
-          <input type="radio" name="delivery" value="expres">
+  <form action="{{route('cliente.checkout_pag')}}" method="POST">
+    @csrf
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box shipping-method">
+          <h4>Envío exprés</h4>
+          <p>Recibirás tu pedido en un máximo de 3 días hábiles.</p><br><br>
+          <p>Costo: $150.00</p>
+          <div class="box-footer text-center">
+            <input type="radio" name="envio" value="expres">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box shipping-method">
+          <h4>Envío normal</h4>
+          <p>Recibirás tu pedido en un máximo de 7 días hábiles.</p><br><br>
+          <p>Costo: $100.00</p>
+          <div class="box-footer text-center">
+            <input type="radio" name="envio" value="normal">
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="box shipping-method">
-        <h4>Envío normal</h4>
-        <p>Recibirás tu pedido en un máximo de 7 días hábiles.</p>
-        <div class="box-footer text-center">
-          <input type="radio" name="delivery" value="normal">
-        </div>
-      </div>
+    <div class="box-footer d-flex justify-content-between">
+      <a href="{{route('cliente.checkout_dom')}}" class="btn btn-outline-secondary">
+        <i class="fa fa-chevron-left"></i>Regresa a Dirección
+      </a>
+      <button type="submit" class="btn btn-primary">
+        Selecciona método de pago
+        <i class="fa fa-chevron-right"></i>
+      </button>
     </div>
-  </div>
-</div>
-<div class="box-footer d-flex justify-content-between">
-  <a href="{{route('cliente.checkout_dom')}}" class="btn btn-outline-secondary">
-    <i class="fa fa-chevron-left"></i>Regresa a Dirección
-  </a>
-  <a href="{{route('cliente.checkout_pag')}}" class="btn btn-primary">
-    Selecciona método de pago
-    <i class="fa fa-chevron-right"></i>
-  </a>
+  </form>
 </div>

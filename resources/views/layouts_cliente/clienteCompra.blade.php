@@ -170,18 +170,17 @@
             <div class="box-header">
               <h4 class="mb-0">Resumen de pedido</h4>
             </div>
-            <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+            <p class="text-muted">El costo de envío sera añadido cuando seleccione el método de envío.</p>
             <div class="table-responsive">
               <table class="table">
                 <tbody>
                   <tr>
                     <td>Subtotal</td>
-                    <th>${{Cart::getSubTotal()}}</th><!--${{Cart::getSubTotal()}}-->
+                    <th>${{Cart::getSubTotal()}}</th>
                   </tr>
                   <tr>
                     <td>Envío</td>
-                    <th>{{Cart::getCondition('envio')->getAttributes()['format']}}</th>
-                    <!--{{Cart::getCondition('envio')->getAttributes()['format']}}-->
+                    <th>$0.00</th>
                   </tr>
                   <tr>
                     <td>I.V.A (16%)</td>

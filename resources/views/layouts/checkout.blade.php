@@ -32,7 +32,7 @@
               <h4 class="mt-4 mb-4">Resumen de pedido</h4>
             </div>
             <div class="card-body">
-              <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+              <p class="text-muted">El costo de envío sera añadido cuando seleccione el método de envío.</p>
               <div class="table-responsive">
                 <table class="table">
                   <tbody>
@@ -42,8 +42,11 @@
                     </tr>
                     <tr>
                       <td>Envío</td>
-                      <th>{{Cart::getCondition('envio')->getAttributes()['format']}}</th>
-                      <!--{{Cart::getCondition('envio')->getAttributes()['format']}}-->
+                      @if(null !== Cart::getCondition('envio'))
+                        <th>{{Cart::getCondition('envio')->getAttributes()['format']}}</th>
+                      @else
+                        <th>$0.00</th>
+                      @endif
                     </tr>
                     <tr>
                       <td>I.V.A (16%)</td>
