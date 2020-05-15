@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -64,15 +65,20 @@
         <div class="main-menu">
           <h5 class="sidenav-heading">Menú</h5>
           <!-- Editores -->
+
+          
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="{{route('editor.index')}}"><i class="icon-home"></i>Inicio</a></li>
+          {{--     @if(\Gate::allows('editor'))  --}}
             <li><a href="#formsDropdow" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Editores</a>
               <ul id="formsDropdow" class="collapse list-unstyled ">
                 <li><a href="{{route('editor.create')}}">Nuevo Editor</a></li>
                 <li><a href="/editor/update">Actualizar Editor</a></li>
                 <li><a href="/editor/delete">Borrar Editor</a></li>
+          {{-- @endif --}}
           </ul>
             </li>
+            
             <!-- Eventos -->
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="#formsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Eventos</a>

@@ -19,7 +19,8 @@ class EditorController extends Controller
      */
     public function index()
     {
-        return view('layouts_editor.editorInicioContenido');
+      //  dd();
+        return view('layouts_editor.editorMenu');
     }
 
     /**

@@ -54,8 +54,7 @@ class EditorLoginController extends Controller
         {
             //dd(auth()->guard('editor')->user()->nombre);
             return redirect()->route('editor.index')
-                ->with([
-                'logeado'=>'Mensaje',
+                ->with(['logeado'=>'Mensaje',
                 ]);
         }
         /*if ($this->attemptLogin($request)) {
