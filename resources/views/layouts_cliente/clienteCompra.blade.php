@@ -21,6 +21,10 @@
               <div class="alert alert-success" role="alert">
                 {{session()->get('success_message')}}
               </div>
+            @elseif(session()->has('error_message'))
+              <div class="alert alert-danger" role="alert">
+                {{session()->get('error_message')}}
+              </div>
             @endif
 
             @if(count($errors) > 0)
@@ -194,8 +198,24 @@
               </table>
             </div>
           </div>
+          <div class="box">
+            <div class="box-header">
+              <h4 class="mb-0">Código de cupón</h4>
+            </div>
+            <p class="text-muted">Si tienes un cupón, ingresa el código aquí</p>
+            <form action="{{route('cart.apply')}}" method="POST">
+              @csrf
+              <div class="input-group">
+                <input type="text" class="form-control" name="cupon">
+                <span class="input-group-append">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-gift"></i>
+                  </button>
+                </span>
+              </div>
+            </form>
+          </div>
         </div>
-        <!-- /.col-md-3-->
       </div>
     </div>
   </div>

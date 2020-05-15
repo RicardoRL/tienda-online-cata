@@ -206,7 +206,7 @@ class ClienteController extends Controller
       return view('layouts.checkout');
     }
 
-    public function checkout_rev()
+    public function checkout_rev(Request $request)
     {
       return view('layouts.checkout');
     }

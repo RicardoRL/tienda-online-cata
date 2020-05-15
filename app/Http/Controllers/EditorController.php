@@ -19,8 +19,13 @@ class EditorController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
       //  dd();
         return view('layouts_editor.editorMenu');
+=======
+        //dd(\Auth::guard('editor')->id());
+        return view('layouts_editor.editorInicioContenido');
+>>>>>>> f41e5a26e92f02d06b92826a4fe97ee8ebd4b47b
     }
 
     /**

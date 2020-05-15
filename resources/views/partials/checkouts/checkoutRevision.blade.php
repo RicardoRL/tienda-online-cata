@@ -57,7 +57,7 @@
   </div>
 </div>
 <div class="box-footer d-flex justify-content-between">
-  <a href="{{route('cliente.checkout_pag')}}" class="btn btn-outline-secondary">
+  <a href="{{url('cliente/checkout/pago')}}" class="btn btn-outline-secondary">
     <i class="fa fa-chevron-left"></i>Regresa a Pago
   </a>
   <a href="#" class="btn btn-primary">

@@ -8,7 +8,7 @@
     <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
       <a href="{{route('cart.index')}}" class="btn btn-primary navbar-btn">
         <i class="fa fa-shopping-cart"></i>
-        <span>{{Cart::getContent()->count()}}</span>
+        <span>{{Cart::getTotalQuantity()}}</span>
       </a>
     </div>
   @endauth

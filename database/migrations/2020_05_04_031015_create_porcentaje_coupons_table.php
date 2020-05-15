@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePolimorfismosTable extends Migration
+class CreatePorcentajeCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePolimorfismosTable extends Migration
      */
     public function up()
     {
-        Schema::create('polimorfismos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('pedido_id')->unsigned();
-            $table->integer('polimorfismo_id')->unsigned();  //id cervezeria o pedidos
-            $table->string('polimorfismo_type');
+        Schema::create('porcentaje_coupons', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('porcentaje');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreatePolimorfismosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('polimorfismos');
+        Schema::dropIfExists('porcentaje_coupons');
     }
 }
