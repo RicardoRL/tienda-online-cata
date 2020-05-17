@@ -38,8 +38,6 @@
             @endif
 
             @if(Cart::getContent()->count() > 0)
-            <!--
-            <form method="post" action="checkout1.html">-->
               <p class="text-muted">Tienes {{Cart::getTotalQuantity()}} producto(s) en el carrito</p>
               <div class="table-responsive">
                 <table class="table">
@@ -84,7 +82,7 @@
                   <tfoot>
                     <tr>
                       <th colspan="5">Total</th>
-                      <th colspan="2">${{Cart::getSubTotal()}}</th><!--${{Cart::getSubTotal()}}-->
+                      <th colspan="2">${{Cart::getSubTotal()}}</th>
                     </tr>
                   </tfoot>
                 </table>
@@ -100,7 +98,6 @@
                   <a href="{{route('cliente.checkout_dom')}}" class="btn btn-primary">Continuar<i class="fa fa-chevron-right"></i></a>
                 </div>
               </div>
-            <!--</form>-->
             @else
               <p class="text-muted">No tienes productos en el carrito</p>
             @endif
@@ -192,7 +189,7 @@
                   </tr>
                   <tr class="total">
                     <td>Total</td>
-                    <th>${{Cart::getTotal()}}</th><!--${{Cart::getTotal()}}-->
+                    <th>${{Cart::getTotal()}}</th>
                   </tr>
                 </tbody>
               </table>
@@ -208,9 +205,15 @@
               <div class="input-group">
                 <input type="text" class="form-control" name="cupon">
                 <span class="input-group-append">
-                  <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-gift"></i>
-                  </button>
+                  @if(\Cart::isEmpty())
+                    <button type="submit" class="btn btn-primary" disabled>
+                      <i class="fa fa-gift"></i>
+                    </button>
+                  @else
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fa fa-gift"></i>
+                    </button>
+                  @endif
                 </span>
               </div>
             </form>

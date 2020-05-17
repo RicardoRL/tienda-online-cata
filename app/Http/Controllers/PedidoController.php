@@ -50,8 +50,9 @@ class PedidoController extends Controller
       $pedido->cervezas()->attach($item->model->id, ['cantidad' => $item->quantity]); //$item->model->id es cerveza_id
     }
 
-    //Se vacía el carrito por si se desea hacer otro pedido
+    //Se vacía el carrito y se eliminan las condiciones por si se desea hacer otro pedido
     \Cart::clear();
+    \Cart::clearCartConditions();
 
     return redirect()->route('pedido.showOrders');
   }
@@ -77,12 +78,10 @@ class PedidoController extends Controller
     //Se agrega en el arreglo el modelo de cerveza pedido, con su cantidad
     foreach($pedido->cervezas as $cerveza)
     {
-      //dd($cerveza->pivot->cantidad);
       $cervezas["modelo"][] = Cerveza::where('id', $cerveza->pivot->cerveza_id)->first();
       $cervezas["cantidad"][] = $cerveza->pivot->cantidad;
     }
 
-    //dd($cervezas);
     $size = count($cervezas['modelo']);
 
     return view('layouts_cliente.clientePedidoIndividual', compact('pedido', 'domicilio', 'cervezas', 'size'));
