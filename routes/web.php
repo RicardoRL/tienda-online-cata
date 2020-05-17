@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Cerveceria;
 use App\Cerveza;
 use App\Evento;
 use App\Editor;
@@ -62,6 +63,11 @@ Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.lo
 Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria
+Route::get('/cerveceria/delete', function() {
+    $cerveceria = Cerveceria::all();
+    return view('layouts_cerveceria.cerveceriaDelete',compact('cerveceria'));
+}); 
+
 Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para cerveza
@@ -97,6 +103,3 @@ Route::get('/evento/delete', function() {
 });
 
 Route::resource('evento', 'EventoController');
-
-
-

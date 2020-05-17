@@ -36,7 +36,7 @@ class EventoController extends Controller
         {
             $file = $request->file('imagen');
             $nombre = $file->getClientOriginalName();
-            $file->move(public_path().'/eventos', $nombre);
+            $file->move(public_path().'/img/eventos', $nombre);
             $entrada['imagen']=$nombre;
         }
 
@@ -67,7 +67,7 @@ class EventoController extends Controller
         {
             $file = $request->file('imagen');
             $nombre = $file->getClientOriginalName();
-            $file->move(public_path().'/eventos', $nombre);
+            $file->move(public_path().'/img/eventos', $nombre);
             $entrada['imagen']=$nombre;
         }
         
@@ -77,7 +77,7 @@ class EventoController extends Controller
         return redirect()->route('evento.index')->with([
             'eventoActualizacion'=>'Has actualizado correctamente el evento ',
             'clase-alerta'=>'alert-info',
-            ]);;
+            ]);
     }
 
   /*  public function show($id)
