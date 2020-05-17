@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pedido;
 use App\Cerveza;
 use App\Cerveceria;
 use Illuminate\Http\Request;

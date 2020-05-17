@@ -14,7 +14,6 @@
 </div>
 <div class="content py-3">
   <form action="{{route('cliente.checkout_rev')}}" method="GET">
-    @csrf
     <div class="row">
       <div class="col-md-6">
         <div class="box shipping-method">
@@ -31,6 +30,7 @@
           <p>Realizar tu pago a través de PayPal.</p>
           <div class="box-footer text-center">
             <input type="radio" name="pago" value="paypal">
+            <input type="hidden" name="envio" value="{{\Request::get('envio')}}">
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@
   <a href="{{url('cliente/checkout/pago')}}" class="btn btn-outline-secondary">
     <i class="fa fa-chevron-left"></i>Regresa a Pago
   </a>
-  <a href="#" class="btn btn-primary">
+  <a href="{{route('pedido.store')}}" class="btn btn-primary">
   Finalizar pedido
     <i class="fa fa-chevron-right"></i>
   </a>

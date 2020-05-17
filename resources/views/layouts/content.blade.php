@@ -44,5 +44,4 @@
     </div><!-- *** ADVANTAGES END ***-->
     @include('layouts.products-section')
     <!-- el include blog -->
-    @include('layouts.footer')
 @endsection

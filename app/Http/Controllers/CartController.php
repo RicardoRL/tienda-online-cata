@@ -26,7 +26,7 @@ class CartController extends Controller
             $impuesto = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'IVA',
                 'type' => 'tax',
-                'target' => 'total',
+                'target' => 'subtotal',
                 'value' => '16%'
             ));
 

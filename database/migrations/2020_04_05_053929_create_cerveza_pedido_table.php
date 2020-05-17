@@ -16,6 +16,7 @@ class CreateCervezaPedidoTable extends Migration
         Schema::create('cerveza_pedido', function (Blueprint $table) {
             $table->unsignedBigInteger('cerveza_id');
             $table->unsignedBigInteger('pedido_id');
+            $table->integer('cantidad')->unsigned();
             $table->timestamps();
         });
     }
