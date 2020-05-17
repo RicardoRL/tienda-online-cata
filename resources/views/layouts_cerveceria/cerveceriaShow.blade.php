@@ -94,7 +94,7 @@
                  </div>
               </div>
             </div>
-
+                    {{-- 
             <div class="col-lg-8">
               <div class="card">
                 <div class="card-header d-flex align-items-center">
@@ -109,7 +109,8 @@
                     </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
+
          </form>
         </div>
       </div>
