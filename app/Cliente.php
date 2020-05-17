@@ -9,15 +9,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Cliente extends Authenticatable
 {
-    use Notifiable;
+  use Notifiable;
 
-    protected $guard = 'cliente';
+  protected $guard = 'cliente';
 
-    protected $fillable = [
-        'nombre', 'apepat', 'apemat', 'fecnac', 'correo', 'password', 'telefono',
-    ];
+  protected $fillable = [
+    'nombre', 'apepat', 'apemat', 'fecnac', 'correo', 'password', 'telefono',
+  ];
 
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+  protected $hidden = [
+    'password', 'remember_token',
+  ];
+
+  public function pedidos()
+  {
+    return $this->hasMany('App\Pedido');
+  }
 }

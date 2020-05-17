@@ -17,10 +17,12 @@ class CreatePedidosTable extends Migration
         $table->bigIncrements('id');
         $table->unsignedBigInteger('cliente_id')->nullable();
         $table->date('fecha');
+        $table->string('estado');
         $table->string('metodo_envio');
         $table->string('metodo_pago');
         $table->integer('cantidad')->unsigned();
-        $table->decimal('total', 11, 2);
+        $table->decimal('subtotal', 11, 2)->unsigned();
+        $table->decimal('total', 11, 2)->unsigned();
         $table->timestamps();
     });
     }

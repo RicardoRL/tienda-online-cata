@@ -14,7 +14,6 @@
 </div>
 <div class="content py-3">
   <form action="{{route('cliente.checkout_pag')}}" method="GET">
-    @csrf
     <div class="row">
       <div class="col-md-6">
         <div class="box shipping-method">

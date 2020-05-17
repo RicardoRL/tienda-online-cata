@@ -57,9 +57,9 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //dd($cliente);
-        $cliente_id = $cliente->id;
-        return view('layouts_cliente.clienteInfo', ["cliente" => $cliente]);
+        //dd($request);
+        //$cliente_id = $cliente->id;
+        return view('layouts_cliente.clienteInfo'); //["cliente" => $cliente]
     }
 
     /**
@@ -144,7 +144,7 @@ class ClienteController extends Controller
       return view('layouts.checkout', compact('domicilio'));
     }
 
-    public function checkout_env()
+    public function checkout_env(Request $request)
     {
       return view('layouts.checkout');
     }
@@ -208,6 +208,7 @@ class ClienteController extends Controller
 
     public function checkout_rev(Request $request)
     {
+      $request->flash();
       return view('layouts.checkout');
     }
 }

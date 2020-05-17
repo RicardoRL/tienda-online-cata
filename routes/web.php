@@ -73,6 +73,12 @@ Route::resource('cerveceria', 'CerveceriaController');
 //Rutas para cerveza
 Route::resource('cerveza', 'CervezaController');
 
+//Rutas para pedidos
+Route::get('/crearPedido', 'PedidoController@crearPedido')->name('pedido.store');
+Route::get('/pedidos', 'PedidoController@showOrders')->name('pedido.showOrders');
+Route::get('/cliente/{cliente}/{pedido}', 'PedidoController@showOneOrder')->name('pedido.showOneOrder');
+
+
 //Rutas para la tienda
 Route::get('tienda/cervezas', 'ShopController@porCerveceria')->name('tienda.porCerveceria');
 Route::get('estilo/{estilo}', 'ShopController@porEstilo')->name('tienda.porEstilo');

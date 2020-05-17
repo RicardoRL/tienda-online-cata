@@ -20,7 +20,7 @@
                 </a>
             </h3>
         </div>
-        <div class="card-body">
+        <div class="card-body force-scroll-estilos">
             <form>
                 <div class="form-group">
                     @foreach($cervecerias as $cerveceria)
