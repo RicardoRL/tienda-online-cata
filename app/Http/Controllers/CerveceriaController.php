@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Editor;
 use App\Cerveceria;
 use App\Cerveza;
 use Illuminate\Http\Request;
@@ -16,7 +16,11 @@ class CerveceriaController extends Controller
      */
     public function index()
     {
-        //
+        $cerveceria = Cerveceria::all();
+
+        return view('layouts_cerveceria.cerveceriaUpdate')->with(['cerveceria'=>$cerveceria]);
+        return view('layouts_cerveceria.cerveceriaUpdate',compact('cerveceria'));
+   
     }
 
     /**
@@ -26,7 +30,7 @@ class CerveceriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts_cerveceria.cerveceriaCreate');
     }
 
     /**
@@ -37,7 +41,32 @@ class CerveceriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required|max:30',
+            'ciudad' => 'required',
+            'sitio_web' => 'required|max:30',
+            'contacto' => 'required|max:30',
+          //'imagen' => 'required',
+        ]);
+
+        $entrada=$request->all();
+            /*
+        if($request->hasFile('imagen'))
+        {
+            $tipo = $request->nombre;
+            $file = $request->file('imagen');
+            $nombre = $file->getClientOriginalName();
+            $file->move(public_path().'/img/imagenes_Cervezas/'.$request->tipo.'/'.$request->nombre, $nombre);
+            $entrada['imagen'] = $nombre;
+        }
+        */
+        Cerveceria::Create($entrada);
+
+        return redirect()->route('editor.index')
+                ->with([
+                    'cerveceriaCreate' => 'Se ha agregado una nueva cerveceria con exito',
+                    'clase-alerta' => 'alert-success',
+                ]);
     }
 
     /**
@@ -46,9 +75,10 @@ class CerveceriaController extends Controller
      * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function show(Cerveceria $cerveceria)
+    public function show($id)
     {
-        //
+        $cerveceria = Cerveceria::findOrFail($id);
+        return view ('layouts_cerveceria.cerveceriaShow', compact('cerveceria'));
     }
 
     /**
@@ -57,9 +87,10 @@ class CerveceriaController extends Controller
      * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cerveceria $cerveceria)
+    public function edit($id)
     {
-        //
+        $cerveceria = Cerveceria::findOrFail($id);
+        return view ('layouts_cerveceria.cerveceriaEdit', compact('cerveceria'));
     }
 
     /**
@@ -69,9 +100,25 @@ class CerveceriaController extends Controller
      * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cerveceria $cerveceria)
+    public function update(Request $request, $id)
     {
-        //
+        $entrada=$request->all();
+        /*
+        if($request->hasFile('imagen'))
+        {
+            $file = $request->file('imagen');
+            $nombre = $file->getClientOriginalName();
+            $file->move(public_path().'/img/eventos', $nombre);
+            $entrada['imagen']=$nombre;
+        }
+        */
+        $cerveceria = Cerveceria::findOrFail($id);
+
+        $cerveceria->update($entrada);
+        return redirect()->route('cerveceria.index')->with([
+            'cerveceriaUpdate'=>'Has actualizado correctamente los datos cerveceria ',
+            'clase-alerta'=>'alert-info',
+        ]);
     }
 
     /**
@@ -80,8 +127,15 @@ class CerveceriaController extends Controller
      * @param  \App\Cerveceria  $cerveceria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cerveceria $cerveceria)
+    public function destroy($id)
     {
-        //
+        $cerveceria = Cerveceria::findOrFail($id);
+        
+        $cerveceria->delete();
+
+        return redirect()->route('editor.index')->with([
+            'cerveceriaDelete'=>'Has eliminado la cerveceria correctamente ',
+            'clase-alerta'=>'alert-danger',
+            ]);
     }
 }

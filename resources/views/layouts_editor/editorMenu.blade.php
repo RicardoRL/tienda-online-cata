@@ -88,10 +88,12 @@
                 <li><a href="/evento/delete">Borrar evento</a></li>
           </ul>
             </li>
-            <li><a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart"></i>Ventas</a>
+            <!-- Cervecerias -->
+            <li><a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart" ></i>Cervecerias</a>
               <ul id="chartsDropdown" class="collapse list-unstyled ">
-                <li><a href="charts.html">Visualizar ventas</a></li>
-                <li><a href="charts-gauge-sparkline.html">Reporte de ventas</a></li>
+                <li><a href="{{route('cerveceria.create')}}">Agregar Cerveceria</a></li>
+                <li><a href="{{route('cerveceria.index')}}">Actualizar Cervecerias</a></li>
+                <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
               </ul>
             </li>
             <li><a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Tables </a>
