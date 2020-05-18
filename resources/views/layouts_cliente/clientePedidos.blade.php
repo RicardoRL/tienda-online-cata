@@ -9,7 +9,7 @@
           <!-- breadcrumb-->
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('cliente.index')}}">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="{{route('cliente.index')}}">Inicio</a></li>
               <li aria-current="page" class="breadcrumb-item active">Mis pedidos</li>
             </ol>
           </nav>
