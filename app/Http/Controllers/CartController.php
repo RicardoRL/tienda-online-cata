@@ -21,19 +21,9 @@ class CartController extends Controller
      */
     public function index()
     {
-      /*$cartConditions = Cart::getConditions();
-      if($cartConditions->isEmpty()){
-        $impuesto = new \Darryldecode\Cart\CartCondition(array(
-          'name' => 'IVA',
-          'type' => 'tax',
-          'target' => 'subtotal',
-          'value' => '16%'
-        ));
+      $sugerencias = Cerveza::inRandomOrder()->take(3)->get();
 
-        Cart::condition($impuesto);
-      }*/
-
-      return view('layouts_cliente.clienteCompra');
+      return view('layouts_cliente.clienteCompra', compact('sugerencias'));
     }
 
     /**
