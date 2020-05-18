@@ -21,7 +21,7 @@ class CartController extends Controller
      */
     public function index()
     {
-      $cartConditions = Cart::getConditions();
+      /*$cartConditions = Cart::getConditions();
       if($cartConditions->isEmpty()){
         $impuesto = new \Darryldecode\Cart\CartCondition(array(
           'name' => 'IVA',
@@ -31,7 +31,7 @@ class CartController extends Controller
         ));
 
         Cart::condition($impuesto);
-      }
+      }*/
 
       return view('layouts_cliente.clienteCompra');
     }
@@ -72,7 +72,6 @@ class CartController extends Controller
         'attributes' => array(),
         'associatedModel' => $cerveza
       ));
-      //dd(Cart::getContent());
 
       return redirect()->route('cart.index')->with('success_message', 'El producto fue agregado al carro');
     }
@@ -130,6 +129,7 @@ class CartController extends Controller
 
       if(Cart::isEmpty())
       {
+        Cart::clear();
         Cart::clearCartConditions();
       }
 

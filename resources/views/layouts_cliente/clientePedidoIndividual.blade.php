@@ -37,23 +37,19 @@
                 <tfoot>
                   <tr>
                     <th colspan="5" class="text-right">Subtotal</th>
-                    <th>{{$pedido->subtotal}}</th>
+                    <th>${{$pedido->subtotal}}</th>
                   </tr>
                   <tr>
                     <th colspan="5" class="text-right">Envío</th>
                     @if($pedido->metodo_envio == 'normal')
-                      <th>$100.00</th>
+                      <th>$116.00</th>
                     @elseif($pedido->metodo_envio == 'expres')
-                      <th>$150.00</th>
+                      <th>$174.00</th>
                     @endif
                   </tr>
                   <tr>
-                    <th colspan="5" class="text-right">I.V.A.</th>
-                    <th>$0.00</th>
-                  </tr>
-                  <tr>
                     <th colspan="5" class="text-right">Total</th>
-                    <th>{{$pedido->total}}</th>
+                    <th>${{$pedido->total}}</th>
                   </tr>
                 </tfoot>
               </table>

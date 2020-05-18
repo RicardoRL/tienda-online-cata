@@ -19,18 +19,15 @@ class EditorController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
 
       //  dd();
-        return view('layouts_editor.editorMenu');
+      return view('layouts_editor.editorMenu');
 
-        //dd(\Auth::guard('editor')->id());
-        return view('layouts_editor.editorInicioContenido');
+      //dd(\Auth::guard('editor')->id());
+      //return view('layouts_editor.editorInicioContenido');
 
-=======
-        //dd(\Auth::guard('editor')->id());
-        return view('layouts_editor.editorInicioContenido');
->>>>>>> 270d0e5f1af95cbcc467616d9335d06d305230cb
+      //dd(\Auth::guard('editor')->id());
+      //return view('layouts_editor.editorInicioContenido');
     }
 
     /**

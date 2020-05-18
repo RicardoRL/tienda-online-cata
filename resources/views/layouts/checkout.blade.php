@@ -48,10 +48,6 @@
                         <th>$0.00</th>
                       @endif
                     </tr>
-                    <tr>
-                      <td>I.V.A (16%)</td>
-                      <th>MIENTRAS</th>
-                    </tr>
                     <tr class="total">
                       <td>Total</td>
                       <th>${{Cart::getTotal()}}</th><!--${{Cart::getTotal()}}-->

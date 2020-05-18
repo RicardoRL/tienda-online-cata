@@ -14,6 +14,9 @@
 </div>
 <div class="content py-3">
   <form action="{{route('cliente.checkout_rev')}}" method="GET">
+    @if(Session::has('error_message'))
+      <div class="alert alert-warning" role="alert">{{Session::get('error_message')}}</div>
+    @endif
     <div class="row">
       <div class="col-md-6">
         <div class="box shipping-method">

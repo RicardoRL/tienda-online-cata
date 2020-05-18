@@ -151,6 +151,11 @@ class ClienteController extends Controller
 
     public function checkout_pag(Request $request)
     {
+      if($request->envio == NULL)
+      {
+        return redirect()->back()->with('error_message', 'Debes seleccionar un método de envío');
+      }
+
       $conditions = Cart::getConditions();
       $exite_condicion = false;
 
@@ -173,26 +178,28 @@ class ClienteController extends Controller
         $envio = null;
         if($request->envio == 'normal')
         {
+          $costo = 116; //100 de envío mas 16% de IVA
           $envio = new \Darryldecode\Cart\CartCondition(array(
             'name' => 'envio',
             'type' => 'shipping',
             'target' => 'total',
-            'value' => '+100',
+            'value' => '+'.$costo,
             'attributes' => array(
-              'format' => '$100.00',
+              'format' => '$'.$costo.'.00',
               'tipo' => 'normal'
             )
           ));
         }
         else if($request->envio == 'expres')
         {
+          $costo = 174; //150 de envío más 16% de IVA
           $envio = new \Darryldecode\Cart\CartCondition(array(
             'name' => 'envio',
             'type' => 'shipping',
             'target' => 'total',
-            'value' => '+150',
+            'value' => '+'.$costo,
             'attributes' => array(
-              'format' => '$150.00',
+              'format' => '$'.$costo.'.00',
               'tipo' => 'expres'
             )
           )); 
@@ -208,6 +215,10 @@ class ClienteController extends Controller
 
     public function checkout_rev(Request $request)
     {
+      if($request->pago == NULL)
+      {
+        return redirect()->back()->with('error_message', 'Debes seleccionar un método de pago');
+      }
       $request->flash();
       return view('layouts.checkout');
     }
