@@ -19,7 +19,6 @@ class EditorController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
 
       //  dd();
         return view('layouts_editor.editorMenu');
@@ -27,11 +26,9 @@ class EditorController extends Controller
         //dd(\Auth::guard('editor')->id());
         return view('layouts_editor.editorInicioContenido');
 
-=======
         //dd(\Auth::guard('editor')->id());
         return view('layouts_editor.editorInicioContenido');
->>>>>>> 270d0e5f1af95cbcc467616d9335d06d305230cb
-    }
+   }
 
     /**
      * Show the form for creating a new resource.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cerveza;
+use App\Cerveceria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,8 @@ class CervezaController extends Controller
      */
     public function create()
     {
-        //
+        $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
+        return view('layouts_cervezas.cervezasCreate',compact('cervecerias'));
     }
 
     /**
@@ -36,7 +38,55 @@ class CervezaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'cerveceria_id' => 'required',
+            'nombre' => 'required|min:10',
+            'estilo' => 'required|min:10',
+            'aspecto' => 'required|min:10',
+            'sabor_aroma' => 'required|min:10',
+            'alcohol' => 'required',
+            'temp_consumo' => 'required',
+            'maridaje' => 'required|min:10',
+            'presentacion' => 'required|min:10',
+            'precio' => 'required',
+            'cantidad' => 'required',
+            'imagen' => 'required',
+        ]);
+
+      /*  $subcadena = "";
+        $contador = 0;
+        foreach($cadena as $char){
+        $subcadena.=$char;
+            
+                if($char == '/' ){
+                $contador++;
+                }
+
+                if($contador == 5){
+                break;
+                }
+            
+            }
+*/
+        $entrada=$request->all();
+            
+        if($request->hasFile('imagen'))
+        {
+            //$cervecerias = DB::table('cerveceria')->get();
+            $tipo = $request->nombre;
+            $file = $request->file('imagen');
+            $nombre = $file->getClientOriginalName();
+            $file->move(public_path().'/img/imagenes_Cervezas/'.$request->tipo.'/minerva', $nombre);
+            $entrada['imagen'] = $nombre;
+        }
+
+        Cerveza::Create($entrada);
+
+        return redirect()->route('editor.index')
+                ->with([
+                    'cervezaCreate' => 'Se ha agregado una nueva cerveza con exito',
+                    'clase-alerta' => 'alert-success',
+                ]);
     }
 
     /**
