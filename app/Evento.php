@@ -2,11 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 
 class Evento extends Model
 {
-    protected $fillable = ['nombre', 'sede','fecha','asistentes','imagen'];
+  use softDeletes;
+  
+  protected $fillable = ['nombre', 'sede','fecha','asistentes','imagen'];
 }

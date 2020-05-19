@@ -14,13 +14,14 @@ class CreateEventosTable extends Migration
     public function up()
     {
         Schema::create('eventos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->string('sede');
-            $table->date('fecha');
-            $table->integer('asistentes')->nullable();
-            $table->string('imagen')->nullable();
-            $table->timestamps();
+          $table->bigIncrements('id');
+          $table->string('nombre');
+          $table->string('sede');
+          $table->date('fecha');
+          $table->integer('asistentes')->nullable();
+          $table->string('imagen')->nullable();
+          $table->softDeletes();
+          $table->timestamps();
         });
     }
 

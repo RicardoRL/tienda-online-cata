@@ -14,6 +14,9 @@
 </div>
 <div class="content py-3">
   <form action="{{route('cliente.checkout_pag')}}" method="GET">
+    @if(Session::has('error_message'))
+      <div class="alert alert-warning" role="alert">{{Session::get('error_message')}}</div>
+    @endif
     <div class="row">
       <div class="col-md-6">
         <div class="box shipping-method">
@@ -21,7 +24,7 @@
           <p>Recibirás tu pedido en un máximo de 3 días hábiles.</p><br><br>
           <p>Costo: $150.00</p>
           <div class="box-footer text-center">
-            <input type="radio" name="envio" value="expres">
+            <input type="radio" name="envio" value="expres" id="envio">
           </div>
         </div>
       </div>
@@ -31,7 +34,7 @@
           <p>Recibirás tu pedido en un máximo de 7 días hábiles.</p><br><br>
           <p>Costo: $100.00</p>
           <div class="box-footer text-center">
-            <input type="radio" name="envio" value="normal">
+            <input type="radio" name="envio" value="normal" id="envio">
           </div>
         </div>
       </div>
@@ -40,7 +43,7 @@
       <a href="{{route('cliente.checkout_dom')}}" class="btn btn-outline-secondary">
         <i class="fa fa-chevron-left"></i>Regresa a Dirección
       </a>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary"  id="submit" >
         Selecciona método de pago
         <i class="fa fa-chevron-right"></i>
       </button>

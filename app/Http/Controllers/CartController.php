@@ -12,7 +12,7 @@ class CartController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,19 +21,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cartConditions = Cart::getConditions();
-        if($cartConditions->isEmpty()){
-            $impuesto = new \Darryldecode\Cart\CartCondition(array(
-                'name' => 'IVA',
-                'type' => 'tax',
-                'target' => 'subtotal',
-                'value' => '16%'
-            ));
+      $sugerencias = Cerveza::inRandomOrder()->take(3)->get();
 
-            Cart::condition($impuesto);
-        }
-
-        return view('layouts_cliente.clienteCompra');
+      return view('layouts_cliente.clienteCompra', compact('sugerencias'));
     }
 
     /**
@@ -54,27 +44,26 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $duplicados = Cart::search(function($cartItem, $id) use ($request){
-            return $cartItem->id === $request->id;
-        });
+      $duplicados = Cart::search(function($cartItem, $id) use ($request){
+        return $cartItem->id === $request->id;
+      });
 
-        if($duplicados->isNotEmpty())
-        {
-            return redirect()->route('cart.index')->with('success_message', "Ya has agregado este producto antes");
-        }
+      if($duplicados->isNotEmpty())
+      {
+        return redirect()->route('cart.index')->with('success_message', "Ya has agregado este producto antes");
+      }
 
-        $cerveza = new Cerveza();
-        Cart::add(array(
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => 1,
-            'attributes' => array(),
-            'associatedModel' => $cerveza
-        ));
-        //dd(Cart::getContent());
+      $cerveza = new Cerveza();
+      Cart::add(array(
+        'id' => $request->id,
+        'name' => $request->name,
+        'price' => $request->price,
+        'quantity' => 1,
+        'attributes' => array(),
+        'associatedModel' => $cerveza
+      ));
 
-        return redirect()->route('cart.index')->with('success_message', 'El producto fue agregado al carro');
+      return redirect()->route('cart.index')->with('success_message', 'El producto fue agregado al carro');
     }
 
     /**
@@ -108,14 +97,14 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cart::update($id, array(
-            'quantity' => array(
-                'relative' => false,
-                'value' => $request->quantity
-            ),
-        ));
-        session()->flash('success_message', 'La cantidad ha sido actualizada');
-        return response()->json(["mensaje_exito" => true]);
+      Cart::update($id, array(
+        'quantity' => array(
+            'relative' => false,
+            'value' => $request->quantity
+        ),
+      ));
+      session()->flash('success_message', 'La cantidad ha sido actualizada');
+      return response()->json(["mensaje_exito" => true]);
     }
 
     /**
@@ -126,10 +115,15 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //dd($id);
-        Cart::remove($id);
+      Cart::remove($id);
 
-        return back()->with('success_message', 'El producto ha sido removido');
+      if(Cart::isEmpty())
+      {
+        Cart::clear();
+        Cart::clearCartConditions();
+      }
+
+      return back()->with('success_message', 'El producto ha sido removido');
     }
 
     public function apply(Request $request)
