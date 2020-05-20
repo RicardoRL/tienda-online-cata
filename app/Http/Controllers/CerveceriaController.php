@@ -19,6 +19,10 @@ class CerveceriaController extends Controller
         $cerveceria = Cerveceria::all();
 
         return view('layouts_cerveceria.cerveceriaUpdate')->with(['cerveceria'=>$cerveceria]);
+<<<<<<< HEAD
+   
+=======
+>>>>>>> 0c0ec936a488bb4b5508ef81bcfcbc03837109a0
     }
 
     /**

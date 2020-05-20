@@ -96,10 +96,11 @@
                 <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
               </ul>
             </li>
-            <li><a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Tables </a>
+            <li><a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Cervezas </a>
               <ul id="tablesDropdown" class="collapse list-unstyled ">
-                <li><a href="tables.html">Bootstrap tables</a></li>
+                <li><a href="{{route('cerveza.create')}}">Agregar cerveza</a></li>
                 <li><a href="tables-datatable.html">Datatable</a></li>
+                <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
               </ul>
             </li>
             <li><a href="#componentsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-page"></i>Cuenta</a>

@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cerveza extends Model
 {
+
+  protected $fillable = ['cerveceria_id', 
+  'nombre', 'estilo', 'aspecto', 'sabor_aroma',
+  'alcohol', 'temp_consumo', 'maridaje', 'presentacion',
+  'precio', 'cantidad', 'imagen',
+  ];
+
   public function cerveceria()
   {
     return $this->belongsTo('App\Cerveceria');
