@@ -27,6 +27,7 @@ class CreateCervezasTable extends Migration
             $table->decimal('precio', 11, 2);
             $table->integer('cantidad')->unsigned();
             $table->string('imagen')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

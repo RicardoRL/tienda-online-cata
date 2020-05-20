@@ -26,15 +26,14 @@ class EditorController extends Controller
       //dd(\Auth::guard('editor')->id());
       //return view('layouts_editor.editorInicioContenido');
 
-<<<<<<< HEAD
+
         //dd(\Auth::guard('editor')->id());
         return view('layouts_editor.editorInicioContenido');
    }
-=======
+
       //dd(\Auth::guard('editor')->id());
       //return view('layouts_editor.editorInicioContenido');
-    }
->>>>>>> 0c0ec936a488bb4b5508ef81bcfcbc03837109a0
+
 
     /**
      * Show the form for creating a new resource.

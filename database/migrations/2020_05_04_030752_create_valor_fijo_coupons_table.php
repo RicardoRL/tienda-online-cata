@@ -16,6 +16,7 @@ class CreateValorFijoCouponsTable extends Migration
         Schema::create('valor_fijo_coupons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('valor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ use App\Cerveceria;
 use APP\Cerveza;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 function getEstilos()

@@ -17,6 +17,7 @@ class CreateEditorEventoTable extends Migration
             $table->unsignedBigInteger('editor_id');
             $table->unsignedBigInteger('evento_id');
             $table->date('fecha_edicion')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class CreateCervezaEventoTable extends Migration
         Schema::create('cerveza_evento', function (Blueprint $table) {
             $table->unsignedBigInteger('cerveza_id');
             $table->unsignedBigInteger('evento_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

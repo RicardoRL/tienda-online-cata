@@ -52,8 +52,15 @@ class CervezaController extends Controller
             'cantidad' => 'required',
             'imagen' => 'required',
         ]);
+        $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
 
-      /*  $subcadena = "";
+            if($request->cerveceria_id == $cervecerias->id){
+                $nombre_cerveceria = $cervecerias->nombre;
+                return ('nombre_cerveceria');
+            }
+            /*
+        Str::lower('HOLA');
+        $subcadena = "";
         $contador = 0;
         foreach($cadena as $char){
         $subcadena.=$char;

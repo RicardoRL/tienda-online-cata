@@ -23,6 +23,7 @@ class CreateTarjetasTable extends Migration
             $table->string('apellido', 50);
             $table->string('fecha_exp', 5);
             $table->string('codigo', 3);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

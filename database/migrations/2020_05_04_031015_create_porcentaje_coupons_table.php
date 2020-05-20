@@ -16,6 +16,7 @@ class CreatePorcentajeCouponsTable extends Migration
         Schema::create('porcentaje_coupons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('porcentaje');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

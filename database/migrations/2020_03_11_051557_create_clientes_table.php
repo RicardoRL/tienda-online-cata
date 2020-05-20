@@ -23,6 +23,7 @@ class CreateClientesTable extends Migration
             $table->string('password');
             $table->string('telefono', 25);
             $table->string('remember_token', 100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

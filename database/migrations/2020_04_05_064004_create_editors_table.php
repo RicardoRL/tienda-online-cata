@@ -22,6 +22,7 @@ class CreateEditorsTable extends Migration
             $table->string('correo', 100)->unique();
             $table->string('password');
             $table->string('remember_token', 100)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

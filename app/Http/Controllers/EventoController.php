@@ -12,7 +12,7 @@ class EventoController extends Controller
         $evento = Evento::all();
 
         return view('layouts_evento.eventoIndex')->with(['evento'=>$evento]);
-        return view('layouts_evento.eventoIndex',compact('evento'));
+      //  return view('layouts_evento.eventoIndex',compact('evento'));
     }
 
     public function create()

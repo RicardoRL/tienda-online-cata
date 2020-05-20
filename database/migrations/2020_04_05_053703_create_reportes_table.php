@@ -18,6 +18,7 @@ class CreateReportesTable extends Migration
             $table->unsignedBigInteger('editor_id')->nullable();
             $table->string('periodo');
             $table->date('fecha_inicio');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

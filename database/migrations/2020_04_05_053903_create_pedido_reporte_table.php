@@ -16,6 +16,7 @@ class CreatePedidoReporteTable extends Migration
         Schema::create('pedido_reporte', function (Blueprint $table) {
             $table->unsignedBigInteger('pedido_id');
             $table->unsignedBigInteger('reporte_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

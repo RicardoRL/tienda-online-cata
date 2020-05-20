@@ -17,6 +17,7 @@ class CreateCervezaPedidoTable extends Migration
             $table->unsignedBigInteger('cerveza_id');
             $table->unsignedBigInteger('pedido_id');
             $table->integer('cantidad')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

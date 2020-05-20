@@ -26,6 +26,7 @@ class CreateDomiciliosTable extends Migration
             $table->string('calle1', 100);
             $table->string('calle2', 100);
             $table->string('referencia')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

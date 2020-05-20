@@ -23,6 +23,7 @@ class CreatePedidosTable extends Migration
         $table->integer('cantidad')->unsigned();
         $table->decimal('subtotal', 11, 2)->unsigned();
         $table->decimal('total', 11, 2)->unsigned();
+        $table->softDeletes();
         $table->timestamps();
     });
     }

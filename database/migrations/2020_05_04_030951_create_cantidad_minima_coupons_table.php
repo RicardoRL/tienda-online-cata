@@ -17,6 +17,7 @@ class CreateCantidadMinimaCouponsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('porcentaje');
             $table->integer('cantidad');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
