@@ -32,6 +32,8 @@ Route::get('/inicio', function() {
     return view('layouts.content', compact('cervezas'));
 })->name('inicio');
 
+
+
 //Rutas para el cliente
 Route::get('passwd/{cliente}', 'ClienteController@passwd')->name('cliente.passwd');
 Route::get('cliente/compra', 'ClienteController@compra')->name('cliente.compra');
@@ -48,9 +50,9 @@ Route::resource('domicilio', 'DomicilioController');
 Route::resource('tarjeta', 'TarjetaController');
 
 //Rutas para editor
-Route::get('/editor/update', function() {
-    $editor = Editor::all();
-    return view('layouts_editor.editorUPdate',compact('editor'));
+Route::get('/cerveza/delete', function() {
+    $cervezas = Cerveza::all();
+    return view('layouts_editor.editorUpdate',compact('cervezas'));
 });
 
 Route::get('/editor/delete', function() {
@@ -71,6 +73,12 @@ Route::get('/cerveceria/delete', function() {
 Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para cerveza
+Route::get('/cerveza/update', function() {
+    $cervezas = Cerveza::all();
+    //$cervecerias = Cerveceria::all()->pluck('nombre', 'id');
+    return view('layouts_cervezas.cervezasUpdate',compact('cervezas'));
+});
+
 Route::resource('cerveza', 'CervezaController');
 
 //Rutas para pedidos
@@ -109,3 +117,5 @@ Route::get('/evento/delete', function() {
 });
 
 Route::resource('evento', 'EventoController');
+
+Route::post("/cerveza/scopeName", "CervezaController@scopeName")->name("cerveza.scopeName");

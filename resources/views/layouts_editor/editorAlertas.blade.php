@@ -93,3 +93,33 @@
           <center>   <strong> {{Session::get('cerveceriaDelete')}} </strong> </center>
     </div>
 @endif
+
+<!-- Cerveza --->
+
+
+@if(Session::has('cervezaCreate')) 
+    <div class="alert alert-dismissible col-lg-5 mx-auto {{Session::get('clase-alerta', 'alert-info')}} " role="alert">   
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <center>   <strong> {{Session::get('cervezaCreate')}} </strong> </center>
+    </div>
+@endif
+
+@if(Session::has('cervezaUpdate')) 
+    <div class="alert alert-dismissible col-lg-5 mx-auto {{Session::get('clase-alerta', 'alert-info')}} " role="alert">   
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <center>   <strong> {{Session::get('cervezaUpdate')}} </strong> </center>
+    </div>
+@endif
+
+@if(Session::has('CervezaDelete')) 
+    <div class="alert alert-dismissible col-lg-5 mx-auto {{Session::get('clase-alerta', 'alert-info')}} " role="alert">   
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <center>   <strong> {{Session::get('CervezaDelete')}} </strong> </center>
+    </div>
+@endif
