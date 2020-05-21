@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cerveza;
+use App\Editor;
 use App\Cerveceria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,9 @@ class CervezaController extends Controller
     public function create()
     {
         $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
-        return view('layouts_cervezas.cervezasCreate',compact('cervecerias'));
+        $editor_id = \Auth::guard('editor')->user()->id;
+        $admin = Editor::where('id', $editor_id)->first();
+        return view('layouts_cervezas.cervezasCreate', compact('cervecerias', 'admin'));
     }
 
     /**
@@ -142,7 +145,21 @@ class CervezaController extends Controller
         //
     }
 
-    public function estilos($estilo)
+    public function updateList()
     {
+      $cervezas = Cerveza::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_cervezas.cervezasUpdate',compact('cervezas', 'admin'));
+    }
+
+    public function deleteList()
+    {
+      $cervezas = Cerveza::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+
+      //Aquí solo cambia cervezasUpdate por cervezasDelete
+      return view('layouts_cervezas.cervezasUpdate',compact('cervezas', 'admin'));
     }
 }

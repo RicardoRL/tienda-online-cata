@@ -67,12 +67,12 @@
           <ul id="side-main-menu" class="side-menu list-unstyled">
             <!-- Editores -->             
             <li><a href="{{route('editor.index')}}"><i class="icon-home"></i>Inicio</a></li>
-            @if(auth()->guard('editor')->user()->can('isAdmin', $editor))
+            @if(auth()->guard('editor')->user()->can('isAdmin', $admin))
               <li><a href="#opcionesEditor" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Editores</a>
                 <ul id="opcionesEditor" class="collapse list-unstyled ">
                   <li><a href="{{route('editor.create')}}">Nuevo Editor</a></li>
-                  <li><a href="/editor/update">Actualizar Editor</a></li>
-                  <li><a href="/editor/delete">Borrar Editor</a></li>
+                  <li><a href="{{route('editor.updateList')}}">Actualizar Editor</a></li>
+                  <li><a href="{{route('editor.deleteList')}}">Borrar Editor</a></li>
                 </ul>
               </li>
             @endif
@@ -89,14 +89,14 @@
               <ul id="opcionesCerveceria" class="collapse list-unstyled ">
                 <li><a href="{{route('cerveceria.create')}}">Agregar Cerveceria</a></li>
                 <li><a href="{{route('cerveceria.index')}}">Actualizar Cervecerias</a></li>
-                <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
+                <li><a href="{{route('cerveceria.delete')}}">Eliminar Cerveceria</a></li>
               </ul>
             </li>
             <li><a href="#opcionesCerveza" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Cervezas </a>
               <ul id="opcionesCerveza" class="collapse list-unstyled ">
                 <li><a href="{{route('cerveza.create')}}">Agregar cerveza</a></li>
-                <li><a href="/cerveza/update">Actualizar Cervezas</a></li>
-                <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
+                <li><a href="{{route('cerveza.updateList')}}">Actualizar Cerveza</a></li>
+                <li><a href="{{route('cerveza.deleteList')}}">Eliminar Cerveza</a></li>
               </ul>
             </li>
             <li><a href="#opcionesGenerales" aria-expanded="false" data-toggle="collapse"> <i class="icon-page"></i>Cuenta</a>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Cart;
 use App\Cliente;
 use App\Cerveza;
 use App\Domicilio;
-use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -57,8 +57,6 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //dd($request);
-        //$cliente_id = $cliente->id;
         return view('layouts_cliente.clienteInfo'); //["cliente" => $cliente]
     }
 

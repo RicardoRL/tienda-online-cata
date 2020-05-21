@@ -24,8 +24,8 @@ class EditorController extends Controller
       if(\Auth::guard('editor')->user() != NULL)
       {
         $editor_id = \Auth::guard('editor')->user()->id;
-        $editor = Editor::where('id', $editor_id)->first();
-        return view('layouts_editor.editorMenu', compact('editor'));
+        $admin = Editor::where('id', $editor_id)->first();
+        return view('layouts_editor.editorMenu', compact('admin'));
       }
       else{
         return view('layouts_editor.editorLogin');
@@ -40,8 +40,9 @@ class EditorController extends Controller
      */
     public function create()
     {
-        //
-        return view('layouts_editor.editorCreate');
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_editor.editorCreate', compact('admin'));
     }
 
     /**
@@ -88,6 +89,7 @@ class EditorController extends Controller
     public function show($id)
     {
         $editor = Editor::findOrFail($id);
+      
         return view ('layouts_editor.editorShow', compact('editor'));
     }
 
@@ -99,8 +101,10 @@ class EditorController extends Controller
      */
     public function edit($id)
     {
-        $editor = Editor::findOrFail($id);
-        return view ('layouts_editor.editorEdit', compact('editor'));
+      $editor = Editor::findOrFail($id);
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view ('layouts_editor.editorEdit', compact('editor', 'admin'));
     
     }
 
@@ -114,12 +118,12 @@ class EditorController extends Controller
     public function update(Request $request, $id)
     {
         $entrada=$request->all();
-         $editor = Editor::findOrFail($id);
-         $editor->update($entrada);
+        $editor = Editor::findOrFail($id);
+        $editor->update($entrada);
         return redirect()->route('editor.index')->with([
-            'editorUpdate'=>'Has actualizado correctamente al editor ',
-            'clase-alerta'=>'alert-info',
-            ]);;
+          'editorUpdate'=>'Has actualizado correctamente al editor ',
+          'clase-alerta'=>'alert-info',
+        ]);;
     }
 
     /**
@@ -138,5 +142,21 @@ class EditorController extends Controller
             'editorDelete'=>'Se ha eliminado el editor correctamente',
             'clase-alerta'=>'alert-danger',
         ]);
+    }
+
+    public function updateList()
+    {
+      $editores = Editor::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_editor.editorUpdate',compact('editores', 'admin'));
+    }
+
+    public function deleteList()
+    {
+      $editores = Editor::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_editor.editorDelete',compact('editores', 'admin'));
     }
 }

@@ -50,35 +50,20 @@ Route::resource('domicilio', 'DomicilioController');
 Route::resource('tarjeta', 'TarjetaController');
 
 //Rutas para editor
-Route::get('/cerveza/delete', function() {
-    $cervezas = Cerveza::all();
-    return view('layouts_editor.editorUpdate',compact('cervezas'));
-});
-
-Route::get('/editor/delete', function() {
-    $editor = Editor::all();
-    return view('layouts_editor.editorDelete',compact('editor'));
-});
+Route::get('/editor/updateList', 'EditorController@updateList')->name('editor.updateList');
+Route::get('/editor/deleteList', 'EditorController@deleteList')->name('editor.deleteList');
 
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
 Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria
-Route::get('/cerveceria/delete', function() {
-    $cerveceria = Cerveceria::all();
-    return view('layouts_cerveceria.cerveceriaDelete',compact('cerveceria'));
-}); 
-
+Route::get('/cerveceria/delete', 'CerveceriaController@delete')->name('cerveceria.delete'); 
 Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para cerveza
-Route::get('/cerveza/update', function() {
-    $cervezas = Cerveza::all();
-    //$cervecerias = Cerveceria::all()->pluck('nombre', 'id');
-    return view('layouts_cervezas.cervezasUpdate',compact('cervezas'));
-});
-
+Route::get('/cerveza/update', 'CervezaController@updateList')->name('cerveza.updateList');
+Route::get('/cerveza/delete', 'CervezaController@deleteList')->name('cerveza.deleteList');
 Route::resource('cerveza', 'CervezaController');
 
 //Rutas para pedidos

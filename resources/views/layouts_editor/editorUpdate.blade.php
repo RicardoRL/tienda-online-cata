@@ -34,7 +34,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      @foreach($editor as $mieditor)
+                      @foreach($editores as $mieditor)
                       <tr>
                           <td> {{$mieditor->id}}</td>
                           <td> {{$mieditor->nombre}} </td>

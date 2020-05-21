@@ -17,7 +17,7 @@
       <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Eventos</h4>
+                  <h4>Cervezas</h4>
           <nav class="navbar navbar-light bg-light float-right">
             <form class="form-inline" action="{{route('cerveza.scopeName')}}" method="POST">
             @csrf

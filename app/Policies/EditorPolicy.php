@@ -9,7 +9,7 @@ class EditorPolicy
 {
     use HandlesAuthorization;
 
-    public function isAdmin(Editor $editor)
+    public function isAdmin($editor)
     {
       return $editor->id == 1;
     }

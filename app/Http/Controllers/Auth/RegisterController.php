@@ -52,17 +52,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        //dd('validator');
-        //dd($data);
-        return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:50'],
-            'apepat' => ['required', 'string', 'max:50'],
-            'apemat' => ['required', 'string', 'max:50'],
-            'fecnac' => ['required', 'date'],
-            'correo' => ['required', 'string', 'email', 'max:100', 'unique:clientes'],
-            'password' => ['required', 'string', 'min:8'],
-            'telefono' => ['required', 'string', 'min:10'],
-        ]);
+      return Validator::make($data, [
+        'nombre' => ['required', 'string', 'max:50'],
+        'apepat' => ['required', 'string', 'max:50'],
+        'apemat' => ['required', 'string', 'max:50'],
+        'fecnac' => ['required', 'date'],
+        'correo' => ['required', 'string', 'email', 'max:100', 'unique:clientes'],
+        'password' => ['required', 'string', 'min:8'],
+        'telefono' => ['required', 'string', 'min:10'],
+      ]);
     }
 
     /**
@@ -73,21 +71,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //dd('registerController create');
-        //dd($data);
-        /*return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);*/
-        return Cliente::create([
-            'nombre' => $data['nombre'],
-            'apepat' => $data['apepat'],
-            'apemat' => $data['apemat'],
-            'fecnac' => $data['fecnac'],
-            'correo' => $data['correo'],
-            'password' => Hash::make($data['password']),
-            'telefono' => $data['telefono'],
-        ]);
+      return Cliente::create([
+        'nombre' => $data['nombre'],
+        'apepat' => $data['apepat'],
+        'apemat' => $data['apemat'],
+        'fecnac' => $data['fecnac'],
+        'correo' => $data['correo'],
+        'password' => Hash::make($data['password']),
+        'telefono' => $data['telefono'],
+      ]);
     }
 }
