@@ -13,8 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
-        // 'App\Editor' => 'App\Policies\EditorPolicy',
+        'App\Editor' => 'App\Policies\EditorPolicy',
     ];
 
     /**
@@ -24,17 +23,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-        
-        Gate::define('editor', function($user) {
-            if(\Auth::id() == 1) {
-              return true;
-            }
-            else {
-                return false;
-            }
-
-        });
-        //
+      $this->registerPolicies();
     }
 }

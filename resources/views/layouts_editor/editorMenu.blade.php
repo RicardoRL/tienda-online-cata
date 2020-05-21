@@ -64,47 +64,43 @@
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <h5 class="sidenav-heading">Menú</h5>
-          <!-- Editores -->
-
-          
-          <ul id="side-main-menu" class="side-menu list-unstyled">                  
+          <ul id="side-main-menu" class="side-menu list-unstyled">
+            <!-- Editores -->             
             <li><a href="{{route('editor.index')}}"><i class="icon-home"></i>Inicio</a></li>
-          {{--     @if(\Gate::allows('editor'))  --}}
-            <li><a href="#formsDropdow" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Editores</a>
-              <ul id="formsDropdow" class="collapse list-unstyled ">
-                <li><a href="{{route('editor.create')}}">Nuevo Editor</a></li>
-                <li><a href="/editor/update">Actualizar Editor</a></li>
-                <li><a href="/editor/delete">Borrar Editor</a></li>
-          {{-- @endif --}}
-          </ul>
-            </li>
-            
-            <!-- Eventos -->
-          <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="#formsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Eventos</a>
-              <ul id="formsDropdown" class="collapse list-unstyled ">
+            @if(auth()->guard('editor')->user()->can('isAdmin', $editor))
+              <li><a href="#opcionesEditor" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Editores</a>
+                <ul id="opcionesEditor" class="collapse list-unstyled ">
+                  <li><a href="{{route('editor.create')}}">Nuevo Editor</a></li>
+                  <li><a href="/editor/update">Actualizar Editor</a></li>
+                  <li><a href="/editor/delete">Borrar Editor</a></li>
+                </ul>
+              </li>
+            @endif
+            <!-- Eventos -->                
+            <li><a href="#opcionesEvento" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Eventos</a>
+              <ul id="opcionesEvento" class="collapse list-unstyled ">
                 <li><a href="{{route('evento.create')}}">Nuevo evento</a></li>
                 <li><a href="{{route('evento.index')}}">Actualizar evento</a></li>
                 <li><a href="/evento/delete">Borrar evento</a></li>
-          </ul>
+              </ul>
             </li>
             <!-- Cervecerias -->
-            <li><a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart" ></i>Cervecerias</a>
-              <ul id="chartsDropdown" class="collapse list-unstyled ">
+            <li><a href="#opcionesCerveceria" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart" ></i>Cervecerias</a>
+              <ul id="opcionesCerveceria" class="collapse list-unstyled ">
                 <li><a href="{{route('cerveceria.create')}}">Agregar Cerveceria</a></li>
                 <li><a href="{{route('cerveceria.index')}}">Actualizar Cervecerias</a></li>
                 <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
               </ul>
             </li>
-            <li><a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Cervezas </a>
-              <ul id="tablesDropdown" class="collapse list-unstyled ">
+            <li><a href="#opcionesCerveza" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Cervezas </a>
+              <ul id="opcionesCerveza" class="collapse list-unstyled ">
                 <li><a href="{{route('cerveza.create')}}">Agregar cerveza</a></li>
                 <li><a href="tables-datatable.html">Datatable</a></li>
                 <li><a href="/cerveceria/delete">Eliminar Cerveceria</a></li>
               </ul>
             </li>
-            <li><a href="#componentsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-page"></i>Cuenta</a>
-              <ul id="componentsDropdown" class="collapse list-unstyled ">
+            <li><a href="#opcionesGenerales" aria-expanded="false" data-toggle="collapse"> <i class="icon-page"></i>Cuenta</a>
+              <ul id="opcionesGenerales" class="collapse list-unstyled ">
                 <li><a href="components-cards.html">Actualizar información</a></li>
               </ul>
             </li>
@@ -118,8 +114,6 @@
                 <li><a href="pages-pricing.html">Pricing table</a></li>
               </ul>
             </li>
-            <li> <a href="#"> <i class="icon-mail"></i>Demo
-                <div class="badge badge-warning">6 New</div></a></li>
           </ul>
         </div>
         <!--
@@ -210,9 +204,6 @@
         
           @yield('content')
         </main>
-
-      
-
         <footer class="main-footer">
           <div class="container-fluid">
             <div class="row">

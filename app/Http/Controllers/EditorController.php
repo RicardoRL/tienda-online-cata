@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Editor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class EditorController extends Controller
 {
@@ -20,19 +21,16 @@ class EditorController extends Controller
     public function index()
     {
 
-      //  dd();
-      return view('layouts_editor.editorMenu');
-
-      //dd(\Auth::guard('editor')->id());
-      //return view('layouts_editor.editorInicioContenido');
-
-
-        //dd(\Auth::guard('editor')->id());
-        return view('layouts_editor.editorInicioContenido');
+      if(\Auth::guard('editor')->user() != NULL)
+      {
+        $editor_id = \Auth::guard('editor')->user()->id;
+        $editor = Editor::where('id', $editor_id)->first();
+        return view('layouts_editor.editorMenu', compact('editor'));
+      }
+      else{
+        return view('layouts_editor.editorLogin');
+      }
    }
-
-      //dd(\Auth::guard('editor')->id());
-      //return view('layouts_editor.editorInicioContenido');
 
 
     /**
