@@ -54,7 +54,7 @@ Route::get('/cerveza/delete', function() {
     $cervezas = Cerveza::all();
     return view('layouts_editor.editorUpdate',compact('cervezas'));
 });
-
+Route::post("/editor/scopeName", "EditorController@scopeName")->name("editor.scopeName");
 Route::get('/editor/delete', function() {
     $editor = Editor::all();
     return view('layouts_editor.editorDelete',compact('editor'));

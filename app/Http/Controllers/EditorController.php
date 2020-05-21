@@ -13,6 +13,13 @@ class EditorController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function scopeName(Request $request){
+        $nombre = $request->buscar;
+        $editores = Editor::where('nombre', 'LIKE', "%$nombre%")->get();
+        return view('layouts_cervezas.editorUpdate',compact('editores'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +27,7 @@ class EditorController extends Controller
      */
     public function index()
     {
-
-      if(\Auth::guard('editor')->user() != NULL)
+        if(\Auth::guard('editor')->user() != NULL)
       {
         $editor_id = \Auth::guard('editor')->user()->id;
         $editor = Editor::where('id', $editor_id)->first();
@@ -30,7 +36,7 @@ class EditorController extends Controller
       else{
         return view('layouts_editor.editorLogin');
       }
-   }
+    }
 
 
     /**
