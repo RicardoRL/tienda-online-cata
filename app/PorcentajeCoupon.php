@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PorcentajeCoupon extends Model
 {
+  use softDeletes;
   protected $table = 'porcentaje_coupons';
 
   public function descuento($subtotal)

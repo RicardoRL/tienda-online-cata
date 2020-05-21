@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
+  use softDeletes;
   public function cliente()
   {
     return $this->belongsTo('App\Cliente');

@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Cliente extends Authenticatable
 {
   use Notifiable;
+  use softDeletes;
 
   protected $guard = 'cliente';
 

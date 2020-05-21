@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model
 {
+  use softDeletes;
 
   public static function findByCode($codigo)
   {
