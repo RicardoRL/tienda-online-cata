@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-
 class Evento extends Model
 {
   use softDeletes;

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CantidadMinimaCoupon extends Model
 {
+  use softDeletes;
+
   protected $table = 'cantidad_minima_coupons';
 
   public function descuento($subtotal, $cantidad)

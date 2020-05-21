@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class Editor extends Authenticatable
 {
     use Notifiable;
+    use softDeletes;
 
     protected $fillable = [
         'nombre', 'apepat', 'apemat', 'fecnac', 'correo', 'password',

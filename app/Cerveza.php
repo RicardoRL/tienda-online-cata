@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cerveza extends Model
 {
+  use softDeletes;
 
   protected $fillable = ['cerveceria_id', 
   'nombre', 'estilo', 'aspecto', 'sabor_aroma',
