@@ -31,10 +31,8 @@ class EditorController extends Controller
       if(\Auth::guard('editor')->user() != NULL)
       {
         $editor_id = \Auth::guard('editor')->user()->id;
-        $admin = Editor::where('id', $editor_id)->first();
-       
         $editor = Editor::where('id', $editor_id)->first();
-        return view('layouts_editor.editorMenu', compact('editor'.'admin'));
+        return view('layouts_editor.editorMenu', compact('editor'));
       }
       else{
         return view('layouts_editor.editorLogin');
@@ -96,12 +94,9 @@ class EditorController extends Controller
      */
     public function show($id)
     {
-      $editor = Editor::findOrFail($id);
-      $editor_id = \Auth::guard('editor')->user()->id;
-      $admin = Editor::where('id', $editor_id)->first();
-      
-      return view ('layouts_editor.editorShow', compact('editor', 'admin'));
-  }
+        $editor = Editor::findOrFail($id);
+        return view ('layouts_editor.editorShow', compact('editor'));
+    }
 
     /**
      * Show the form for editing the specified resource.
