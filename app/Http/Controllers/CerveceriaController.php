@@ -80,8 +80,10 @@ class CerveceriaController extends Controller
      */
     public function show($id)
     {
-        $cerveceria = Cerveceria::findOrFail($id);
-        return view ('layouts_cerveceria.cerveceriaShow', compact('cerveceria'));
+      $cerveceria = Cerveceria::findOrFail($id);
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view ('layouts_cerveceria.cerveceriaShow', compact('cerveceria', 'admin'));
     }
 
     /**
@@ -92,8 +94,10 @@ class CerveceriaController extends Controller
      */
     public function edit($id)
     {
-        $cerveceria = Cerveceria::findOrFail($id);
-        return view ('layouts_cerveceria.cerveceriaEdit', compact('cerveceria'));
+      $cerveceria = Cerveceria::findOrFail($id);
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view ('layouts_cerveceria.cerveceriaEdit', compact('cerveceria', 'admin'));
     }
 
     /**
@@ -132,14 +136,14 @@ class CerveceriaController extends Controller
      */
     public function destroy($id)
     {
-        $cerveceria = Cerveceria::findOrFail($id);
-        
-        $cerveceria->delete();
+      $cerveceria = Cerveceria::findOrFail($id);
+      
+      $cerveceria->delete();
 
-        return redirect()->route('editor.index')->with([
-            'cerveceriaDelete'=>'Has eliminado la cerveceria correctamente ',
-            'clase-alerta'=>'alert-danger',
-            ]);
+      return redirect()->route('editor.index')->with([
+          'cerveceriaDelete'=>'Has eliminado la cerveceria correctamente ',
+          'clase-alerta'=>'alert-danger',
+      ]);
     }
 
     public function delete()

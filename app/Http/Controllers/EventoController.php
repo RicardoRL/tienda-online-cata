@@ -9,15 +9,17 @@ class EventoController extends Controller
 {
     public function index()
     {
-        $evento = Evento::all();
-
-        return view('layouts_evento.eventoIndex')->with(['evento'=>$evento]);
-      //  return view('layouts_evento.eventoIndex',compact('evento'));
+      $eventos = Evento::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_evento.eventoIndex', compact('eventos', 'admin'));
     }
 
     public function create()
     {
-        return view('layouts_evento.eventoNuevo');
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_evento.eventoNuevo', compact('admin'));
     }
 
     public function store(Request $request)
@@ -88,8 +90,10 @@ class EventoController extends Controller
 */
     public function edit($id)
     {
-        $evento = Evento::findOrFail($id);
-        return view ('layouts_evento.eventoEdit', compact('evento'));
+      $evento = Evento::findOrFail($id);
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view ('layouts_evento.eventoEdit', compact('evento', 'admin'));
     }
 
     public function destroy($id)
@@ -102,6 +106,22 @@ class EventoController extends Controller
             'eventoDelete'=>'Has eliminado el evento correctamente ',
             'clase-alerta'=>'alert-danger',
             ]);
+    }
+
+    public function deleteList()
+    {
+      $eventos = Evento::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_evento.eventoDelete',compact('eventos', 'admin'));
+    }
+
+    public function delete($id)
+    {
+      $evento = Evento::findOrFail($id);
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_evento.eventoDelete',compact('evento', 'admin'));
     }
 
 }

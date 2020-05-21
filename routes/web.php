@@ -93,16 +93,8 @@ Route::get('vaciar', function(){
 });
 
 //Ruta para Eventos
-Route::get('/evento/delete/{id}', function($id) {
-    $evento = Evento::findOrFail($id);
-    return view ('layouts_evento.eventoShow', compact('evento'));
-});
-
-Route::get('/evento/delete', function() {
-    $evento = Evento::all();
-    return view('layouts_evento.eventoDelete',compact('evento'));
-});
-
+Route::get('/evento/delete/{id}', 'EventoController@delete')->name('evento.delete');
+Route::get('/evento/delete', 'EventoController@deleteList')->name('evento.deleteList');
 Route::resource('evento', 'EventoController');
 
 Route::post("/cerveza/scopeName", "CervezaController@scopeName")->name("cerveza.scopeName");

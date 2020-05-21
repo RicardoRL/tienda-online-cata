@@ -34,7 +34,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      @foreach($evento as $mievento)
+                      @foreach($eventos as $mievento)
                       <tr>
                           <td> {{$mievento->id}}</td>
                           <td> {{$mievento->nombre}} </td>

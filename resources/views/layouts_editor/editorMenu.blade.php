@@ -81,7 +81,7 @@
               <ul id="opcionesEvento" class="collapse list-unstyled ">
                 <li><a href="{{route('evento.create')}}">Nuevo evento</a></li>
                 <li><a href="{{route('evento.index')}}">Actualizar evento</a></li>
-                <li><a href="/evento/delete">Borrar evento</a></li>
+                <li><a href="{{route('evento.deleteList')}}">Borrar evento</a></li>
               </ul>
             </li>
             <!-- Cervecerias -->
