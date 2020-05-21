@@ -55,6 +55,7 @@ Route::get('/editor/deleteList', 'EditorController@deleteList')->name('editor.de
 
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
+Route::post('editor/logout', 'Auth\EditorLoginController@logout')->name('editor.logout');
 Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria

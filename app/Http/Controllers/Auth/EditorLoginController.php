@@ -63,4 +63,22 @@ class EditorLoginController extends Controller
 
         return back()->withErrors(['correo' => 'Correo o contraseña incorrecto(s)']);
     }
+
+    public function logout(Request $request)
+    {
+        $this->guard('editor')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new Response('', 204)
+            //: redirect('/');
+            : redirect('/editor/login');
+    }
 }
