@@ -17,6 +17,4 @@ class Cerveceria extends Model
   {
     return $this->hasMany('App\Cerveza');
   }
-
-    
 }

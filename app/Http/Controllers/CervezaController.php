@@ -6,6 +6,7 @@ use App\Cerveza;
 use App\Cerveceria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\session;
 
 class CervezaController extends Controller
 {
@@ -14,9 +15,17 @@ class CervezaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function scopeName(Request $request){
+        $nombre = $request->buscar;
+        $cervezas = Cerveza::where('nombre', 'LIKE', "%$nombre%")->get();
+        return view('layouts_cervezas.cervezasUpdate',compact('cervezas'));
+      }
+
+    public function index(Request $request)
     {
-        //
+       // dd($request->get('buscar'));
+        $cervezas = Cerveza::name($request->get('cervezas'));
+        return view('layouts_cervezas.cervezasUpdate',compact('cervezas'));
     }
 
     /**
@@ -52,29 +61,6 @@ class CervezaController extends Controller
             'cantidad' => 'required',
             'imagen' => 'required',
         ]);
-        $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
-
-            if($request->cerveceria_id == $cervecerias->id){
-                $nombre_cerveceria = $cervecerias->nombre;
-                return ('nombre_cerveceria');
-            }
-            /*
-        Str::lower('HOLA');
-        $subcadena = "";
-        $contador = 0;
-        foreach($cadena as $char){
-        $subcadena.=$char;
-            
-                if($char == '/' ){
-                $contador++;
-                }
-
-                if($contador == 5){
-                break;
-                }
-            
-            }
-*/
         $entrada=$request->all();
             
         if($request->hasFile('imagen'))
@@ -83,17 +69,32 @@ class CervezaController extends Controller
             $tipo = $request->nombre;
             $file = $request->file('imagen');
             $nombre = $file->getClientOriginalName();
-            $file->move(public_path().'/img/imagenes_Cervezas/'.$request->tipo.'/minerva', $nombre);
-            $entrada['imagen'] = $nombre;
+            $cervecerias = DB::table('cervecerias')->get();
+            //$cervecerias = Cerveceria::all()->pluck('nombre', 'id');
+            foreach ($cervecerias as $micerveceria){
+                if($request->cerveceria_id == $micerveceria->id){
+
+                    $nombre_cerveceria = $micerveceria->nombre;
+                    //echo($micerveceria->nombre);
+                    $str = strtolower($micerveceria->nombre);
+                    // Str::lower($micerveceria->nombre);
+                    $stri = str_replace(" ", "_",$str);
+                    //   return ($stri);
+
+                    $file->move(public_path().'/img/imagenes_Cervezas/'.$request->tipo.'/'.$stri.'/', $nombre);
+                    $ruta = "/img/imagenes_Cervezas/".$request->tipo.'/'.$stri.'/'.$nombre;
+                    $entrada['imagen'] = $ruta;
+                    $save = $ruta;
+                   // return ($save);
+                    Cerveza::Create($entrada);
+                    return redirect()->route('editor.index')
+                            ->with([
+                        'cervezaCreate' => 'Se ha agregado una nueva cerveza con exito',
+                        'clase-alerta' => 'alert-success',
+                    ]);
+                }
+            }
         }
-
-        Cerveza::Create($entrada);
-
-        return redirect()->route('editor.index')
-                ->with([
-                    'cervezaCreate' => 'Se ha agregado una nueva cerveza con exito',
-                    'clase-alerta' => 'alert-success',
-                ]);
     }
 
     /**

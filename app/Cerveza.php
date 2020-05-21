@@ -23,4 +23,11 @@ class Cerveza extends Model
   {
     return $this->belongsToMany('App\Pedido')->withTimestamps()->withPivot('cantidad');
   }
+
+  public function scopeName(Request $request)
+    {
+      //dd('scope:'.$name);
+      //return $query->where('nombre', 'LIKE', "%$name%");
+
+    }
 }
