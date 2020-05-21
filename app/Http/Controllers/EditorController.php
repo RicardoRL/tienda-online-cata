@@ -88,9 +88,11 @@ class EditorController extends Controller
      */
     public function show($id)
     {
-        $editor = Editor::findOrFail($id);
+      $editor = Editor::findOrFail($id);
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
       
-        return view ('layouts_editor.editorShow', compact('editor'));
+      return view ('layouts_editor.editorShow', compact('editor', 'admin'));
     }
 
     /**

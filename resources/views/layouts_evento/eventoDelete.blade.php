@@ -44,7 +44,7 @@
                           <td> {{$mievento->imagen}}</td>
                           <td>
                               <a class="btn btn-outline-info" 
-                                  href="/evento/delete/{{$mievento->id}}"
+                                  href="{{route('evento.delete', $mievento->id)}}"
                                   type="submit "role="button">Informacion
                               </a>
                           </td>
