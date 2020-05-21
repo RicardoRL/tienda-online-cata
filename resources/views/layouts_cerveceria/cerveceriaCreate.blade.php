@@ -1,6 +1,5 @@
 @extends('layouts_editor.editorMenu')
 @section('content')
-
 <div class="container-fluid">
       <!-- Breadcrumb-->
       <div class="breadcrumb-holder">

@@ -16,9 +16,11 @@ class CerveceriaController extends Controller
      */
     public function index()
     {
-        $cerveceria = Cerveceria::all();
+      $cerveceria = Cerveceria::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
 
-        return view('layouts_cerveceria.cerveceriaUpdate')->with(['cerveceria'=>$cerveceria]);
+      return view('layouts_cerveceria.cerveceriaUpdate', compact('cerveceria', 'admin'));
 
     }
 
@@ -29,7 +31,9 @@ class CerveceriaController extends Controller
      */
     public function create()
     {
-        return view('layouts_cerveceria.cerveceriaCreate');
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_cerveceria.cerveceriaCreate', compact('admin'));
     }
 
     /**
@@ -136,5 +140,13 @@ class CerveceriaController extends Controller
             'cerveceriaDelete'=>'Has eliminado la cerveceria correctamente ',
             'clase-alerta'=>'alert-danger',
             ]);
+    }
+
+    public function delete()
+    {
+      $cerveceria = Cerveceria::all();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_cerveceria.cerveceriaDelete',compact('cerveceria', 'admin'));
     }
 }
