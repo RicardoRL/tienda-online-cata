@@ -50,20 +50,10 @@ Route::resource('domicilio', 'DomicilioController');
 Route::resource('tarjeta', 'TarjetaController');
 
 //Rutas para editor
-<<<<<<< HEAD
-Route::get('/cerveza/delete', function() {
-    $cervezas = Cerveza::all();
-    return view('layouts_editor.editorUpdate',compact('cervezas'));
-});
 Route::post("/editor/scopeName", "EditorController@scopeName")->name("editor.scopeName");
-Route::get('/editor/delete', function() {
-    $editor = Editor::all();
-    return view('layouts_editor.editorDelete',compact('editor'));
-});
-=======
+
 Route::get('/editor/updateList', 'EditorController@updateList')->name('editor.updateList');
 Route::get('/editor/deleteList', 'EditorController@deleteList')->name('editor.deleteList');
->>>>>>> da257f781f047ed7dd376faec863a8b9df2d3936
 
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
