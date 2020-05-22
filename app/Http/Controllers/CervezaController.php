@@ -38,8 +38,8 @@ class CervezaController extends Controller
      */
     public function create()
     {
-            $estilos = getEstilos();
-            $total = count($estilos);
+        $estilos = getEstilos();
+        $total = count($estilos);
        
         $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
         $editor_id = \Auth::guard('editor')->user()->id;
