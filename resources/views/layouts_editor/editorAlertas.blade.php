@@ -115,11 +115,11 @@
     </div>
 @endif
 
-@if(Session::has('CervezaDelete')) 
+@if(Session::has('cervezaDelete')) 
     <div class="alert alert-dismissible col-lg-5 mx-auto {{Session::get('clase-alerta', 'alert-info')}} " role="alert">   
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <center>   <strong> {{Session::get('CervezaDelete')}} </strong> </center>
+          <center>   <strong> {{Session::get('cervezaDelete')}} </strong> </center>
     </div>
 @endif

@@ -18,10 +18,10 @@
               <div class="card">
                 <div class="card-header">
                   <h4>Cervezas</h4>
-          <nav class="navbar navbar-light bg-light float-right">
+          <nav class="float-right">
             <form class="form-inline" action="{{route('cerveza.scopeName')}}" method="POST">
             @csrf
-              <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Nombre Cerveza" aria-label="Search">
               <button type="submit" class="btn btn-outline-success btn-sm">Buscar</button>
               </form>
           </nav>

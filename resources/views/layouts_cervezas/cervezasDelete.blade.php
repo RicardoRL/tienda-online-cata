@@ -9,7 +9,7 @@
         <div class="container-fluid">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="/editor">Inicio</a></li>
-            <li class="breadcrumb-item active">Actualizar </li>
+            <li class="breadcrumb-item active">Eliminar </li>
           </ul>
         </div>
       </div>
@@ -20,9 +20,9 @@
                 <div class="card-header">
                   <h4>Cervecerias</h4>
                   <nav class="float-right">
-                    <form class="form-inline" action="{{route('cerveceria.scopeDelete')}}" method="POST">
+                    <form class="form-inline" action="{{route('cerveza.scopeDelete')}}" method="POST">
                     @csrf
-                      <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Nombre Cerveceria" aria-label="Search">
+                      <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Nombre Cerveza" aria-label="Search">
                       <button type="submit" class="btn btn-outline-success btn-sm">Buscar</button>
                       </form>
                   </nav>
@@ -34,25 +34,28 @@
                         <tr>
                           <th> ID </th>
                           <th> NOMBRE </th>
-                          <th> CIUDAD </th>
-                          <th> SITIO WEB </th>
-                          <th> CONTACTO </th>
-                      {{--<th> IMAGEN </th>--}}
-                          <th>  </th>
+                          <th> Estilo </th>
+                          <th> Aspecto </th>
+                          <th> Temperatura </th>
+                          <th> Maridaje </th>
+                          <th> Precio </th>
+                          <th> Cantidad </th>
                       </tr>
                       </thead>
                       <tbody>
-                      @foreach($cerveceria as $micerveceria)
+                      @foreach($cervezas as $micerveza)
                       <tr>
-                          <td> {{$micerveceria->id}}</td>
-                          <td> {{$micerveceria->nombre}} </td>
-                          <td> {{$micerveceria->ciudad}} </td>
-                          <td> {{$micerveceria->sitio_web}} </td>
-                          <td> {{$micerveceria->contacto}} </td> 
-                    {{--  <td> {{$micerveceria->imagen}}</td> --}}
+                          <td> {{$micerveza->id}}</td>
+                          <td> {{$micerveza->nombre}} </td>
+                          <td> {{$micerveza->estilo}} </td>
+                          <td> {{$micerveza->aspecto}} </td>
+                          <td> {{$micerveza->temp_consumo}} </td> 
+                          <td> {{$micerveza->maridaje}}</td> 
+                          <td> {{$micerveza->precio}} </td> 
+                          <td> {{$micerveza->cantidad}}</td> 
                           <td>
                               <a
-                                 href="{{route('cerveceria.show',$micerveceria->id)}}" >
+                                 href="{{route('cerveza.show',$micerveza->id)}}" >
                                <i class="fas fa-info-circle"></i>
                                </a>
                               

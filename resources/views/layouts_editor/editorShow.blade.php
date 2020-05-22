@@ -81,7 +81,7 @@
                     
                     <div class="form-group row">
                       <div class="col-sm-4 offset-sm-2">
-                        <a class="btn btn-secondary" href="/editor/delete" role="button">Cancelar</a>
+                        <a class="btn btn-secondary" href="{{route('editor.deleteList')}}" role="button">Cancelar</a>
                         <button type="submit" class="btn btn-outline-danger">Eliminar Editor</button>
                       </div>
                     </div>

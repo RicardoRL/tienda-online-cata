@@ -46,12 +46,13 @@
                       </div>
                     </div>
                     
+                    <!--- Estilo Cerveza-->
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Estilo: </label>
                       <div class="col-sm-10 mb-3">
-                      <select>
+                      <select name="estilo">
                         @for($i = 0; $i<$total; $i++)
-                          <option value="{{$estilos[$i]->estilo}}">{{$estilos[$i]->estilo}}</option>
+                          <option name="estilo" value="{{$estilo[$i]->estilo}}">{{$estilo[$i]->estilo}}</option>
                         @endfor
                       </select>
                       </div>

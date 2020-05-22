@@ -92,6 +92,7 @@
                 <li><a href="{{route('cerveceria.delete')}}">Eliminar Cerveceria</a></li>
               </ul>
             </li>
+            <!-- Cervecerias -->
             <li><a href="#opcionesCerveza" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Cervezas </a>
               <ul id="opcionesCerveza" class="collapse list-unstyled ">
                 <li><a href="{{route('cerveza.create')}}">Agregar cerveza</a></li>

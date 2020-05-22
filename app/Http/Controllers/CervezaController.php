@@ -24,6 +24,14 @@ class CervezaController extends Controller
         return view('layouts_cervezas.cervezasUpdate',compact('cervezas', 'admin'));
       }
 
+      public function scopeDelete(Request $request){
+        $nombre = $request->buscar;
+        $cervezas = Cerveza::where('nombre', 'LIKE', "%$nombre%")->get();
+        $editor_id = \Auth::guard('editor')->user()->id;
+        $admin = Editor::where('id', $editor_id)->first();
+        return view('layouts_cervezas.cervezasDelete',compact('cervezas', 'admin'));
+      }
+
     public function index(Request $request)
     {
        // dd($request->get('buscar'));
@@ -38,13 +46,13 @@ class CervezaController extends Controller
      */
     public function create()
     {
-        $estilos = getEstilos();
-        $total = count($estilos);
+        $estilo = getEstilos();
+        $total = count($estilo);
        
         $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
         $editor_id = \Auth::guard('editor')->user()->id;
         $admin = Editor::where('id', $editor_id)->first();
-        return view('layouts_cervezas.cervezasCreate', compact('cervecerias', 'admin', 'estilos', 'total'));
+        return view('layouts_cervezas.cervezasCreate', compact('cervecerias', 'admin', 'estilo', 'total'));
     }
 
     /**
@@ -55,16 +63,17 @@ class CervezaController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $this->validate($request, [
             'cerveceria_id' => 'required',
-            'nombre' => 'required|min:10',
-            'estilo' => 'required|min:10',
-            'aspecto' => 'required|min:10',
-            'sabor_aroma' => 'required|min:10',
+            'nombre' => 'required',
+            'estilo' => 'required',
+            'aspecto' => 'required',
+            'sabor_aroma' => 'required',
             'alcohol' => 'required',
             'temp_consumo' => 'required',
-            'maridaje' => 'required|min:10',
-            'presentacion' => 'required|min:10',
+            'maridaje' => 'required',
+            'presentacion' => 'required',
             'precio' => 'required',
             'cantidad' => 'required',
             'imagen' => 'required',
@@ -93,7 +102,7 @@ class CervezaController extends Controller
                     $file->move(public_path().'/img/imagenes_Cervezas/'.$request->tipo.'/'.$stri.'/', $nombre);
                     $ruta = "/img/imagenes_Cervezas/".$request->tipo.'/'.$stri.'/'.$nombre;
                     $entrada['imagen'] = $ruta;
-                    $save = $ruta;
+                    //$save = $ruta;
                    // return ($save);
                     Cerveza::Create($entrada);
                     return redirect()->route('editor.index')
@@ -112,9 +121,16 @@ class CervezaController extends Controller
      * @param  \App\Cerveza  $cerveza
      * @return \Illuminate\Http\Response
      */
-    public function show(Cerveza $cerveza)
+    public function show($id)
     {
-        //
+        $estilo = getEstilos();
+        $total = count($estilo);
+        $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
+        $cerveza = Cerveza::findOrFail($id);
+        $editor_id = \Auth::guard('editor')->user()->id;
+        $admin = Editor::where('id', $editor_id)->first();
+        return view ('layouts_cervezas.cervezasShow', compact('cerveza', 'cervecerias', 'admin', 'estilo', 'total'));
+      
     }
 
     /**
@@ -125,11 +141,14 @@ class CervezaController extends Controller
      */
     public function edit($id)
     {
+        $estilo = getEstilos();
+        $total = count($estilo);
+       
         $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
         $cerveza = Cerveza::findOrFail($id);
         $editor_id = \Auth::guard('editor')->user()->id;
         $admin = Editor::where('id', $editor_id)->first();
-        return view ('layouts_cervezas.cervezasEdit', compact('cerveza', 'cervecerias', 'admin'));  
+        return view ('layouts_cervezas.cervezasEdit', compact('cerveza', 'cervecerias', 'admin', 'estilo', 'total'));  
     }
 
     /**
@@ -189,9 +208,16 @@ class CervezaController extends Controller
      * @param  \App\Cerveza  $cerveza
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cerveza $cerveza)
+    public function destroy($id)
     {
-        //
+        $cerveza = Cerveza::findOrFail($id);
+      
+        $cerveza->delete();
+
+      return redirect()->route('cerveza.deleteList')->with([
+          'cervezaDelete'=>'Has eliminado la cerveza correctamente ',
+          'clase-alerta'=>'alert-danger',
+      ]);
     }
 
     public function updateList()
@@ -209,6 +235,6 @@ class CervezaController extends Controller
       $admin = Editor::where('id', $editor_id)->first();
 
       //Aquí solo cambia cervezasUpdate por cervezasDelete
-      return view('layouts_cervezas.cervezasUpdate',compact('cervezas', 'admin'));
+      return view('layouts_cervezas.cervezasDelete',compact('cervezas', 'admin'));
     }
 }
