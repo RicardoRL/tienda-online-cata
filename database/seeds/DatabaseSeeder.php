@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         'tarjetas',
         'cervecerias',
         'cervezas',
+        'pedidos',
         'cerveza_pedido'
       ]);
         
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
       $this->call(TarjetaSeeder::class);
       $this->call(CerveceriasSeeder::class);
       $this->call(CervezasSeeder::class);
+      $this->call(PedidoSeeder::class);
       $this->call(CervezaPedidoSeeder::class);
     }
 
