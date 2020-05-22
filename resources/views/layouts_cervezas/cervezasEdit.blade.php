@@ -17,7 +17,7 @@
           <header> 
             <h1 class="h3 display">Actualizar Cerveza  </h1>
           </header>
-        <form action="/cervezas/{{$cerveza->id}}" method="POST" role="form" enctype="multipart/form-data">
+        <form action="/cerveza/{{$cerveza->id}}" method="POST" role="form" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="_method" value="PUT">  
           <div class="col-lg-12">
@@ -189,11 +189,11 @@
                 <!-- Imagen Actual -->
                 <div class="col-lg-5">
                     <div class="card">
-                        <div class="card-header d-flex align-items-center">
+                        <div class="card-header d-flex align-items-center pull-center">
                             <h4>Imagen actual:</h4> <input type="text" disabled name="nombre_imagen" value="{{$cerveza->imagen}}"> 
                         </div>
                         <div class="col-sm-10">
-                            <br><img src="{{asset('$cerveza->imagen')}}" height="200" width="300"><br><br>
+                            <br><img src="{{$cerveza->imagen}}" height="350" width="250"><br><br>
                         </div>
                     </div>
                 </div>

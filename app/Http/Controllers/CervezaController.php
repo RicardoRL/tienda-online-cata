@@ -38,10 +38,13 @@ class CervezaController extends Controller
      */
     public function create()
     {
+            $estilos = getEstilos();
+            $total = count($estilos);
+       
         $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
         $editor_id = \Auth::guard('editor')->user()->id;
         $admin = Editor::where('id', $editor_id)->first();
-        return view('layouts_cervezas.cervezasCreate', compact('cervecerias', 'admin'));
+        return view('layouts_cervezas.cervezasCreate', compact('cervecerias', 'admin', 'estilos', 'total'));
     }
 
     /**
@@ -136,9 +139,48 @@ class CervezaController extends Controller
      * @param  \App\Cerveza  $cerveza
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cerveza $cerveza)
+    public function update(Request $request,$id)
     {
-       
+        $entrada=$request->all();
+        $cerveza = Cerveza::findOrFail($id);
+
+        if($request->hasFile('imagen'))
+        {
+            //$cervecerias = DB::table('cerveceria')->get();
+            $tipo = $request->nombre;
+            $file = $request->file('imagen');
+            $nombre = $file->getClientOriginalName();
+            $cervecerias = DB::table('cervecerias')->get();
+            //$cervecerias = Cerveceria::all()->pluck('nombre', 'id');
+            foreach ($cervecerias as $micerveceria){
+                if($request->cerveceria_id == $micerveceria->id){
+
+                    //$nombre_cerveceria = $micerveceria->nombre;
+                    //echo($micerveceria->nombre);
+                    $str = strtolower($micerveceria->nombre);
+                    // Str::lower($micerveceria->nombre);
+                    $stri = str_replace(" ", "_",$str);
+                    //   return ($stri);
+
+                    $file->move(public_path().'/img/imagenes_Cervezas/'.$request->tipo.'/'.$stri.'/', $nombre);
+                    $ruta = "/img/imagenes_Cervezas/".$request->tipo.'/'.$stri.'/'.$nombre;
+                    $entrada['imagen'] = $ruta;
+                   // $save = $ruta;
+                   // return ($save);
+                  
+                   $cerveza->update($entrada);
+                   return redirect()->route('cerveza.updateList')->with([
+                       'cervezaUpdate'=>'Has actualizado correctamente los datos cerveza ',
+                       'clase-alerta'=>'alert-info',]);
+                }
+            }
+        }
+        else{
+                    $cerveza->update($entrada);
+                   return redirect()->route('cerveza.updateList')->with([
+                       'cervezaUpdate'=>'Has actualizado correctamente los datos cerveza ',
+                       'clase-alerta'=>'alert-info',]);
+        }
     }
 
     /**

@@ -45,15 +45,15 @@
                         @enderror
                       </div>
                     </div>
-
-                      <!--- Estilo Cerveza-->
-                      <div class="form-group row">
+                    
+                    <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Estilo: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="estilo" name="estilo" required>
-                        @error('estilo')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                      <div class="col-sm-10 mb-3">
+                      <select>
+                        @for($i = 0; $i<$total; $i++)
+                          <option value="$estilos[$i]">{{$estilos[$i]}}</option>
+                        @endfor
+                      </select>
                       </div>
                     </div>
 
