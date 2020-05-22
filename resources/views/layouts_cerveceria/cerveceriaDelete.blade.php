@@ -19,6 +19,13 @@
               <div class="card">
                 <div class="card-header">
                   <h4>Cervecerias</h4>
+                  <nav class="navbar navbar-light bg-light float-right">
+                    <form class="form-inline" action="{{route('cerveceria.scopeDelete')}}" method="POST">
+                    @csrf
+                      <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button type="submit" class="btn btn-outline-success btn-sm">Buscar</button>
+                      </form>
+                  </nav>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">

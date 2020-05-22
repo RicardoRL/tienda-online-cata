@@ -19,7 +19,6 @@
                 <div class="card-header">
                   <h4>Cervezas</h4>
           <nav class="navbar navbar-light bg-light float-right">
-
             <form class="form-inline" action="{{route('cerveza.scopeName')}}" method="POST">
             @csrf
               <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -32,19 +31,33 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col"> ID </th>
+                          <th> ID </th>
                           <th> Nombre </th>
-                          <th>  Boton </th>
+                          <th> Estilo </th>
+                          <th> Aspecto </th>
+                          <th> Alcohol </th>
+                          <th> Temperatura </th>
+                          <th> Maridaje </th>
+                          <th> Cantidad </th>
+                          <th> Precio </th>
+                          <th>   </th>
                       </tr>
                       </thead>
                       <tbody>
                       @foreach($cervezas as $micerveza)
                       <tr>
-                          <td scope="row"> {{$micerveza->id}}</td>
+                          <td> {{$micerveza->id}}</td>
                           <td> {{$micerveza->nombre}} </td>
+                          <td> {{$micerveza->estilo}}</td>
+                          <td> {{$micerveza->aspecto}} </td>
+                          <td> {{$micerveza->alcohol}}</td>
+                          <td> {{$micerveza->temp_consumo}} </td>
+                          <td> {{$micerveza->maridaje}}</td>
+                          <td> {{$micerveza->cantidad}} </td>
+                          <td> {{$micerveza->precio}} </td>
                           <td>
                               <a class="btn btn-outline-primary"
-                                  href="{{route('evento.edit',$micerveza->id)}}" 
+                                  href="{{route('cerveza.edit',$micerveza->id)}}" 
                                   type="button">Actualizar
                               </a>
                           </td>

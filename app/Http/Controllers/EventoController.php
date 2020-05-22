@@ -121,7 +121,22 @@ class EventoController extends Controller
       $evento = Evento::findOrFail($id);
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
-      return view('layouts_evento.eventoDelete',compact('evento', 'admin'));
+      return view('layouts_evento.eventoShow',compact('evento', 'admin'));
     }
 
+    public function scopeName(Request $request){
+      $nombre = $request->buscar;
+      $eventos = Evento::where('nombre', 'LIKE', "%$nombre%")->get();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_evento.eventoIndex',compact('eventos', 'admin'));
+    }
+
+    public function scopeDelete(Request $request){
+      $nombre = $request->buscar;
+      $eventos = Evento::where('nombre', 'LIKE', "%$nombre%")->get();
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_evento.eventoDelete',compact('eventos', 'admin'));
+    }
 }

@@ -9,11 +9,9 @@ class Cerveza extends Model
 {
   use softDeletes;
 
-  protected $fillable = ['cerveceria_id', 
-  'nombre', 'estilo', 'aspecto', 'sabor_aroma',
+  protected $fillable = ['cerveceria_id', 'nombre', 'estilo', 'aspecto', 'sabor_aroma',
   'alcohol', 'temp_consumo', 'maridaje', 'presentacion',
-  'precio', 'cantidad', 'imagen',
-  ];
+  'precio', 'cantidad', 'imagen'];
 
   public function cerveceria()
   {
@@ -27,6 +25,6 @@ class Cerveza extends Model
 
   public function setNombreAttribute($value)
   {
-    return strtolower($value);
+    $this->attributes['nombre'] = strtolower($value);
   }
 }
