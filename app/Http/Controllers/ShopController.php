@@ -82,6 +82,20 @@ class ShopController extends Controller
       return view('layouts_tienda.tienda', compact('productos', 'estilos', 'set', 'cervecerias'));
     }
 
+    public function buscar(Request $request)
+    {
+      $estilos = getEstilos();
+
+      $cervecerias = getCervecerias();
+
+      $nombre = $request->buscar;
+      $productos = Cerveza::where('nombre', 'LIKE', "%$nombre%")->get()->all();
+
+      $set = paginator($request, $productos);
+
+      return view('layouts_tienda.tienda', compact('productos', 'estilos', 'set', 'cervecerias'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *

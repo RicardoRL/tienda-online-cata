@@ -76,6 +76,7 @@ Route::get('/cliente/{cliente}/{pedido}', 'PedidoController@showOneOrder')->name
 //Rutas para la tienda
 Route::get('tienda/cervezas', 'ShopController@porCerveceria')->name('tienda.porCerveceria');
 Route::get('estilo/{estilo}', 'ShopController@porEstilo')->name('tienda.porEstilo');
+Route::post('tienda/buscar', 'ShopController@buscar')->name('tienda.buscar');
 Route::resource('tienda', 'ShopController');
 
 //Ruta para contacto
