@@ -51,7 +51,7 @@
                       <div class="col-sm-10 mb-3">
                       <select>
                         @for($i = 0; $i<$total; $i++)
-                          <option value="$estilos[$i]">{{$estilos[$i]}}</option>
+                          <option value="{{$estilos[$i]}}">{{$estilos[$i]}}</option>
                         @endfor
                       </select>
                       </div>
