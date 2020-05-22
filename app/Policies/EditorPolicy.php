@@ -11,6 +11,6 @@ class EditorPolicy
 
     public function isAdmin($editor)
     {
-      return $editor->id == 1;
+      return $editor->id == 1 || $editor->id == 2;
     }
 }
