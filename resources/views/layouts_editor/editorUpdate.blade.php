@@ -18,6 +18,13 @@
               <div class="card">
                 <div class="card-header">
                   <h4>Editores</h4>
+                  <nav class="navbar navbar-light bg-light white-right">
+                  <form class="form-inline" action="{{route('editor.scopeName')}}" method="POST">
+                  @csrf
+                    <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button type="submit" class="btn btn-outline-success btn-sm">Buscar</button>
+                    </form>
+                </nav>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">

@@ -17,9 +17,8 @@
       <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Cervezas</h4>
+                  <h4>Eventos</h4>
           <nav class="navbar navbar-light bg-light float-right">
-
             <form class="form-inline" action="{{route('cerveza.scopeName')}}" method="POST">
             @csrf
               <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

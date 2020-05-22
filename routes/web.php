@@ -50,6 +50,8 @@ Route::resource('domicilio', 'DomicilioController');
 Route::resource('tarjeta', 'TarjetaController');
 
 //Rutas para editor
+Route::post("/editor/scopeName", "EditorController@scopeName")->name("editor.scopeName");
+
 Route::get('/editor/updateList', 'EditorController@updateList')->name('editor.updateList');
 Route::get('/editor/deleteList', 'EditorController@deleteList')->name('editor.deleteList');
 
