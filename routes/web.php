@@ -50,10 +50,11 @@ Route::resource('domicilio', 'DomicilioController');
 Route::resource('tarjeta', 'TarjetaController');
 
 //Rutas para editor
-Route::post("/editor/scopeName", "EditorController@scopeName")->name("editor.scopeName");
-
 Route::get('/editor/updateList', 'EditorController@updateList')->name('editor.updateList');
 Route::get('/editor/deleteList', 'EditorController@deleteList')->name('editor.deleteList');
+
+Route::post("/editor/scopeName", "EditorController@scopeName")->name("editor.scopeName");
+Route::post("/editor/scopeDelete", "EditorController@scopeDelete")->name("editor.scopeDelete");
 
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
@@ -62,11 +63,19 @@ Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria
 Route::get('/cerveceria/delete', 'CerveceriaController@delete')->name('cerveceria.delete'); 
+
+Route::post("/cerveceria/scopeName", "CerveceriaController@scopeName")->name("cerveceria.scopeName");
+Route::post("/cerveceria/scopeDelete", "CerveceriaController@scopeDelete")->name("cerveceria.scopeDelete");
+
+
 Route::resource('cerveceria', 'CerveceriaController');
 
 //Rutas para cerveza
 Route::get('/cerveza/update', 'CervezaController@updateList')->name('cerveza.updateList');
 Route::get('/cerveza/delete', 'CervezaController@deleteList')->name('cerveza.deleteList');
+
+Route::post("/cerveza/scopeName", "CervezaController@scopeName")->name("cerveza.scopeName");
+
 Route::resource('cerveza', 'CervezaController');
 
 //Rutas para pedidos
@@ -97,6 +106,8 @@ Route::get('vaciar', function(){
 //Ruta para Eventos
 Route::get('/evento/delete/{id}', 'EventoController@delete')->name('evento.delete');
 Route::get('/evento/delete', 'EventoController@deleteList')->name('evento.deleteList');
+Route::post("/evento/scopeName", "EventoController@scopeName")->name("evento.scopeName");
+Route::post("/evento/scopeDelete", "EventoController@scopeDelete")->name("evento.scopeDelete");
+
 Route::resource('evento', 'EventoController');
 
-Route::post("/cerveza/scopeName", "CervezaController@scopeName")->name("cerveza.scopeName");

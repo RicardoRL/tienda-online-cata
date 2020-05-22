@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\DB;
 
 class CerveceriaController extends Controller
 {
+
+  public function scopeName(Request $request){
+    $nombre = $request->buscar;
+    $cerveceria = Cerveceria::where('nombre', 'LIKE', "%$nombre%")->get();
+    $editor_id = \Auth::guard('editor')->user()->id;
+    $admin = Editor::where('id', $editor_id)->first();
+    return view('layouts_cerveceria.cerveceriaUpdate',compact('cerveceria', 'admin'));
+  }
+
+  public function scopeDelete(Request $request){
+    $nombre = $request->buscar;
+    $cerveceria = Cerveceria::where('nombre', 'LIKE', "%$nombre%")->get();
+    $editor_id = \Auth::guard('editor')->user()->id;
+    $admin = Editor::where('id', $editor_id)->first();
+    return view('layouts_cerveceria.cerveceriaDelete',compact('cerveceria', 'admin'));
+  }
     /**
      * Display a listing of the resource.
      *

@@ -19,7 +19,9 @@ class CervezaController extends Controller
     public function scopeName(Request $request){
         $nombre = $request->buscar;
         $cervezas = Cerveza::where('nombre', 'LIKE', "%$nombre%")->get();
-        return view('layouts_cervezas.cervezasUpdate',compact('cervezas'));
+        $editor_id = \Auth::guard('editor')->user()->id;
+        $admin = Editor::where('id', $editor_id)->first();
+        return view('layouts_cervezas.cervezasUpdate',compact('cervezas', 'admin'));
       }
 
     public function index(Request $request)
@@ -65,6 +67,7 @@ class CervezaController extends Controller
             'imagen' => 'required',
         ]);
         $entrada=$request->all();
+    
             
         if($request->hasFile('imagen'))
         {
@@ -77,7 +80,7 @@ class CervezaController extends Controller
             foreach ($cervecerias as $micerveceria){
                 if($request->cerveceria_id == $micerveceria->id){
 
-                    $nombre_cerveceria = $micerveceria->nombre;
+                    //$nombre_cerveceria = $micerveceria->nombre;
                     //echo($micerveceria->nombre);
                     $str = strtolower($micerveceria->nombre);
                     // Str::lower($micerveceria->nombre);
@@ -117,9 +120,13 @@ class CervezaController extends Controller
      * @param  \App\Cerveza  $cerveza
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cerveza $cerveza)
+    public function edit($id)
     {
-        //
+        $cervecerias = Cerveceria::all()->pluck('nombre', 'id');
+        $cerveza = Cerveza::findOrFail($id);
+        $editor_id = \Auth::guard('editor')->user()->id;
+        $admin = Editor::where('id', $editor_id)->first();
+        return view ('layouts_cervezas.cervezasEdit', compact('cerveza', 'cervecerias', 'admin'));  
     }
 
     /**
@@ -131,7 +138,7 @@ class CervezaController extends Controller
      */
     public function update(Request $request, Cerveza $cerveza)
     {
-        //
+       
     }
 
     /**

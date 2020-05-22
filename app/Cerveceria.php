@@ -20,6 +20,6 @@ class Cerveceria extends Model
 
   public function setCiudadAttribute($value)
   {
-    $this->attribute['ciudad'] = ucfirst($value);
+    $this->attributes['ciudad'] = ucfirst($value);
   }
 }
