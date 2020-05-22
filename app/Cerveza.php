@@ -27,6 +27,6 @@ class Cerveza extends Model
 
   public function setNombreAttribute($value)
   {
-    return strtolower($value);
+    $this->attributes['nombre'] = strtolower($value);
   }
 }
