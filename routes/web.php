@@ -75,6 +75,7 @@ Route::get('/cerveza/update', 'CervezaController@updateList')->name('cerveza.upd
 Route::get('/cerveza/delete', 'CervezaController@deleteList')->name('cerveza.deleteList');
 
 Route::post("/cerveza/scopeName", "CervezaController@scopeName")->name("cerveza.scopeName");
+Route::post("/cerveza/scopeDelete", "CervezaController@scopeDelete")->name("cerveza.scopeDelete");
 
 Route::resource('cerveza', 'CervezaController');
 

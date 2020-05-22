@@ -23,7 +23,7 @@ class CerveceriasSeeder extends Seeder
         ]);
 
         DB::table('cervecerias')->insert([
-            'nombre' => 'Albur Cervecería',
+            'nombre' => 'Albur Cerveceria',
             'ciudad' => 'Monterrey',
             'sitio_web' => 'http://albur.mx/',
             'contacto' => '81 8360 1901',
@@ -48,7 +48,7 @@ class CerveceriasSeeder extends Seeder
             // Cervecerias con la Letra B
 
         DB::table('cervecerias')->insert([
-            'nombre' => 'Baja Brewing ',
+            'nombre' => 'Baja Brewing',
             'ciudad' => 'Baja California Sur',
             'sitio_web' => 'bajabrewingcompany.com',
             'contacto' => '624 142 1292',

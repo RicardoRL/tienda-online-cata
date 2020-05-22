@@ -87,14 +87,14 @@
                     
                     <div class="form-group row">
                       <div class="col-sm-4 offset-sm-2">
-                        <a class="btn btn-outline-danger" href="{{route('editor.index')}}" role="button">Cancelar</a>
+                        <a class="btn btn-outline-danger" href="{{route('cerveceria.index')}}" role="button">Cancelar</a>
                         <button type="submit" class="btn btn-outline-success">Actualizar Cerveceria</button>
                       </div>
                     </div>
                  </div>
               </div>
             </div>
-
+        {{--
             <div class="col-lg-8">
               <div class="card">
                 <div class="card-header d-flex align-items-center">
@@ -110,6 +110,7 @@
                 </div>
               </div>
             </div>
+                  --}}
          </form>
         </div>
       </div>
