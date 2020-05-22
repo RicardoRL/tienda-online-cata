@@ -193,7 +193,17 @@
                     </ul>
                   </li>
                   <!-- Log out-->
-                  <li class="nav-item"><a href="{{route('editor.login')}}" class="nav-link logout"> <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                  <li class="nav-item">
+                    <a href="{{route('editor.logout')}}" 
+                       class="nav-link logout"
+                       onclick="event.preventDefault(); document.getElementById('editor-logout-form').submit();">
+                      <span class="d-none d-sm-inline-block">Logout</span>
+                      <i class="fa fa-sign-out"></i>
+                    </a>
+                  </li>
+                  <form id="editor-logout-form" action="{{ route('editor.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
                 </ul>
               </div>
             </div>

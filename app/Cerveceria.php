@@ -17,4 +17,9 @@ class Cerveceria extends Model
   {
     return $this->hasMany('App\Cerveza');
   }
+
+  public function setCiudadAttribute($value)
+  {
+    $this->attribute['ciudad'] = ucfirst($value);
+  }
 }

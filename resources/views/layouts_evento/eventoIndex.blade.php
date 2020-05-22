@@ -34,22 +34,23 @@
                       </tr>
                       </thead>
                       <tbody>
+                      
                       @foreach($eventos as $mievento)
-                      <tr>
-                          <td> {{$mievento->id}}</td>
-                          <td> {{$mievento->nombre}} </td>
-                          <td> {{$mievento->fecha}} </td>
-                          <td> {{$mievento->sede}} </td>
-                          <td> {{$mievento->asistentes}} </td>
-                          <td> {{$mievento->imagen}}</td>
-                          <td>
-                              <a class="btn btn-outline-primary"
-                                  href="{{route('evento.edit',$mievento->id)}}" 
-                                  type="button">Actualizar
-                              </a>
-                          </td>
-                      </tr>
-                          @endforeach
+                        <tr>
+                            <td> {{$mievento->id}}</td>
+                            <td> {{$mievento->nombre}} </td>
+                            <td> {{$mievento->fecha}} </td>
+                            <td> {{$mievento->sede}} </td>
+                            <td> {{$mievento->asistentes}} </td>
+                            <td> {{$mievento->imagen}}</td>
+                            <td>
+                                <a class="btn btn-outline-primary"
+                                    href="{{route('evento.edit',$mievento->id)}}" 
+                                    type="button">Actualizar
+                                </a>
+                            </td>
+                        </tr>
+                      @endforeach
                       </tbody>
                     </table>
                   </div>

@@ -57,6 +57,7 @@ Route::get('/editor/deleteList', 'EditorController@deleteList')->name('editor.de
 
 Route::get('editor/login', 'Auth\EditorLoginController@showLoginForm');
 Route::post('editor/login', 'Auth\EditorLoginController@login')->name('editor.login');
+Route::post('editor/logout', 'Auth\EditorLoginController@logout')->name('editor.logout');
 Route::resource('editor', 'EditorController');
 
 //Rutas para cerveceria
@@ -77,6 +78,7 @@ Route::get('/cliente/{cliente}/{pedido}', 'PedidoController@showOneOrder')->name
 //Rutas para la tienda
 Route::get('tienda/cervezas', 'ShopController@porCerveceria')->name('tienda.porCerveceria');
 Route::get('estilo/{estilo}', 'ShopController@porEstilo')->name('tienda.porEstilo');
+Route::post('tienda/buscar', 'ShopController@buscar')->name('tienda.buscar');
 Route::resource('tienda', 'ShopController');
 
 //Ruta para contacto

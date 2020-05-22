@@ -16,7 +16,7 @@ class CerveceriasSeeder extends Seeder
         
         DB::table('cervecerias')->insert([
             'nombre' => 'Cerveceria Acapulco',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'https://www.facebook.com/pages/Cervecer%C3%ADa-Acapulco/152086821571341',
             'contacto' => '55 5784 7176',
             'imagen' => 'acapulco',
@@ -49,14 +49,14 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Baja Brewing ',
-            'ciudad' => 'Baja california sur',
+            'ciudad' => 'Baja California Sur',
             'sitio_web' => 'bajabrewingcompany.com',
             'contacto' => '624 142 1292',
             'imagen' => 'baja_brewing.png',
         ]);
         DB::table('cervecerias')->insert([
             'nombre' => 'Barón de la Cerveza',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'barondelacerveza.com.mx',
             'contacto' => '55 6308 3034',
             'imagen' => 'baron.jpg',
@@ -64,7 +64,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Beer Bros',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'https://www.beerbros.mx/',
             'contacto' => '53353234',
             'imagen' => 'beer_bros.png',
@@ -80,7 +80,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Buscapleitos',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'http://buscapleitos.com.mx/',
             'contacto' => '5528582441',
             'imagen' => 'buscapleitos.png',
@@ -90,7 +90,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Calavera Beer',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'calaverabeer.com',
             'contacto' => '55 5365 3685',
             'imagen' => 'calavera_beer.png',
@@ -98,7 +98,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Chaca',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'https://www.facebook.com/ChacaArtesanal/',
             'contacto' => '52 449 807 7239',
             'imagen' => 'chaca.jpg',
@@ -106,7 +106,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Chaneque',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'http://www.cervezachaneque.com/',
             'contacto' => '(01 55) 1718 0600',
             'imagen' => 'chaneque.png',
@@ -114,7 +114,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Chela libre',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => '',
             'contacto' => 'https://chelalibre.mx/',
             'imagen' => 'chela_libres.png',
@@ -132,7 +132,7 @@ class CerveceriasSeeder extends Seeder
         
         DB::table('cervecerias')->insert([
             'nombre' => 'De la O',
-            'ciudad' => 'Guadalajara, Jalisco',
+            'ciudad' => 'Guadalajara',
             'sitio_web' => 'https://www.facebook.com/DeLaOgenovevo/',
             'contacto' => '33 2465 9094',
             'imagen' => 'de-la-o.jpg',
@@ -141,7 +141,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'El secreto 1881',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'https://www.facebook.com/elsecreto1881/',
             'contacto' => '55 5587 2122',
             'imagen' => 'el-secreto-1881.jpg',
@@ -157,7 +157,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Fauna',
-            'ciudad' => 'Mexicali Baja california',
+            'ciudad' => 'Mexicali',
             'sitio_web' => 'https://cervezafauna.com/',
             'contacto' => '(686) 562 6719',
             'imagen' => 'fauna.jpg',
@@ -165,7 +165,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Flandrine',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'https://www.facebook.com/Flandrine/',
             'contacto' => '55 2153 8603',
             'imagen' => 'flandrine.jpg',
@@ -173,7 +173,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Fortuna',
-            'ciudad' => 'Zapopan, Jalisco',
+            'ciudad' => 'Zapopan',
             'sitio_web' => 'http://cervezafortuna.com/',
             'contacto' => '3336277132            ',
             'imagen' => 'fortuna.jpg',
@@ -183,7 +183,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Genaro roque',
-            'ciudad' => 'Guanajuato, Mexico',
+            'ciudad' => 'Guanajuato',
             'sitio_web' => 'http://genaroroque.com/',
             'contacto' => '+52 4771580820',
             'imagen' => 'genaro_roque.jpg',
@@ -191,7 +191,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Guanajuato',
-            'ciudad' => 'Guanajuato, Leon',
+            'ciudad' => 'León',
             'sitio_web' => 'http://www.cguanajuato.mx/',
             'contacto' => '477 404 6261',
             'imagen' => 'guanajuato.jpg',
@@ -217,7 +217,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Irrevente',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'http://cervezairreverente.com/',
             'contacto' => '557 125 2631',
             'imagen' => 'irrevente.png',
@@ -235,7 +235,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Kella',
-            'ciudad' => 'Ciudad de mexico',
+            'ciudad' => 'Ciudad de México',
             'sitio_web' => 'www.cervezakella.com.mx',
             'contacto' => '722 261 2609',
             'imagen' => 'kella.png',
@@ -245,7 +245,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Libertad',
-            'ciudad' => 'Leon gto',
+            'ciudad' => 'Leon',
             'sitio_web' => 'https://cervezalibertad.com/',
             'contacto' => '(477) 167 8125',
             'imagen' => 'libertad.jpg',
@@ -253,7 +253,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Linares 102',
-            'ciudad' => 'Ciudad de mexico',
+            'ciudad' => 'Ciudad de México',
             'sitio_web' => 'https://www.cerveza102.com/',
             'contacto' => '666 976 405',
             'imagen' => 'Linares-102.jpg',
@@ -261,7 +261,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Luna negra',
-            'ciudad' => 'Mexico',
+            'ciudad' => 'México',
             'sitio_web' => 'http://www.cervecerialunanegra.mx/',
             'contacto' => '551581 8649',
             'imagen' => 'luna_negra.png',
@@ -269,7 +269,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'La Brü',
-            'ciudad' => 'Morelia, Michoacán',
+            'ciudad' => 'Morelia',
             'sitio_web' => 'http://www.cervezalabru.com.mx/',
             'contacto' => '443 274 07 83',
             'imagen' => 'la-bru.jpg',
@@ -277,7 +277,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'La Última del Desierto',
-            'ciudad' => 'San luis potosi',
+            'ciudad' => 'San Luis Potosí',
             'sitio_web' => 'https://www.facebook.com/La-%C3%9Altima-del-Desierto-108649775971940',
             'contacto' => '',
             'imagen' => 'la-ultima-del-desierto.jpg',
@@ -287,7 +287,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Minerva',
-            'ciudad' => 'Zapopan, Jalisco',
+            'ciudad' => 'Zapopan',
             'sitio_web' => 'https://www.cervezaminerva.mx/',
             'contacto' => '33 3682 0474',
             'imagen' => 'minerva.png',
@@ -303,7 +303,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Mala Santa',
-            'ciudad' => 'aguascalientes,México',
+            'ciudad' => 'Aguascalientes',
             'sitio_web' => 'http://www.malasanta.beer/',
             'contacto' => '449 2865697',
             'imagen' => 'malasanta.jpg',
@@ -311,7 +311,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Madrina',
-            'ciudad' => 'Ciudad de mexico',
+            'ciudad' => 'Ciudad de México',
             'sitio_web' => 'http://madrina.com.mx/',
             'contacto' => '',
             'imagen' => 'madrina.jpg',
@@ -319,7 +319,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Mogos',
-            'ciudad' => 'Ciudad de mexico',
+            'ciudad' => 'Ciudad de México',
             'sitio_web' => 'https://www.cervezaartesanalmogos.com/',
             'contacto' => '7772932881',
             'imagen' => 'mogos.jpg',
@@ -337,7 +337,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Naipe',
-            'ciudad' => 'Guadalajara, Jalisco',
+            'ciudad' => 'Guadalajara',
             'sitio_web' => 'https://www.cervezanaipe.com/',
             'contacto' => '3340402458',
             'imagen' => 'naipe.jpg',
@@ -409,7 +409,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Ruda',
-            'ciudad' => 'Guadalajara Jalisco',
+            'ciudad' => 'Guadalajara',
             'sitio_web' => 'www.cervezaruda.com',
             'contacto' => '',
             'imagen' => 'ruda.jpg',
@@ -427,7 +427,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Santa Chela',
-            'ciudad' => 'Cholula, Puebla',
+            'ciudad' => 'Cholula',
             'sitio_web' => 'https://twitter.com/SantaChelaMx',
             'contacto' => '',
             'imagen' => 'santa-chela.jpg',
@@ -435,7 +435,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Schoenfeld Brewery',
-            'ciudad' => 'Ciudad de mexico',
+            'ciudad' => 'Ciudad de México',
             'sitio_web' => 'http://schoenfeldbrewery.com/',
             'contacto' => '+52 55 6731 8601',
             'imagen' => 'schoenfeld-brewery.jpg',
@@ -451,7 +451,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Steinbock',
-            'ciudad' => 'Guadalajara jalisco',
+            'ciudad' => 'Guadalajara',
             'sitio_web' => 'https://www.facebook.com/Steinbock-Cerveza-Artesanal-de-Mexico-315725685111337/',
             'contacto' => '+51 33 12 52 00 71',
             'imagen' => 'steinbock.jpg',
@@ -469,7 +469,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Toro',
-            'ciudad' => 'Queretaro',
+            'ciudad' => 'Querétaro',
             'sitio_web' => 'https://www.cervezatoro.com/',
             'contacto' => '442 2810945',
             'imagen' => 'toro.jpg',
@@ -497,7 +497,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Ventura',
-            'ciudad' => 'Guadalajara Jalisco',
+            'ciudad' => 'Guadalajara',
             'sitio_web' => 'https://www.facebook.com/CervezaVentura/',
             'contacto' => '33 1542 1709',
             'imagen' => 'ventura.jpg',
@@ -515,7 +515,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Wasumara',
-            'ciudad' => 'San luis potosi',
+            'ciudad' => 'San Luis Potosí',
             'sitio_web' => 'www.wasumara.com',
             'contacto' => '444 173 4281',
             'imagen' => 'wasumara.jpg',
@@ -523,7 +523,7 @@ class CerveceriasSeeder extends Seeder
 
         DB::table('cervecerias')->insert([
             'nombre' => 'Wendlandt',
-            'ciudad' => 'Baja California',
+            'ciudad' => 'Baja California Sur',
             'sitio_web' => 'https://wendlandt.com.mx/',
             'contacto' => '(646) 178 2938',
             'imagen' => 'wendlandt.png',
