@@ -17,7 +17,7 @@ class CreateCouponsTable extends Migration
             $table->bigIncrements('id');
             $table->string('codigo')->unique();
             $table->string('coupon_type');
-            $table->integer('coupon_id');
+            $table->unsignedBigInteger('coupon_id');
             $table->softDeletes();
             $table->timestamps();
         });
