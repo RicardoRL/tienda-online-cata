@@ -34,6 +34,10 @@
     <script src="/vendor2/chart.js/Chart.min.js"></script>
     <script src="/vendor2/jquery-validation/jquery.validate.min.js"></script>
     <script src="/vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+     <!-- Preloader-->
+     <script src="js/components-preloader.js"> </script>
+    <!-- Main File-->
+    <script src="js/front.js"></script>
     <script src="/js/charts-home.js"></script>
     <!-- Notifications
     
@@ -102,7 +106,7 @@
             </li>
             <li><a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-line-chart"></i>Reportes </a>
               <ul id="pagesDropdown" class="collapse list-unstyled ">
-                <li><a href="">Generar reporte</a></li>
+                <li><a href="{{route('reporte.index')}}">Generar reporte</a></li>
                 <li><a href="">Exportar reporte</a></li>
               </ul>
             </li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Editor;
 use App\Reporte;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+      return view('layouts_editor.editorReporte', compact('admin'));
     }
 
     /**
