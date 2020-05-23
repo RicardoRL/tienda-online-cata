@@ -1,0 +1,50 @@
+1|2020-04-01|"recibido"|"normal"|"tarjeta"|19|1093.00|1209.00
+10|2020-04-01|"recibido"|"normal"|"tarjeta"|56|2948.00|3064.00
+7|2020-04-01|"recibido"|"expres"|"tarjeta"|24|1128.00|1302.00
+3|2020-04-01|"recibido"|"normal"|"paypal"|30|1650.00|1766.00
+3|2020-04-05|"recibido"|"expres"|"tarjeta"|16|832.00|1006.00
+5|2020-04-05|"recibido"|"normal"|"tarjeta"|48|2640.00|2756.00
+12|2020-04-08|"recibido"|"normal"|"tarjeta"|150|8070.00|8186.00
+9|2020-04-08|"recibido"|"expres"|"tarjeta"|48|2712.00|2886.00
+8|2020-04-08|"recibido"|"normal"|"tarjeta"|6|348.00|464.00
+2|2020-04-10|"recibido"|"normal"|"paypal"|10|552.00|668.00
+1|2020-04-10|"recibido"|"expres"|"tarjeta"|72|4404.00|4578.00
+4|2020-04-10|"recibido"|"expres"|"paypal"|24|1224.00|1398.00
+8|2020-04-10|"recibido"|"normal"|"paypal"|24|1356.00|1472.00
+11|2020-04-13|"recibido"|"normal"|"tarjeta"|4|256.00|372.00
+10|2020-04-13|"cancelado"|"normal"|"tarjeta"|32|1616.00|1732.00
+1|2020-04-13|"recibido"|"normal"|"tarjeta"|144|8208.00|8324.00
+12|2020-04-13|"recibido"|"normal"|"tarjeta"|24|1152.00|1268.00
+5|2020-04-13|"recibido"|"normal"|"tarjeta"|120|6888.00|7004.00
+9|2020-04-16|"cancelado"|"normal"|"tarjeta"|120|6840.00|6956.00
+9|2020-04-16|"recibido"|"expres"|"tarjeta"|36|1860.00|2034.00
+3|2020-04-16|"recibido"|"normal"|"tarjeta"|60|3150.00|3266.00
+7|2020-04-16|"recibido"|"normal"|"tarjeta"|12|600.00|716.00
+8|2020-04-16|"recibido"|"normal"|"tarjeta"|30|1904.00|2020.00
+11|2020-04-16|"recibido"|"normal"|"tarjeta"|12|684.00|800.00
+10|2020-04-16|"recibido"|"normal"|"tarjeta"|48|2016.00|2132.00
+6|2020-04-23|"cancelado"|"normal"|"tarjeta"|26|1690.00|1806.00
+1|2020-04-25|"recibido"|"normal"|"tarjeta"|140|7600.00|7716.00
+2|2020-04-25|"recibido"|"expres"|"paypal"|24|1128.00|1302.00
+12|2020-04-25|"recibido"|"normal"|"tarjeta"|90|4770.00|4886.00
+10|2020-04-25|"recibido"|"normal"|"tarjeta"|24|1368.00|1484.00
+9|2020-04-26|"recibido"|"normal"|"tarjeta"|24|1536.00|1652.00
+4|2020-04-26|"recibido"|"normal"|"tarjeta"|48|2472.00|2588.00
+4|2020-04-27|"recibido"|"expres"|"tarjeta"|12|624.00|798.00
+6|2020-04-27|"recibido"|"expres"|"tarjeta"|36|1665.00|1839.00
+3|2020-04-27|"recibido"|"expres"|"tarjeta"|60|3300.00|3474.00
+2|2020-05-02|"recibido"|"normal"|"tarjeta"|90|5430.00|5546.00
+7|2020-05-03|"recibido"|"normal"|"tarjeta"|72|3744.00|3860.00
+8|2020-05-04|"recibido"|"normal"|"tarjeta"|30|1740.00|1856.00
+11|2020-05-09|"recibido"|"normal"|"tarjeta"|120|6750.00|6866.00
+12|2020-05-09|"recibido"|"normal"|"tarjeta"|120|6672.00|6788.00
+5|2020-05-09|"recibido"|"normal"|"tarjeta"|60|3330.00|3446.00
+3|2020-05-12|"recibido"|"normal"|"tarjeta"|30|1650.00|1766.00
+1|2020-05-12|"enviado"|"normal"|"tarjeta"|96|5856.00|5972.00
+7|2020-05-20|"enviado"|"normal"|"tarjeta"|120|6420.00|6536.00
+9|2020-05-20|"enviado"|"normal"|"tarjeta"|48|2496.00|2612.00
+10|2020-05-20|"pedido hecho"|"expres"|"tarjeta"|120|6840.00|7014.00
+1|2020-05-20|"pedido hecho"|"normal"|"tarjeta"|120|6810.00|6926.00
+12|2020-05-20|"pedido hecho"|"normal"|"tarjeta"|108|5496.00|5612.00
+4|2020-05-20|"pedido hecho"|"expres"|"tarjeta"|66|3720.00|3894.00
+6|2020-05-20|"pedido hecho"|"normal"|"tarjeta"|150|8070.00|8186.00

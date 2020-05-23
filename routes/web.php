@@ -97,16 +97,19 @@ Route::get('/contacto', function() {
     return view('layouts_cliente.contacto');
 });
 
-//Ruta para el carrito de compras
+//Rutsa para el carrito de compras
 Route::resource('cart', 'CartController');
 Route::post('cart/coupon', 'CartController@apply')->name('cart.apply');
 Route::get('vaciar', function(){
     Cart::clear();
 });
 
-//Ruta para Eventos
+//Rutas para Eventos
 Route::get('/evento/delete/{id}', 'EventoController@delete')->name('evento.delete');
 Route::get('/evento/delete', 'EventoController@deleteList')->name('evento.deleteList');
 Route::post("/evento/scopeName", "EventoController@scopeName")->name("evento.scopeName");
 Route::post("/evento/scopeDelete", "EventoController@scopeDelete")->name("evento.scopeDelete");
 Route::resource('evento', 'EventoController');
+
+//Rutas para Reportes
+Route::resource('reporte', 'ReporteController');

@@ -1,14 +1,14 @@
 @guest
   <a href="{{route('inicio')}}" class="navbar-brand home">
-    <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
-    <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
-    <span class="sr-only">Obaju - go to homepage</span>
+    <img src="/img/cata-logo.png" alt="CATA logo" class="d-none d-md-inline-block">
+    <img src="/img/cata-logo-sm.png" alt="CATA logo" class="d-inline-block d-md-none">
+    <span class="sr-only">CATA - go to homepage</span>
   </a>
 @else
   <a href="{{route('cliente.index')}}" class="navbar-brand home">
-    <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
-    <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
-    <span class="sr-only">Obaju - go to homepage</span>
+    <img src="/img/cata-logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
+    <img src="/img/cata-logo-sm.png" alt="Obaju logo" class="d-inline-block d-md-none">
+    <span class="sr-only">CATA - go to homepage</span>
   </a>
 @endguest
 <div class="navbar-buttons">
@@ -20,7 +20,9 @@
     <span class="sr-only">Toggle search</span>
     <i class="fa fa-search"></i>
   </button>
-  <a href="basket.html" class="btn btn-outline-secondary navbar-toggler">
-    <i class="fa fa-shopping-cart"></i>
-  </a>
+  @auth
+    <a href="{{route('cart.index')}}" class="btn btn-outline-secondary navbar-toggler">
+      <i class="fa fa-shopping-cart"></i>
+    </a>
+  @endauth
 </div>

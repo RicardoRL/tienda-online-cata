@@ -77,7 +77,7 @@
               </li>
             @endif
             <!-- Eventos -->                
-            <li><a href="#opcionesEvento" aria-expanded="false" data-toggle="collapse"> <i class="icon-form"></i>Eventos</a>
+            <li><a href="#opcionesEvento" aria-expanded="false" data-toggle="collapse"> <i class="icon-picture"></i>Eventos</a>
               <ul id="opcionesEvento" class="collapse list-unstyled ">
                 <li><a href="{{route('evento.create')}}">Nuevo evento</a></li>
                 <li><a href="{{route('evento.index')}}">Actualizar evento</a></li>
@@ -85,50 +85,34 @@
               </ul>
             </li>
             <!-- Cervecerias -->
-            <li><a href="#opcionesCerveceria" aria-expanded="false" data-toggle="collapse"><i class="fa fa-bar-chart" ></i>Cervecerias</a>
+            <li><a href="#opcionesCerveceria" aria-expanded="false" data-toggle="collapse"><i class="icon-form" ></i>Cervecerías</a>
               <ul id="opcionesCerveceria" class="collapse list-unstyled ">
-                <li><a href="{{route('cerveceria.create')}}">Agregar Cerveceria</a></li>
-                <li><a href="{{route('cerveceria.index')}}">Actualizar Cervecerias</a></li>
-                <li><a href="{{route('cerveceria.delete')}}">Eliminar Cerveceria</a></li>
+                <li><a href="{{route('cerveceria.create')}}">Agregar Cervecería</a></li>
+                <li><a href="{{route('cerveceria.index')}}">Actualizar Cervecería</a></li>
+                <li><a href="{{route('cerveceria.delete')}}">Eliminar Cervecería</a></li>
               </ul>
             </li>
             <!-- Cervecerias -->
-            <li><a href="#opcionesCerveza" aria-expanded="false" data-toggle="collapse"> <i class="icon-grid"></i>Cervezas </a>
+            <li><a href="#opcionesCerveza" aria-expanded="false" data-toggle="collapse"> <i class="icon-flask"></i>Cervezas </a>
               <ul id="opcionesCerveza" class="collapse list-unstyled ">
-                <li><a href="{{route('cerveza.create')}}">Agregar cerveza</a></li>
+                <li><a href="{{route('cerveza.create')}}">Agregar Cerveza</a></li>
                 <li><a href="{{route('cerveza.updateList')}}">Actualizar Cerveza</a></li>
                 <li><a href="{{route('cerveza.deleteList')}}">Eliminar Cerveza</a></li>
               </ul>
             </li>
-            <li><a href="#opcionesGenerales" aria-expanded="false" data-toggle="collapse"> <i class="icon-page"></i>Cuenta</a>
-              <ul id="opcionesGenerales" class="collapse list-unstyled ">
-                <li><a href="components-cards.html">Actualizar información</a></li>
-              </ul>
-            </li>
-            <li><a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Pages </a>
+            <li><a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-line-chart"></i>Reportes </a>
               <ul id="pagesDropdown" class="collapse list-unstyled ">
-                <li><a href="pages-contacts.html">Contacts</a></li>
-                <li><a href="pages-invoice.html">Invoice</a></li>
-                <li><a href="login.html">Login page</a></li>
-                <li><a href="login-2.html">Login v.2 <span class="badge badge-info">New</span></a></li>
-                <li><a href="pages-profile.html">Profile</a></li>
-                <li><a href="pages-pricing.html">Pricing table</a></li>
+                <li><a href="">Generar reporte</a></li>
+                <li><a href="">Exportar reporte</a></li>
+              </ul>
+            </li>
+            <li><a href="#opcionesGenerales" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Cuenta</a>
+              <ul id="opcionesGenerales" class="collapse list-unstyled ">
+                <li><a href="#">Actualizar información</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <!--
-        <div class="admin-menu">
-          <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i>Demo
-                <div class="badge badge-info">Special</div></a></li>
-            <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-            <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
-          </ul>
-        </div>
-        -->
       </div>
     </nav>
     <div class="page">
@@ -186,13 +170,6 @@
                       <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
                     </ul>
                   </li>
-                  <!-- Languages dropdown    -->
-                  <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-                    <ul aria-labelledby="languages" class="dropdown-menu">
-                      <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a></li>
-                      <li><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French                                                         </span></a></li>
-                    </ul>
-                  </li>
                   <!-- Log out-->
                   <li class="nav-item">
                     <a href="{{route('editor.logout')}}" 
@@ -211,8 +188,7 @@
           </nav>
         </header>
         <main>
-        @extends('layouts_editor.editorAlertas')
-        
+          @include('layouts_editor.editorAlertas')
           @yield('content')
         </main>
         <footer class="main-footer">

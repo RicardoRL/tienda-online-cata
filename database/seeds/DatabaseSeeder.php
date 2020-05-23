@@ -17,7 +17,14 @@ class DatabaseSeeder extends Seeder
         'tarjetas',
         'cervecerias',
         'cervezas',
-        'cerveza_pedido'
+        'pedidos',
+        'cerveza_pedido',
+        'cantidad_minima_coupons',
+        'porcentaje_coupons',
+        'valor_fijo_coupons',
+        'coupons',
+        'editors',
+        'eventos'
       ]);
         
       $this->call(ClientesSeeder::class);
@@ -25,7 +32,14 @@ class DatabaseSeeder extends Seeder
       $this->call(TarjetaSeeder::class);
       $this->call(CerveceriasSeeder::class);
       $this->call(CervezasSeeder::class);
+      $this->call(PedidoSeeder::class);
       $this->call(CervezaPedidoSeeder::class);
+      $this->call(CantidadMinimaCuponSeeder::class);
+      $this->call(PorcentajeCuponSeeder::class);
+      $this->call(ValorFijoCuponSeeder::class);
+      $this->call(CuponSeeder::class);
+      $this->call(EditorSeeder::class);
+      $this->call(EventoSeeder::class);
     }
 
     protected function truncatetables(array $tables) // Tablas de areglo que queremos vaciar
