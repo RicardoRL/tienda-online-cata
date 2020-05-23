@@ -58,7 +58,7 @@
                   <tr>
                     <th>{{$pedido->id}}</th>
                     <td>{{$pedido->fecha}}</td>
-                    <td>{{$pedido->total}}</td>
+                    <td>${{$pedido->total}}</td>
                     @if($pedido->estado == 'pedido hecho')
                       <td><span class="badge badge-info">{{$pedido->estado}}</span></td>
                     @elseif($pedido->estado == 'recibido')

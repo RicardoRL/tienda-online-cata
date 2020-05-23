@@ -26,7 +26,7 @@
             <div class="card-body">
               <ul class="nav nav-pills flex-column">
                 <a href="#" class="nav-link active"><i class="fa fa-user"></i> Mi cuenta</a>
-                <a href="#" class="nav-link"><i class="fa fa-list"></i> Mis pedidos</a>
+                <a href="{{route('pedido.showOrders')}}" class="nav-link"><i class="fa fa-list"></i> Mis pedidos</a>
                 <a href="{{route('logout')}}" class="nav-link"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Salir</a>
@@ -38,7 +38,7 @@
         </div>
         <div id="checkout" class="col-lg-9">
           <div class="box">
-            <h1 class="text-center">Mi Cuenta {{$tarjeta->cliente_id}}</h1><br>
+            <h1 class="text-center">Mi Cuenta</h1><br>
             <div class="nav flex-column flex-md-row nav-pills text-center">
               <a href="{{route('cliente.show', [Auth::user()->id])}}" class="nav-link flex-sm-fill text-sm-center">
                 <i class="fa fa-map-marker"></i>Mis datos
@@ -132,7 +132,7 @@
                 <div class="col-md-6 col-lg-3">
                   <div class="form-group">
                     <label for="codigo">Código de seguridad</label>
-                    <input id="codigo" type="text" class="form-control"
+                    <input id="codigo" type="password" class="form-control"
                     name="codigo" value="{{$tarjeta->codigo ?? '' }}">
                     @error('codigo')
                       <div class="alert alert-danger">{{ $message }}</div>
