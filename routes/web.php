@@ -109,6 +109,4 @@ Route::get('/evento/delete/{id}', 'EventoController@delete')->name('evento.delet
 Route::get('/evento/delete', 'EventoController@deleteList')->name('evento.deleteList');
 Route::post("/evento/scopeName", "EventoController@scopeName")->name("evento.scopeName");
 Route::post("/evento/scopeDelete", "EventoController@scopeDelete")->name("evento.scopeDelete");
-
 Route::resource('evento', 'EventoController');
-

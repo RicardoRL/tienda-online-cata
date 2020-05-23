@@ -1,5 +1,6 @@
 @extends('layouts_editor.editorMenu')
 @section('content')
+@include('includes.styledropzone')
 
 <div class="container-fluid">
       <!-- Breadcrumb-->
@@ -17,7 +18,8 @@
           <header> 
             <h1 class="h3 display">Nuevo Evento  </h1>
           </header>
-        <form action="/evento" method="POST" role="form" enctype="multipart/form-data">
+          <form action="/evento" method="POST" id="upload" role="form" enctype="multipart/form-data"> 
+             <!--<form action="/evento" method="POST" class="dropzone" id="my-awesome-dropzone" enctype="multipart/form-data" >  -->
             @csrf
           <div class="col-lg-12">
               <div class="card">
@@ -81,23 +83,42 @@
                 </div>
             </div>
             </div>
+           
 
-            <div class="col-lg-8">
+           <div class="col-lg-8">
               <div class="card">
                 <div class="card-header d-flex align-items-center">
                   <h4>Agregar Imagen:</h4>
                 </div>
                 <div class="card-body">
                 <div class="custom-file col-md-16 mt-3 mb-3">
-                <div class="col-sm-10">
+                <div >
                         <label for=""> <h4>  </h4> </label> 
-                        <input type="file" name="imagen" style="text-align:right" required> 
+                        <input type="file" name="imagen[]" multiple required> 
+                        <input type="submit">
                     </div>
                     </div>
                 </div>
               </div>
             </div>
             </form>
+            <script> 
+            var form = document.getElementById('upload');
+            var request = new  XMLHtppRequest();
+
+            form.addEventListener('submit', function(e){
+              e.preventDefault();
+              var formdata = new FomrData(form);
+              
+              request.open('post', '/evento');
+              request.addEventListerner("load",transferComplete);
+              request.send(formdata);
+            });
+
+            functio traferComplete(data){
+             consolse.log(data.currentTarget.response);
+            }
+            </script>
     </div>
      <br><br><br>
         <!--- Footer -->

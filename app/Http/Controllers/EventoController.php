@@ -4,12 +4,27 @@ namespace App\Http\Controllers;
 use App\Evento;
 use App\Editor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventoController extends Controller
 {
+
+  public function owner()
+    {
+      
+    }
+
+  public function view()
+  {
+      
+  }
+
+
     public function index()
     {
       $eventos = Evento::all();
+      //$this->authorize('pass', $eventos);
+      
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
       return view('layouts_evento.eventoIndex', compact('eventos', 'admin'));
@@ -24,6 +39,7 @@ class EventoController extends Controller
 
     public function store(Request $request)
     {
+     
         $this->validate($request, [
             'nombre' => 'required|min:10|max:30',
             'sede' => 'required',
@@ -36,10 +52,17 @@ class EventoController extends Controller
 
         if($request->hasFile('imagen'))
         {
-            $file = $request->file('imagen');
+            $files = $request->file('imagen');
+            $str = strtolower($request->nombre);
+            $nombreEvento = str_replace(" ", "_",$str);
+            $nombreEvento = "/img/eventos/".$nombreEvento;
+            $entrada['imagen']=$nombreEvento;
+
+            foreach($files as $file){
+            //Storage::put($file->getClientOriginalName(), file_get_contents($file));
             $nombre = $file->getClientOriginalName();
-            $file->move(public_path().'/img/eventos', $nombre);
-            $entrada['imagen']=$nombre;
+            $file->move(public_path().$nombreEvento, $nombre);
+            }
         }
 
         Evento::create($entrada);
@@ -49,17 +72,6 @@ class EventoController extends Controller
                     'alerta'=>'Has creado correctamente un nuevo evento ',
                     'clase-alerta'=>'alert-success',
                     ]);
-       /* $id2 = 0;
-        foreach($entrada as $mientrada){
-            $id2 = $id2 + 1;
-            if($mientrada->id == $id2 )
-             {
-                $mientrada->id = $id2;
-                
-             }
-        }*/
-        
-        
      }
 
     public function update(Request $request, $id)
@@ -91,6 +103,7 @@ class EventoController extends Controller
     public function edit($id)
     {
       $evento = Evento::findOrFail($id);
+     // $this->authorize('pass', $eventos);
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
       return view ('layouts_evento.eventoEdit', compact('evento', 'admin'));
@@ -111,8 +124,12 @@ class EventoController extends Controller
     public function deleteList()
     {
       $eventos = Evento::all();
+      //$this->authorize('pass', $eventos);
+      
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
+      
+      
       return view('layouts_evento.eventoDelete',compact('eventos', 'admin'));
     }
 
