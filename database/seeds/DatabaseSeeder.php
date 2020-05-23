@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         'porcentaje_coupons',
         'valor_fijo_coupons',
         'coupons',
-        'editors'
+        'editors',
+        'eventos'
       ]);
         
       $this->call(ClientesSeeder::class);
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
       $this->call(ValorFijoCuponSeeder::class);
       $this->call(CuponSeeder::class);
       $this->call(EditorSeeder::class);
+      $this->call(EventoSeeder::class);
     }
 
     protected function truncatetables(array $tables) // Tablas de areglo que queremos vaciar
