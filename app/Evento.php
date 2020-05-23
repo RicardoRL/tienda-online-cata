@@ -10,5 +10,5 @@ class Evento extends Model
 {
   use softDeletes;
   
-  protected $fillable = ['nombre', 'sede','fecha','asistentes','imagen'];
+  protected $fillable = ['editor_id', 'nombre', 'sede','fecha','asistentes','imagen'];
 }

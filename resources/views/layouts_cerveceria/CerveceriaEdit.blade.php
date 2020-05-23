@@ -31,7 +31,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Nombre: </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Acapulco Beer" name="nombre" value="{{$cerveceria->nombre}}" required>
+                        <input type="text" class="form-control" disabled placeholder="Acapulco Beer" name="nombre" value="{{$cerveceria->nombre}}" required>
                         @error('nombre')
                                     <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

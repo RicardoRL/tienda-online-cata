@@ -95,7 +95,6 @@
                 <div >
                         <label for=""> <h4>  </h4> </label> 
                         <input type="file" name="imagen[]" multiple required> 
-                        <input type="submit">
                     </div>
                     </div>
                 </div>

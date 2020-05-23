@@ -83,23 +83,7 @@
             </div>
             </div>
             
-        <div class="row">
-
-
-            <!-- Imagen Actual -->
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                        <h4>Imagen:</h4> <input type="text" disabled name="nombre_imagen" value="{{$evento->imagen}}"> 
-                    </div>
-                    <div class="col-sm-10">
-                         <br><img src="{{asset('eventos/'.$evento->imagen)}}" height="200" width="370"><br><br>
-                    </div>
-                </div>
-            </div>
         </form>
-    </div>
+    
 
     @endsection

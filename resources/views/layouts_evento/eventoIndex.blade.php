@@ -8,7 +8,7 @@
         <div class="container-fluid">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="/editor">Inicio</a></li>
-            <li class="breadcrumb-item active">Actualizar </li>
+            <li class="breadcrumb-item active">Eliminar </li>
           </ul>
         </div>
       </div>
@@ -19,18 +19,18 @@
                 <div class="card-header">
                   <h4>Eventos</h4>
                   <nav class="float-right">
-                    <form class="form-inline" action="{{route('evento.scopeName')}}" method="POST">
+                    <form class="form-inline" action="{{route('evento.scopeDelete')}}" method="POST">
                     @csrf
                       <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Nombre Evento" aria-label="Search">
                       <button type="submit" class="btn btn-outline-success btn-sm">Buscar</button>
                       </form>
                   </nav>
                 </div>
-                </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
-                      <thead>
+                      
+<thead>
                         <tr>
                           <th> ID </th>
                           <th> Evento </th>
@@ -45,7 +45,7 @@
                       
                       @foreach($eventos as $evento)
       
-          {{--   @can(auth()->guard('editor')->user()->can('viewAny', $evento)) --}} 
+                  @if(auth()->guard('editor')->user()->can('owner', $evento)) 
                         <tr>
                             <td> {{$evento->id}}</td>
                             <td> {{$evento->nombre}} </td>
@@ -60,7 +60,7 @@
                                 </a>
                             </td>
                         </tr>
-              {{-- @endcan --}}
+                  @endif 
                       @endforeach
                       </tbody>
                     </table>
