@@ -5,7 +5,7 @@
   <div class="card-header">
     <p><h4>Reporte</h4></p>
     <p><strong>Periodo: </strong>{{$datos['fecha_inicio']}} - {{$datos['fecha_final']}}</p>
-    <p><strong>Generado por: </strong>{{auth()->guard('editor')->user()->nombre}} {{auth()->guard('editor')->user()->apepat}}</p>
+    <p><strong>Generado por: </strong>{{App\Editor::where('id', $reporte->id)->first()->nombre}} {{App\Editor::where('id', $reporte->id)->first()->apepat}}</p>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -84,6 +84,13 @@
     </div>
   </div>
 </div>
+@isset($reporte)
+  @if(\Request::getRequestUri() == '/reporte/select/'.$reporte->id.'?')
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-primary">Exportar</button>
+    </div>
+  @endif
+@endisset
 <script type="text/javascript">
   var cerveza1 = "<?= $datos['cervezas_nombre'][0] ?>";
   var cerveza2 = "<?= $datos['cervezas_nombre'][1] ?>";

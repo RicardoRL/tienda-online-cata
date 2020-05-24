@@ -114,5 +114,6 @@ Route::resource('evento', 'EventoController');
 //Rutas para Reportes
 Route::post('/reporte/nuevo', 'ReporteController@createReport')->name('reporte.nuevo');
 Route::get('/reporte/view', 'ReporteController@view')->name('reporte.view');
+Route::get('/reporte/select/{reporte}', 'ReporteController@select')->name('reporte.select');
 Route::get('/reportes', 'ReporteController@viewReports')->name('reporte.list');
 Route::resource('reporte', 'ReporteController');

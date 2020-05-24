@@ -24,7 +24,7 @@ class ReporteController extends Controller
       return view('layouts_editor.editorCrearReporte', compact('admin'));
     }
 
-    public function view()
+    public function view(Request $request)
     {
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
@@ -35,12 +35,27 @@ class ReporteController extends Controller
       $id = $reporte_nuevo->id;
 
       //Consulta API
-      //$req = Request::create('api/reporte/'.$id, 'GET');
-      $req = Request::getRequestUri('api/reporte/'.$id);
-      $res = app()->handle($req);
+      $req = Request::create('api/reporte/'.$id, 'GET');
+      $res = \Route::dispatch($req);
       $datos = json_decode($res->getContent(), true);
 
       return view('layouts_editor.editorReporte', compact('admin', 'datos'));
+    }
+
+    public function select(Request $request, Reporte $reporte)
+    {
+
+      $editor_id = \Auth::guard('editor')->user()->id;
+      $admin = Editor::where('id', $editor_id)->first();
+
+      $id = $reporte->id;
+
+      //Consulta API
+      $req = Request::create('api/reporte/'.$id, 'GET');
+      $res = \Route::dispatch($req);
+      $datos = json_decode($res->getContent(), true);
+
+      return view('layouts_editor.editorReporte', compact('admin', 'datos', 'reporte'));
     }
 
     public function createReport(Request $request)
@@ -56,7 +71,7 @@ class ReporteController extends Controller
       $reporte->editor_id = $request->editor_id;
       $reporte->periodo = $request->periodo;
       $reporte->fecha_inicio = $request->fecha_inicio;
-      //$reporte->save();
+      $reporte->save();
 
       return redirect()->route('reporte.view');
     }
@@ -66,7 +81,9 @@ class ReporteController extends Controller
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
 
-      return view('layouts_editor.editorListaReportes', compact('admin'));
+      $reportes = Reporte::all();
+
+      return view('layouts_editor.editorListaReportes', compact('admin', 'reportes'));
     }
 
     public function getInfoReport($reporte)
@@ -186,7 +203,6 @@ class ReporteController extends Controller
         'fecha_inicio' => $fecha_inicio,
         'fecha_final' => $fecha_final
       );
-
       return $array_final;
     }
 

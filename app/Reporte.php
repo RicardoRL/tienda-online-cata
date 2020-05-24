@@ -9,7 +9,7 @@ class Reporte extends Model
 {
   use softDeletes;
 
-  public function reportes()
+  public function editor()
   {
     return $this->belongsTo('App\Editor');
   }
