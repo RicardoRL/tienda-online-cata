@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::post('api/tienda/buscar', 'ShopController@buscar')->name('tienda.buscar');
+Route::get('/reporte/{reporte}', 'ReporteController@getInfoReport');

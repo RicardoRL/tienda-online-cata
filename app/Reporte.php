@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reporte extends Model
 {
   use softDeletes;
+
+  public function reportes()
+  {
+    return $this->belongsTo('App\Editor');
+  }
   
 }

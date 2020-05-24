@@ -65,7 +65,6 @@ class PedidoController extends Controller
 
   public function showOneOrder(Cliente $cliente, Pedido $pedido)
   {
-    //dd($pedido);
     //Obtener el domicilio del cliente
     $domicilio = Domicilio::where('cliente_id', $cliente->id)->first();
 

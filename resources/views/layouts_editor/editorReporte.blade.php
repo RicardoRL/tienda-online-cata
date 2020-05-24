@@ -2,23 +2,103 @@
 
 @section('content')
 <div class="card">
-  <div class="card-header">Fading circle</div>
-  <div class="card-body d-flex justify-content-center pt-5 pb-5">
-    <div class="sk-fading-circle">
-      <div class="sk-circle1 sk-circle"></div>
-      <div class="sk-circle2 sk-circle"></div>
-      <div class="sk-circle3 sk-circle"></div>
-      <div class="sk-circle4 sk-circle"></div>
-      <div class="sk-circle5 sk-circle"></div>
-      <div class="sk-circle6 sk-circle"></div>
-      <div class="sk-circle7 sk-circle"></div>
-      <div class="sk-circle8 sk-circle"></div>
-      <div class="sk-circle9 sk-circle"></div>
-      <div class="sk-circle10 sk-circle"></div>
-      <div class="sk-circle11 sk-circle"></div>
-      <div class="sk-circle12 sk-circle"> </div>
+  <div class="card-header">
+    <p><h4>Reporte</h4></p>
+    <p><strong>Periodo: </strong>{{$datos['fecha_inicio']}} - {{$datos['fecha_final']}}</p>
+    <p><strong>Generado por: </strong>{{auth()->guard('editor')->user()->nombre}} {{auth()->guard('editor')->user()->apepat}}</p>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre de cerveza</th>
+            <th>Cantidad vendida</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for($i=0; $i<$datos['total_cervezas']; $i++)
+            <tr>
+              <th scope="row">{{$datos['cervezas_id'][$i]}}</th>
+              <td>{{$datos['cervezas_nombre'][$i]}}</td>
+              <td>{{$datos['cervezas_cantidad'][$i]}}</td>
+              <td>${{$datos['cervezas_monto'][$i]}}.00</td>
+            </tr>
+          @endfor
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>Productos vendidos: </td>
+            <td>{{$datos['total_cervezas_vendidas']}}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>Total vendido: </td>
+            <td>${{$datos['monto_vendido']}}.00</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>Envíos normales: </td>
+            <td>{{$datos['envios_normales']}}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>Envíos exprés: </td>
+            <td>{{$datos['envios_expres']}}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>Pagos con tarjeta: </td>
+            <td>{{$datos['pagos_tarjeta']}}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td>Pagos con Paypal: </td>
+            <td>{{$datos['pagos_paypal']}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-<p>Hola</p>
+<div class="card pie-chart-example">
+  <div class="card-header d-flex align-items-center">
+    <h4>Top 5</h4>
+  </div>
+  <div class="card-body">
+    <div class="chart-container">
+      <canvas id="customChart"></canvas>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var cerveza1 = "<?= $datos['cervezas_nombre'][0] ?>";
+  var cerveza2 = "<?= $datos['cervezas_nombre'][1] ?>";
+  var cerveza3 = "<?= $datos['cervezas_nombre'][2] ?>";
+  var cerveza4 = "<?= $datos['cervezas_nombre'][3] ?>";
+  var cerveza5 = "<?= $datos['cervezas_nombre'][4] ?>";
+
+  var cant1 = "<?= $datos['cervezas_cantidad'][0] ?>";
+  var cant2 = "<?= $datos['cervezas_cantidad'][1] ?>";
+  var cant3 = "<?= $datos['cervezas_cantidad'][2] ?>";
+  var cant4 = "<?= $datos['cervezas_cantidad'][3] ?>";
+  var cant5 = "<?= $datos['cervezas_cantidad'][4] ?>";
+</script>
+<script src="/js/myChart.js" type="text/javascript"></script>
+<script src="/js/charts-custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 @endsection

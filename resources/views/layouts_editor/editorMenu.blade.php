@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="/img/favicon.ico">
+    <!-- Ladda-->
+    <link rel="stylesheet" href="/vendor2/ladda/ladda-themeless.min.css">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="/css2/grasp_mobile_progress_circle-1.0.0.min.css">
     <!-- JavaScript files-->
     <script src="/vendor2/jquery/jquery.min.js"></script>
     <script src="/vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -34,22 +38,9 @@
     <script src="/vendor2/chart.js/Chart.min.js"></script>
     <script src="/vendor2/jquery-validation/jquery.validate.min.js"></script>
     <script src="/vendor2/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-     <!-- Preloader-->
-     <script src="js/components-preloader.js"> </script>
     <!-- Main File-->
-    <script src="js/front.js"></script>
     <script src="/js/charts-home.js"></script>
-    <!-- Notifications
-    
-    <script src="/vendor2/messenger-hubspot/build/js/messenger.min.js">   </script>
-    <script src="/vendor2/messenger-hubspot/build/js/messenger-theme-flat.js">       </script>
-    <script src="/js/home-premium.js"> </script>-->
-    
-    <!-- Main File-->
     <script src="/js/front2.js"></script>
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
   <!-- Side Navbar -->
@@ -107,7 +98,7 @@
             <li><a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-line-chart"></i>Reportes </a>
               <ul id="pagesDropdown" class="collapse list-unstyled ">
                 <li><a href="{{route('reporte.index')}}">Generar reporte</a></li>
-                <li><a href="">Exportar reporte</a></li>
+                <li><a href="{{route('reporte.list')}}">Exportar reporte</a></li>
               </ul>
             </li>
             <li><a href="#opcionesGenerales" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Cuenta</a>

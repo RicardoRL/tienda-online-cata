@@ -19,5 +19,9 @@ class Editor extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function reportes()
+    {
+      return $this->hasMany('App\Reporte');
+    }
 
 }
