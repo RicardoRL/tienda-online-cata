@@ -123,3 +123,12 @@
           <center>   <strong> {{Session::get('cervezaDelete')}} </strong> </center>
     </div>
 @endif
+
+@if(Session::has('error_message')) 
+    <div class="alert alert-dismissible col-lg-5 mx-auto alert-danger " role="alert">   
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <center>   <strong> {{Session::get('error_message')}} </strong> </center>
+    </div>
+@endif

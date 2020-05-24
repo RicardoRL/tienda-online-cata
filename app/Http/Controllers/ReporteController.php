@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Cerveza;
 use App\Pedido;
 use App\Editor;
@@ -30,17 +31,17 @@ class ReporteController extends Controller
       $editor_id = \Auth::guard('editor')->user()->id;
       $admin = Editor::where('id', $editor_id)->first();
 
-      $reporte_nuevo = DB::table('reportes')->latest('created_at')->first();
-      $reporte_id = $reporte_nuevo->id;
-      $reporte_nuevo = Reporte::where('id', $reporte_nuevo->id)->first();
-      $id = $reporte_nuevo->id;
+      $reporte = DB::table('reportes')->latest('created_at')->first();
+      $reporte_id = $reporte->id;
+      $reporte = Reporte::where('id', $reporte->id)->first();
+      $id = $reporte->id;
 
       //Consulta API
       $req = Request::create('api/reporte/'.$id, 'GET');
       $res = \Route::dispatch($req);
       $datos = json_decode($res->getContent(), true);
 
-      return view('layouts_editor.editorReporte', compact('admin', 'datos'));
+      return view('layouts_editor.editorReporte', compact('admin', 'datos', 'reporte'));
     }
 
     public function select(Request $request, Reporte $reporte)
@@ -61,12 +62,49 @@ class ReporteController extends Controller
 
     public function createReport(Request $request)
     {
+
       $request->validate([
         'editor_id' => 'required|numeric',
         'periodo' => 'required|string',
         'fecha_inicio' => 'required|date',
       ]);
 
+      $today = new DateTime();
+      $init_date = new DateTime($request->fecha_inicio);
+
+      if($today < $init_date)
+      {
+        return redirect()->back()->with('error_message', 'La fecha ingresada es mayor que la actual, favor de corregir');
+      }
+      
+      //Se crea un string para pasarlo a la función date_interval_create_from_date_string()
+      $periodo = "";
+      if($request->periodo == "semanal")
+      {
+        $periodo = '7 days';
+      }
+      elseif($request->periodo == "quincenal")
+      {
+        $periodo = '15 days';
+      }
+      elseif($request->periodo == "mensual")
+      {
+        $periodo = '1 month';
+      }
+
+      //Se obtiene la fecha final de acuerdo a la fecha_inicio y el periodo seleccionado
+      $fecha_inicio = $request->fecha_inicio;
+      $fecha_final = date_create($fecha_inicio);
+      date_add($fecha_final, date_interval_create_from_date_string($periodo));
+      $fecha_final = date_format($fecha_final, 'Y-m-d');
+      $fecha_final = new DateTime($fecha_final);
+
+      if($today < $fecha_final)
+      {
+        return redirect()->back()->with('error_message', 'Verifica el periodo o la fecha de inicio seleccionada');
+      }
+
+      //Si no hay ningún error, se procede a guardar el reporte.
       $reporte = new Reporte();
 
       $reporte->editor_id = $request->editor_id;
