@@ -35,3 +35,27 @@
   width: 50px;
   object-fit: cover;
 }
+
+/* Estilos para la tabla pdf*/
+#reporte {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#reporte td, #reporte th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#reporte tr:nth-child(even){background-color: #f2f2f2;}
+
+#reporte tr:hover {background-color: #ddd;}
+
+#reporte th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #617cd4;
+  color: white;
+}

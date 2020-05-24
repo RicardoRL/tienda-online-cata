@@ -43,7 +43,7 @@
     <script src="/js/front2.js"></script>
   </head>
   <body>
-  <!-- Side Navbar -->
+    <!-- Side Navbar -->
     <nav class="side-navbar">
       <div class="side-navbar-wrapper">
         <!-- Sidebar Header    -->
@@ -198,6 +198,6 @@
             </div>
           </div>
       </footer>
-      </div>
+    </div>
   </body>
 </html>

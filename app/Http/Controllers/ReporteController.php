@@ -6,6 +6,7 @@ use App\Cerveza;
 use App\Pedido;
 use App\Editor;
 use App\Reporte;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
@@ -84,6 +85,22 @@ class ReporteController extends Controller
       $reportes = Reporte::all();
 
       return view('layouts_editor.editorListaReportes', compact('admin', 'reportes'));
+    }
+
+    public function createPdf(Request $request)
+    {
+      $id = $request->reporte_id;
+
+      $reporte = Reporte::where('id', $id)->first();
+
+      //Consulta API
+      $req = Request::create('api/reporte/'.$id, 'GET');
+      $res = \Route::dispatch($req);
+      $datos = json_decode($res->getContent(), true);
+
+      $pdf = PDF::loadView('partials.pdf-report', compact('datos', 'reporte'));
+
+      return $pdf->stream('archivo.pdf');
     }
 
     public function getInfoReport($reporte)

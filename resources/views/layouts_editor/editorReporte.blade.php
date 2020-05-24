@@ -5,7 +5,7 @@
   <div class="card-header">
     <p><h4>Reporte</h4></p>
     <p><strong>Periodo: </strong>{{$datos['fecha_inicio']}} - {{$datos['fecha_final']}}</p>
-    <p><strong>Generado por: </strong>{{App\Editor::where('id', $reporte->id)->first()->nombre}} {{App\Editor::where('id', $reporte->id)->first()->apepat}}</p>
+    <p><strong>Generado por: </strong>{{App\Editor::where('id', $reporte->editor_id)->first()->nombre}} {{App\Editor::where('id', $reporte->editor_id)->first()->apepat}}</p>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -87,7 +87,10 @@
 @isset($reporte)
   @if(\Request::getRequestUri() == '/reporte/select/'.$reporte->id.'?')
     <div class="row justify-content-center">
-      <button type="submit" class="btn btn-primary">Exportar</button>
+      <form action="{{route('reporte.pdf')}}">
+        <button type="submit" class="btn btn-primary">Exportar</button>
+        <input type="hidden" value="{{$reporte->id}}" name="reporte_id">
+      </form>
     </div>
   @endif
 @endisset
