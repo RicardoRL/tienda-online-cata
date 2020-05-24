@@ -36,19 +36,20 @@
                           <th> FECHA </th>
                           <th> SEDE </th>
                           <th> ASISTENTES </th>
-                          <th> IMAGE </th>
+                         
                           <th>  </th>
                       </tr>
                       </thead>
                       <tbody>
                       @foreach($eventos as $mievento)
+                      @if(auth()->guard('editor')->user()->can('owner', $mievento)) 
                       <tr>
                           <td> {{$mievento->id}}</td>
                           <td> {{$mievento->nombre}} </td>
                           <td> {{$mievento->fecha}} </td>
                           <td> {{$mievento->sede}} </td>
                           <td> {{$mievento->asistentes}} </td>
-                          <td> {{$mievento->imagen}}</td>
+                         
                           <td>
                               <a class="btn btn-outline-info" 
                                   href="{{route('evento.delete', $mievento->id)}}"
@@ -56,6 +57,7 @@
                               </a>
                           </td>
                       </tr>
+                      @endif
                           @endforeach
                       </tbody>
                     </table>
@@ -68,4 +70,5 @@
 </html>
 
 @endsection
+
 

@@ -2,6 +2,7 @@
 
 use App\Domicilio;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DomicilioSeeder extends Seeder
 {

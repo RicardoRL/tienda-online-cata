@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use App\Evento;
+use App\Policies\EventoPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Editor' => 'App\Policies\EditorPolicy',
+      //  'App\Evento' => 'App\Policies\EventoPolicy',
+        Evento::class => EventoPolicy::class,
+ 
     ];
 
     /**

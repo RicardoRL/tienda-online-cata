@@ -63,7 +63,7 @@
                     <div class="form-group row">
                       <label class="col-sm-2 form-control-label">Aspecto: </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" disabled pvalue="{{$cerveza->aspecto}}" name="aspecto" required>
+                        <input type="text" class="form-control" disabled value="{{$cerveza->aspecto}}" name="aspecto" required>
                         @error('aspecto')
                                     <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

@@ -116,4 +116,3 @@ Route::post('/reporte/nuevo', 'ReporteController@createReport')->name('reporte.n
 Route::get('/reporte/view', 'ReporteController@view')->name('reporte.view');
 Route::get('/reportes', 'ReporteController@viewReports')->name('reporte.list');
 Route::resource('reporte', 'ReporteController');
-

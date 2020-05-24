@@ -8,7 +8,7 @@
         <div class="container-fluid">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="/editor">Inicio</a></li>
-            <li class="breadcrumb-item active">Actualizar </li>
+            <li class="breadcrumb-item active">Eliminar </li>
           </ul>
         </div>
       </div>
@@ -19,18 +19,18 @@
                 <div class="card-header">
                   <h4>Eventos</h4>
                   <nav class="float-right">
-                    <form class="form-inline" action="{{route('evento.scopeName')}}" method="POST">
+                    <form class="form-inline" action="{{route('evento.scopeDelete')}}" method="POST">
                     @csrf
                       <input name="buscar" class="form-control mr-sm-2" type="search" placeholder="Nombre Evento" aria-label="Search">
                       <button type="submit" class="btn btn-outline-success btn-sm">Buscar</button>
                       </form>
                   </nav>
                 </div>
-                </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
-                      <thead>
+                      
+<thead>
                         <tr>
                           <th> ID </th>
                           <th> Evento </th>
@@ -43,21 +43,24 @@
                       </thead>
                       <tbody>
                       
-                      @foreach($eventos as $mievento)
+                      @foreach($eventos as $evento)
+      
+                  @if(auth()->guard('editor')->user()->can('owner', $evento)) 
                         <tr>
-                            <td> {{$mievento->id}}</td>
-                            <td> {{$mievento->nombre}} </td>
-                            <td> {{$mievento->fecha}} </td>
-                            <td> {{$mievento->sede}} </td>
-                            <td> {{$mievento->asistentes}} </td>
-                            <td> {{$mievento->imagen}}</td>
+                            <td> {{$evento->id}}</td>
+                            <td> {{$evento->nombre}} </td>
+                            <td> {{$evento->fecha}} </td>
+                            <td> {{$evento->sede}} </td>
+                            <td> {{$evento->asistentes}} </td>
+                            <td> {{$evento->imagen}}</td>
                             <td>
                                 <a class="btn btn-outline-primary"
-                                    href="{{route('evento.edit',$mievento->id)}}" 
+                                    href="{{route('evento.edit',$evento->id)}}" 
                                     type="button">Actualizar
                                 </a>
                             </td>
                         </tr>
+                  @endif 
                       @endforeach
                       </tbody>
                     </table>
