@@ -76,6 +76,14 @@ class ReporteController extends Controller
       {
         return redirect()->back()->with('error_message', 'La fecha ingresada es mayor que la actual, favor de corregir');
       }
+
+      $primer_reporte = Reporte::find(1);
+      $fecha_primer_reporte = new DateTime($primer_reporte->fecha_inicio);
+
+      if($init_date < $fecha_primer_reporte)
+      {
+        return redirect()->back()->with('error_message', 'La fecha ingresada no corresponde a la fecha de inicio de operaciones de la tienda');
+      }
       
       //Se crea un string para pasarlo a la función date_interval_create_from_date_string()
       $periodo = "";
