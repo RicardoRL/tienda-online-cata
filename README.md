@@ -80,7 +80,7 @@ Para probar el proyecto exitosamente se necesitan instalar los siguientes compon
 
 **Instalación**
 
-composer require "darryldecode/cart"
+`composer require "darryldecode/cart"`
 
 **Configuración**
 
@@ -107,6 +107,8 @@ Para más información haz click [aquí](https://github.com/darryldecode/laravel
 Para más información haz click [aquí](https://laravelcollective.com/docs/6.0/html)
 
 ### Laravel-dompdf
+
+**Instalación**
 
 `composer require barryvdh/laravel-dompdf`
 
