@@ -196,7 +196,7 @@
                     <div class="form-group row">
                       <div class="col-sm-4 offset-sm-2">
                         <a class="btn btn-outline-danger" href="{{route('editor.index')}}" role="button">Cancelar</a>
-                        <button type="submit" class="btn btn-outline-success">Añadir Cerveceria</button>
+                        <button type="submit" class="btn btn-outline-success">Añadir Cerveza</button>
                       </div>
                     </div>
                  </div>

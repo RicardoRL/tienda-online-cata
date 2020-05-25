@@ -7,17 +7,6 @@
     </div>
     <div class="box info-bar">
         <div class="row">
-            <div class="col-md-12 col-lg-4 products-number-sort">
-                <form class="form-inline d-block d-lg-flex justify-content-between flex-column flex-md-row">
-                    <div class="products-sort-by mt-2 mt-lg-0"><strong>Ordenar por</strong>
-                        <select name="sort-by" class="form-control">
-                            <option>Precio</option>
-                            <option>Nombre</option>
-                            <option>Vendidos</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
             <div class="col-md-12 col-lg-7 products-showing">Mostrando <strong>{{$set["paginator"]->count()}}</strong> de <strong>{{$set["paginator"]->total()}}</strong> producto(s)
             </div>
         </div>
