@@ -132,7 +132,7 @@ Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado
 
 En */vendor/laravel/ui/auth-backend/AuthenticatesUsers.php* se hicieron cambios en las funciones siguientes:
 
-`public function showLoginForm()
-{
-    return view('layouts_editor.editorLogin');
-}`
+`public function showLoginForm()`
+`{`
+    `return view('layouts_editor.editorLogin');`
+`}`
