@@ -18,12 +18,6 @@ class PedidoController extends Controller
 
   public function crearPedido(Request $request)
   {
-    //dd($request);
-    /*$request->validate([
-      'envio' => 'required|string|max:50',
-      'pago' => 'required|string|max:50',
-    ]);*/
-
     $pedido = new Pedido();
     $fecha = date('Y-m-d');
     
@@ -54,6 +48,9 @@ class PedidoController extends Controller
     \Cart::clear();
     \Cart::clearCartConditions();
 
+    $this->sendEmail();
+
+    session()->flash('success_message', 'Hemos enviado un correo confirmando tu pedido');
     return redirect()->route('pedido.showOrders');
   }
 
@@ -84,5 +81,17 @@ class PedidoController extends Controller
     $size = count($cervezas['modelo']);
 
     return view('layouts_cliente.clientePedidoIndividual', compact('pedido', 'domicilio', 'cervezas', 'size'));
+  }
+
+  public function sendEmail()
+  {
+    $details = [
+      'title' => 'Pedido hecho',
+      'body' => 'Tu pedido ha sido realizado con éxito, no olvides ponerte en contacto si tienes algún problema.'
+    ];
+
+    $correo = \Auth::user()->correo;
+  
+    \Mail::to($correo)->send(new \App\Mail\EmailGenerator($details));
   }
 }

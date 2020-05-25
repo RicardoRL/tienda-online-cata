@@ -38,6 +38,11 @@
         </div>
         <div id="customer-orders" class="col-lg-9">
           <div class="box">
+            @if(session()->has('success_message'))
+              <div class="alert alert-success" role="alert">
+                {{session()->get('success_message')}}
+              </div>
+            @endif
             <h1>Mis pedidos</h1>
             <p class="lead">Tus pedidos en un sólo lugar.</p>
             <p class="text-muted">Si tienes alguna pregunta o problema, no dudes en <a href="contact.html">contactarnos</a>, nuestro personal estará respondiendo lo más pronto posible.</p>

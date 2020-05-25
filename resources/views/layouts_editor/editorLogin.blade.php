@@ -43,9 +43,9 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a href="{{route('inicio')}}" class="navbar-brand home">
-              <img src="/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block">
-              <img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none">
-              <span class="sr-only">Obaju - go to homepage</span>
+              <img src="/img/cata-logo.png" alt="CATA logo" class="d-none d-md-inline-block">
+              <img src="/img/cata-logo-sm.png" alt="CATA logo" class="d-inline-block d-md-none">
+              <span class="sr-only">CATA - go to homepage</span>
             </a>
         <div>
     </nav>

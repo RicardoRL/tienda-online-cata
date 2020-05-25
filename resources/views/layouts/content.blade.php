@@ -8,8 +8,8 @@
         <div class="col-md-12">
           <div id="main-slider" class="owl-carousel owl-theme">
             <div class="item"><img src="img/img-index1.gif" alt="" class="img-fluid"></div>
-            <div class="item"><img src="img/img-index2.gif" alt="" class="img-fluid"></div>
             <div class="item"><img src="img/img-index3.gif" alt="" class="img-fluid"></div>
+            <div class="item"><img src="img/img-index4.gif" alt="" class="img-fluid"></div>
           </div>
         </div>
       </div>

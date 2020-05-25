@@ -13,7 +13,7 @@ class ClienteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('confirm_email');
     }
     /**
      * Display a listing of the resource.

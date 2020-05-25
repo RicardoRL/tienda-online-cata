@@ -84,6 +84,9 @@ Route::get('/crearPedido', 'PedidoController@crearPedido')->name('pedido.store')
 Route::get('/pedidos', 'PedidoController@showOrders')->name('pedido.showOrders');
 Route::get('/cliente/{cliente}/{pedido}', 'PedidoController@showOneOrder')->name('pedido.showOneOrder');
 
+//Ruta para enviar correo
+Route::get('/send-mail', 'PedidoController@sendEmail')->name('pedido.sendEmail');
+
 
 //Rutas para la tienda
 Route::get('tienda/cervezas', 'ShopController@porCerveceria')->name('tienda.porCerveceria');
