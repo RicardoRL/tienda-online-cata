@@ -59,6 +59,7 @@ Tanto clientes como editores son dos de los modelos (*clientes y editors*) usado
 ## Integrantes
 
 Álvaro Ramírez
+
 Ricardo Rodríguez
 
 ## Requisitos de instalación
