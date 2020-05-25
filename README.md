@@ -67,17 +67,21 @@ Para probar el proyecto exitosamente se necesitan instalar los siguientes compon
 
 ### Laravel scaffolding
 
-composer require laravel/ui
+**Instalación**
 
-npm install
+`composer require laravel/ui`
 
-npm run dev
+`npm install`
+
+`npm run dev`
 
 ### Laravel shopping cart
 
+**Instalación**
+
 composer require "darryldecode/cart"
 
-- **Configuración**
+**Configuración**
 
 1. Abrir el archivo *config/app.php* y agregar la siguiente línea al ServiceProviders array:
 
@@ -92,3 +96,29 @@ composer require "darryldecode/cart"
 `php artisan vendor:publish --provider="Darryldecode\Cart\CartServiceProvider" --tag="config"`
 
 Para más información haz click [aquí](https://github.com/darryldecode/laravelshoppingcart)
+
+### Laravelcollective
+
+**Instalación**
+
+`composer require laravelcollective/html`
+
+Para más información haz click [aquí](https://laravelcollective.com/docs/6.0/html)
+
+### Laravel-dompdf
+
+`composer require barryvdh/laravel-dompdf`
+
+Para más información haz click [aquí](https://github.com/barryvdh/laravel-dompdf)
+
+### Laraveles
+
+**Instalación**
+
+`composer require laraveles/spanish`
+
+**Configuración**
+
+Para actualizar las traducciones:
+
+`php artisan vendor:publish --tag=lang`
