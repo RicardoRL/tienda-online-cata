@@ -126,10 +126,13 @@ Para actualizar las traducciones:
 
 `php artisan vendor:publish --tag=lang`
 
-## Consideraciones adicionales
+## Configuraciones adicionales
 
-Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado a que se agregó una función más al shopping cart instalado, se habilita la carpeta de vendor.
+Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado a que se agregó una función más al shopping cart instalado, se mostrarán los cambios que se hicieron en los respectivos archivos.
 
-Además, se muestra el archivo .env por la configuración del correo electrónico y de la base de datos.
+En */vendor/laravel/ui/auth-backend/AuthenticatesUsers.php* se hicieron cambios en las funciones siguientes:
 
-Esto se hace para la facilidad de la revisión del sistema. Sabemos que no es recomendable hacerlo.
+`public function showLoginForm()
+    {
+        return view('layouts_editor.editorLogin');
+    }`
