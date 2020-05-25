@@ -54,24 +54,24 @@
               </a>
             </div>
             <div class="content py-3">
-              <form>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="password_old">Contraseña actual</label>
-                      <input id="password_old" type="password" class="form-control" name="old-password">
-                      @error('password_old')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
-                    </div>
-                  </div>
+              @if(session()->has('success_message'))
+                <div class="alert alert-success" role="alert">
+                  {{session()->get('success_message')}}
                 </div>
+              @elseif(session()->has('error_message'))
+                <div class="alert alert-danger" role="alert">
+                  {{session()->get('error_message')}}
+                </div>
+              @endif
+              <form action="{{route('cliente.changePassword', ['id' => \Auth::user()->id])}}" method="POST">
+                @csrf
+                @method('PATCH')
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="password_1">Contraseña nueva</label>
                       <input id="password_1" type="password" class="form-control" name="password">
-                      @error('password_1')
+                      @error('password')
                         <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
@@ -79,8 +79,8 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="password_2">Escribe de nuevo tu contraseña</label>
-                      <input id="password_2" type="password" class="form-control" name="password-repeated">
-                      @error('password_2')
+                      <input id="password_2" type="password" class="form-control" name="same_password">
+                      @error('same_password')
                         <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>

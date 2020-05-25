@@ -229,4 +229,24 @@ class ClienteController extends Controller
       $request->flash();
       return view('layouts.checkout');
     }
+
+    public function changePassword(Request $request, $id)
+    {
+      //dd($request);
+      $request->validate([
+        'password' => 'required|min:6',
+        'same_password' => 'required|min:6'
+      ]);
+
+      if($request->password == $request->same_password)
+      {
+        $cliente = Cliente::find($id);
+
+        $cliente->password = \Hash::make($request->password);
+        $cliente->save();
+        return redirect()->back()->with('success_message', 'Tu contraseña ha sido cambiada');
+      }
+
+      return redirect()->back()->with('error_message', 'Has escrito mal tu contraseña');
+    }
 }

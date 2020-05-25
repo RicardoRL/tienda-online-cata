@@ -41,6 +41,7 @@ Route::get('cliente/checkout/domicilio', 'ClienteController@checkout_dom')->name
 Route::get('cliente/checkout/envio', 'ClienteController@checkout_env')->name('cliente.checkout_env');
 Route::get('cliente/checkout/pago', 'ClienteController@checkout_pag')->name('cliente.checkout_pag');
 Route::get('cliente/checkout/revision', 'ClienteController@checkout_rev')->name('cliente.checkout_rev');
+Route::patch('cliente/{id}/password', 'ClienteController@changePassword')->name('cliente.changePassword');
 Route::resource('cliente', 'ClienteController');
 
 //Ruta para domicilio
