@@ -28,7 +28,7 @@ Cuando un cliente hace un pedido, se envía un correo electrónico que confirma 
 
 Los clientes pueden usar cupones para obtener descuentos en sus pedidos, los tipos de cupones que hay son los siguientes:
 
-- **Cupón de cantidad mínima**. Se aplica un porcentaje de descuento sobre el subtotal cuando se ha agregado al carro de compras la cantidad mínima requeridad.
+- **Cupón de cantidad mínima**. Se aplica un porcentaje de descuento sobre el subtotal cuando se ha agregado al carro de compras la cantidad mínima requerida.
 
 - **Cupón de porcentaje**. Se aplica un porcentaje de descuento sobre el subtotal.
 
