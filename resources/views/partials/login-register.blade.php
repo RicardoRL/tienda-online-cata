@@ -10,7 +10,7 @@
       </ul>
     @else
       <ul class="menu list-inline mb-0">
-        <li class="list-inline-item"><a>Bienvenido {{Auth::user()->nombre}}</a></li>
+        <li class="list-inline-item"><a>Bienvenido(a) {{Auth::user()->nombre}}</a></li>
         <li class="list-inline-item"><a href="{{route('cliente.show', [Auth::user()->id])}}">Mi Cuenta</a></li>
         <li class="list-inline-item"><a href="{{route('logout')}}"
                                       onclick="event.preventDefault();

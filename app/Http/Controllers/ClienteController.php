@@ -217,6 +217,15 @@ class ClienteController extends Controller
       {
         return redirect()->back()->with('error_message', 'Debes seleccionar un método de pago');
       }
+      elseif($request->pago == "tarjeta")
+      {
+        $tarjeta = Cliente::find(\Auth::id())->tarjeta;
+
+        if(empty($tarjeta))
+        {
+          return redirect()->back()->with('error_message', 'Debes registrar la información de una tarjeta de crédito/débito para continuar');
+        }
+      }
       $request->flash();
       return view('layouts.checkout');
     }

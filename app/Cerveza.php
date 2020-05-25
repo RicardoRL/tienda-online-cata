@@ -20,8 +20,13 @@ class Cerveza extends Model
 
   public function pedidos()
   {
-    return $this->belongsToMany('App\Pedido')->withTimestamps()->withPivot('cantidad');
+    return $this->belongsToMany('App\Pedido')->withTimestamps()->withPivot(['cantidad', 'deleted_at']);
   }
+
+  /*public function pedidosWithTrashed()
+  {
+    return $this->belongsToMany('App\Pedido')->withTimeStamps()->withPivot(['cantidad', 'deleted_at']);
+  }*/
 
   public function setNombreAttribute($value)
   {

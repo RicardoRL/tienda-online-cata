@@ -38,7 +38,7 @@
                   <tbody>
                     <tr>
                       <td>Subtotal</td>
-                      <th>${{Cart::getSubTotal()}}</th><!--${{Cart::getSubTotal()}}-->
+                      <th>${{Cart::getSubTotal()}}</th>
                     </tr>
                     <tr>
                     <tr>

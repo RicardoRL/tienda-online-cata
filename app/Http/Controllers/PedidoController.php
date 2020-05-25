@@ -72,9 +72,10 @@ class PedidoController extends Controller
     );
 
     //Se agrega en el arreglo el modelo de cerveza pedido, con su cantidad
-    foreach($pedido->cervezas as $cerveza)
+
+    foreach($pedido->cervezas()->withTrashed()->get() as $cerveza)
     {
-      $cervezas["modelo"][] = Cerveza::where('id', $cerveza->pivot->cerveza_id)->first();
+      $cervezas["modelo"][] = Cerveza::withTrashed()->where('id', $cerveza->id)->first();
       $cervezas["cantidad"][] = $cerveza->pivot->cantidad;
     }
 

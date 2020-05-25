@@ -15,6 +15,11 @@ class Pedido extends Model
 
   public function cervezas()
   {
-    return $this->belongsToMany('App\Cerveza')->withTimestamps()->withPivot('cantidad');
+    return $this->belongsToMany('App\Cerveza')->withTimestamps()->withPivot(['cantidad', 'deleted_at']);
   }
+
+  /*public function cervezasWithTrashed()
+  {
+    return $this->belongsToMany('App\Cerveza')->withTimeStamps()->withPivot(['cantidad', 'deleted_at']);
+  }*/
 }

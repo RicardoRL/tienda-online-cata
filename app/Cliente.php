@@ -27,6 +27,16 @@ class Cliente extends Authenticatable
     return $this->hasMany('App\Pedido');
   }
 
+  public function domicilio()
+  {
+    return $this->hasOne('App\Domicilio');
+  }
+
+  public function tarjeta()
+  {
+    return $this->hasOne('App\Tarjeta');
+  }
+
   public function setNombreAttribute($value)
   {
     $this->attributes['nombre'] = ucfirst($value);
