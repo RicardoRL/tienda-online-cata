@@ -66,6 +66,12 @@ Ricardo Rodríguez
 
 Para probar el proyecto exitosamente se necesitan instalar los siguientes componentes:
 
+### Composer
+
+**Instalación**
+
+`composer install`
+
 ### Laravel scaffolding
 
 **Instalación**
@@ -126,10 +132,105 @@ Para actualizar las traducciones:
 
 `php artisan vendor:publish --tag=lang`
 
-## Consideraciones adicionales
+## Configuraciones adicionales
 
-Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado a que se agregó una función más al shopping cart instalado, se habilita la carpeta de vendor.
+Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado a que se agregó una función más al shopping cart instalado, se mostrarán los cambios que se hicieron en los respectivos archivos para copiar y pegar las funciones que a continación se presentan.
 
-Además, se muestra el archivo .env por la configuración del correo electrónico y de la base de datos.
+En */vendor/laravel/ui/auth-backend/AuthenticatesUsers.php* se hicieron cambios en las funciones siguientes:
 
-Esto se hace para la facilidad de la revisión del sistema. Sabemos que no es recomendable hacerlo.
+```
+public function showLoginForm()
+{
+    return view('layouts_editor.editorLogin');
+}
+```
+
+```
+public function username()
+{
+    return 'correo';
+}
+```
+
+```
+public function logout(Request $request)
+{
+    $this->guard()->logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    if ($response = $this->loggedOut($request)) {
+        return $response;
+    }
+
+    return $request->wantsJson()
+        ? new Response('', 204)
+        //: redirect('/');
+        : redirect('/inicio');
+}
+```
+
+En */vendor/laravel/ui/auth-backend/RedirectsUsers.php* se cambió la siguiente función
+
+```
+public function redirectPath()
+{
+    if (method_exists($this, 'redirectTo')) {
+        return $this->redirectTo();
+    }
+
+    return property_exists($this, 'redirectTo') ? $this->redirectTo : '/cliente'; //Aqui iba /home
+}
+```
+
+En */vendor/laravel/ui/auth-backend/RegistersUsers.php* se cambió la siguiente función:
+
+```
+public function showLoginForm()
+{
+    return view('layouts_cliente.clienteAcceso');
+}
+```
+
+En */vendor/darryldecode/cart/src/Darryldecode/Cart/Cart.php* se agregó la siguiente función:
+
+```
+public function search(Closure $search)
+{
+    $content = $this->getContent();
+
+    return $content->filter($search);
+}
+```
+
+Por último, se mostrará la configuración de las variables del archivo .env, aplicadas para este proyecto:
+
+```
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:FIaM7xFE6YMofCBzADFVyAr56srgWW59pKiaTUHbw3s=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tienda_cata
+DB_USERNAME=root
+DB_PASSWORD=
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.office365.com
+MAIL_PORT=587
+MAIL_USERNAME=proyecto-cata-tienda@outlook.com
+MAIL_PASSWORD="#$%&Proyectocata"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=proyecto-cata-tienda@outlook.com
+MAIL_FROM_NAME=Tienda-Online-Cata
+```
+
+Las variables de la base de datos pueden ser modificadas por las que el usuario quiera, en cambio, se sugiere que las variables de correo no se cambien ya que el correo que se muestra fue creado con fines de prueba, y está habilitado para usarse en esta aplicación, el uso de otro correo deberá especficiarse en estas variables, pero puede generar algún error.
+
+La aplicación cuenta con los seeders y factories necesarios para probar la aplicación de manera exitosa.
