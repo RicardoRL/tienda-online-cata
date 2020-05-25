@@ -41,6 +41,7 @@
                       <th>${{Cart::getSubTotal()}}</th><!--${{Cart::getSubTotal()}}-->
                     </tr>
                     <tr>
+                    <tr>
                       <td>Envío</td>
                       @if(null !== Cart::getCondition('envio'))
                         <th>{{Cart::getCondition('envio')->getAttributes()['format']}}</th>

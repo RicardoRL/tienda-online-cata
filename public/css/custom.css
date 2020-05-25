@@ -36,6 +36,10 @@
   object-fit: cover;
 }
 
+.fit-logo{
+  height: 150px;
+}
+
 /* Estilos para la tabla pdf*/
 #reporte {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;

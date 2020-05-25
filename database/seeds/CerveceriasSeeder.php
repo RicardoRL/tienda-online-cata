@@ -19,7 +19,7 @@ class CerveceriasSeeder extends Seeder
             'ciudad' => 'México',
             'sitio_web' => 'https://www.facebook.com/pages/Cervecer%C3%ADa-Acapulco/152086821571341',
             'contacto' => '55 5784 7176',
-            'imagen' => 'acapulco',
+            'imagen' => 'acapulco.png',
         ]);
 
         DB::table('cervecerias')->insert([
@@ -248,7 +248,7 @@ class CerveceriasSeeder extends Seeder
             'ciudad' => 'Leon',
             'sitio_web' => 'https://cervezalibertad.com/',
             'contacto' => '(477) 167 8125',
-            'imagen' => 'libertad.jpg',
+            'imagen' => 'libertad.png',
         ]);
 
         DB::table('cervecerias')->insert([
@@ -256,7 +256,7 @@ class CerveceriasSeeder extends Seeder
             'ciudad' => 'Ciudad de México',
             'sitio_web' => 'https://www.cerveza102.com/',
             'contacto' => '666 976 405',
-            'imagen' => 'Linares-102.jpg',
+            'imagen' => 'linares-102.jpg',
         ]);
 
         DB::table('cervecerias')->insert([

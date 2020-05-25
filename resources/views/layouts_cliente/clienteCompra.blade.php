@@ -119,6 +119,7 @@
                     <th>${{Cart::getSubTotal()}}</th>
                   </tr>
                   <tr>
+                  <tr>
                     <td>Envío</td>
                     <th>$0.00</th>
                   </tr>
