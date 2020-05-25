@@ -232,3 +232,5 @@ MAIL_FROM_NAME=Tienda-Online-Cata
 ```
 
 Las variables de la base de datos pueden ser modificadas por las que el usuario quiera, en cambio, se sugiere que las variables de correo no se cambien ya que el correo que se muestra fue creado con fines de prueba, y está habilitado para usarse en esta aplicación, el uso de otro correo deberá especficiarse en estas variables, pero puede generar algún error.
+
+La aplicación cuenta con los seeders y factories necesarios para probar la aplicación de manera exitosa.
