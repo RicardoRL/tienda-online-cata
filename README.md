@@ -19,3 +19,7 @@ El sistema cuenta con dos tipos de usuario:
 
 - Clientes
 - Editores
+
+Los clientes son aquellos usuarios que van a interactuar con la interfaz destinada para ellos, por medio de la creación de una cuenta, la "compra" de productos", revisión de sus pedidos, búsqueda de los productos, entre otras funcionas más.
+
+Por su parte, los editores son los usuarios encargados de administrar la página, hasta cierto punto. Son los usuarios que agregan, eliminan y modifican las cervezas, cervecerías
