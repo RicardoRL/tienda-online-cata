@@ -81,14 +81,14 @@ composer require "darryldecode/cart"
 
 1. Abrir el archivo *config/app.php* y agregar la siguiente línea al ServiceProviders array:
 
-Darryldecode\Cart\CartServiceProvider::class
+`Darryldecode\Cart\CartServiceProvider::class`
 
 2. Abrir el archivo *config/app.php* y agregar a los Aliases:
 
-'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+`'Cart' => Darryldecode\Cart\Facades\CartFacade::class`
 
 3. Configuración opcional si deseas obtener todo el control:
 
-php artisan vendor:publish --provider="Darryldecode\Cart\CartServiceProvider" --tag="config"
+`php artisan vendor:publish --provider="Darryldecode\Cart\CartServiceProvider" --tag="config"`
 
 Para más información haz click [aquí](https://github.com/darryldecode/laravelshoppingcart)
