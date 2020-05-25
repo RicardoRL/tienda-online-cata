@@ -179,11 +179,22 @@ public function redirectPath()
 }
 ```
 
-En */vendor/laravel/ui/auth-backend/RegistersUsers.php* se hicieron cambios en las funciones siguientes:
+En */vendor/laravel/ui/auth-backend/RegistersUsers.php* se cambió la siguiente función:
 
 ```
 public function showLoginForm()
 {
     return view('layouts_cliente.clienteAcceso');
+}
+```
+
+En */vendor/darryldecode/cart/src/Darryldecode/Cart/Cart.php*
+
+```
+public function search(Closure $search)
+{
+    $content = $this->getContent();
+
+    return $content->filter($search);
 }
 ```
