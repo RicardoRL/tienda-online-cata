@@ -128,7 +128,7 @@ Para actualizar las traducciones:
 
 ## Configuraciones adicionales
 
-Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado a que se agregó una función más al shopping cart instalado, se mostrarán los cambios que se hicieron en los respectivos archivos.
+Debido a que se utilizó la tabla *clientes* en lugar de la de *users* y, aunado a que se agregó una función más al shopping cart instalado, se mostrarán los cambios que se hicieron en los respectivos archivos para copiar y pegar las funciones que a continación se presentan.
 
 En */vendor/laravel/ui/auth-backend/AuthenticatesUsers.php* se hicieron cambios en las funciones siguientes:
 
@@ -188,7 +188,7 @@ public function showLoginForm()
 }
 ```
 
-En */vendor/darryldecode/cart/src/Darryldecode/Cart/Cart.php*
+En */vendor/darryldecode/cart/src/Darryldecode/Cart/Cart.php* se agregó la siguiente función:
 
 ```
 public function search(Closure $search)
