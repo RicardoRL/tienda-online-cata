@@ -28,14 +28,31 @@ Cuando un cliente hace un pedido, se envía un correo electrónico que confirma 
 
 Los clientes pueden usar cupones para obtener descuentos en sus pedidos, los tipos de cupones que hay son los siguientes:
 
-- Cupón de cantidad mínima. Se aplica un porcentaje de descuento sobre el subtotal cuando se ha agregado al carro de compras la cantidad mínima requeridad.
+- **Cupón de cantidad mínima**. Se aplica un porcentaje de descuento sobre el subtotal cuando se ha agregado al carro de compras la cantidad mínima requeridad.
 
-- Cupón de porcentaje. Se aplica un porcentaje de descuento sobre el subtotal.
+- **Cupón de porcentaje**. Se aplica un porcentaje de descuento sobre el subtotal.
 
-- Cupón de valor fijo. Se aplica un descuento directamente sobre el subtotal. No aplica cuando el subtotal es menor al descuento.
+- **Cupón de valor fijo**. Se aplica un descuento directamente sobre el subtotal. No aplica cuando el subtotal es menor al descuento.
 
 #### Editores
 
 Por su parte, los editores son los usuarios encargados de administrar la página, hasta cierto punto. Son los usuarios que agregan, eliminan y modifican las cervezas, cervecerías y eventos; y crean reportes de ventas basados en la fecha que ellos especifiquen y la periodicidad seleccionada. Estos reportes pueden ser exportados en formato PDF.
 
+En el sistema solamente dos editores actúan como administradores de toda la plataforma, y la función que los distingue de los editores comunes es que pueden agregar, modificar y eliminar editores, además de todas las funciones que un editor común realiza.
+
+#### Otros modelos
+
+Tanto clientes como editores son dos de los modelos (*clientes y editors*) usados en este sistema, los otros modelos se enlistan a continuación:
+
+- **Cerveza**. Producto que se opera en todo el sistema.
+- **Cerveceria**. Es el proveedor de varias cervezas.
+- **Coupon**. Modelo que asocia los tipos de cupones descritos previamente.
+- **CantidadMinimaCoupon**. Modelo del cupón de cantidad mínima.
+- **PorcentajeCoupon**. Modelo del cupón de porcentaje.
+- **ValorFijoCoupon**. Modelo del cupón de valor fijo.
+- **Domicilio**. Modelo correspondiente al domicilio del cliente.
+- **Tarjeta**. Modelo respectivo de la tarjeta de crédito/débito del cliente.
+- **Evento**. Modelo de los eventos creados.
+- **Pedido**. Modelo de los pedidos hechos por el cliente.
+- **Reporte**. Modelo de los reportes creados por el editor.
 
