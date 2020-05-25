@@ -101,11 +101,13 @@
                 <li><a href="{{route('reporte.list')}}">Exportar reporte</a></li>
               </ul>
             </li>
+            <!--
             <li><a href="#opcionesGenerales" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Cuenta</a>
               <ul id="opcionesGenerales" class="collapse list-unstyled ">
                 <li><a href="#">Actualizar información</a></li>
               </ul>
             </li>
+            -->
           </ul>
         </div>
       </div>
