@@ -165,3 +165,25 @@ public function logout(Request $request)
         : redirect('/inicio');
 }
 ```
+
+En */vendor/laravel/ui/auth-backend/RedirectsUsers.php* se cambió la siguiente función
+
+```
+public function redirectPath()
+{
+    if (method_exists($this, 'redirectTo')) {
+        return $this->redirectTo();
+    }
+
+    return property_exists($this, 'redirectTo') ? $this->redirectTo : '/cliente'; //Aqui iba /home
+}
+```
+
+En */vendor/laravel/ui/auth-backend/RegistersUsers.php* se hicieron cambios en las funciones siguientes:
+
+```
+public function showLoginForm()
+{
+    return view('layouts_cliente.clienteAcceso');
+}
+```
