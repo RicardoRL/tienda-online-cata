@@ -56,3 +56,23 @@ Tanto clientes como editores son dos de los modelos (*clientes y editors*) usado
 - **Pedido**. Modelo de los pedidos hechos por el cliente.
 - **Reporte**. Modelo de los reportes creados por el editor.
 
+## Integrantes
+
+Álvaro Ramírez
+Ricardo Rodríguez
+
+## Requisitos de instalación
+
+Para probar el proyecto exitosamente se necesitan instalar los siguientes componentes:
+
+### Laravel scaffolding
+
+composer require laravel/ui
+
+npm install
+
+npm run dev
+
+### Laravel shopping cart
+
+composer require "darryldecode/cart"
